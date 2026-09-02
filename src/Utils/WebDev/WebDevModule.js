@@ -1,0 +1,156 @@
+export const WebDevAdvanceModules = [
+  {
+    ModuleName: "Module 1",
+    title: "Web Fundamentals",
+    topics: [
+      "Why Web Development",
+      "Case Studies of some best websites for Inspiration",
+      "Introduction to the Web",
+      "HTML5 (Basic tags, Forms, Validations, Buttons, Basic Components)",
+      "CSS3 (Basics, Chrome Inspector tool, CSS Colors, Text, Font, Specificity, Flat UI colors, UI Gradients)",
+      "Introduction to MDN and Google Stuff",
+      "Bootstrap 4 (Structure, CDN, Forms, Navbars, Grid System + Flexbox, etc.)",
+    ],
+  },
+  {
+    ModuleName: "Module 2",
+    title: "Learn JavaScript and jQuery",
+    topics: [
+      "Introduction to the JavaScript (Primitives, Variables, Null, Built-in Methods)",
+      "JS Control Flow (Arithmetic & Comparison operators, Conditionals, Switch, Loops, etc.)",
+      "JS Functions (Basics, Return keyword, Arrow Functions)",
+      "JS Arrays, JS Oops (Objects, 'this' keyword, Objects v/s Arrays)",
+      "Ajax and Advanced javascript concepts",
+      "ES6 & ES7 JS (Promises, Callbacks, Closures, For...of Loops, etc.)",
+      "DOM Manipulation (vanilla JS, Manipulating Style, Text, Content, Attribute, Events)",
+      "jQuery (Why, Selector, Attr, Val, Manipulating Class, Events - Click Keypress, On, jQuery Effects)",
+    ],
+  },
+  {
+    ModuleName: "Module 3",
+    title: "Backend Development (Server-Side Programming)",
+    topics: [
+      "Introduction to Backend",
+      "Working behind HTTPS",
+      "The workflow of Front-end and Back-end with a case study",
+      "Intro to Node.js and How Node.js Works",
+      "Installing Node.js & NPM",
+      "Difference between Framework & Library",
+      "Use of Server Side Framework",
+      "Intro to Express.JS and Why Express",
+      "Running Express App & Express Basics",
+      "Working with third-party API's (Intro to API's, JSON, XML) RESTful Routing",
+      "Deployment Options (Heroku/AWS)",
+      "Heroku Intro & Installation",
+    ],
+  },
+  {
+    ModuleName: "Module 4",
+    title: "Data Management and Storage",
+    topics: [
+      "Use of Databases",
+      "Basic SQL Queries to perform data operations",
+      "MongoDB Intro & Installation",
+      "Data/Database Schemas & Data Associations",
+      "Intro to Mongoose & Basic Commands",
+      "CRUD operations",
+    ],
+  },
+  {
+    ModuleName: "Module 5",
+    title: "React (Front End library and framework)",
+    topics: [
+      "Need for Front-end Frameworks",
+      "What is MVC Framework",
+      "Introducing React",
+      "Setting up React and its essentials",
+      "React Components, Libraries and Frameworks",
+      "Practical use cases",
+      "Routing in React",
+      "Advanced React and react hooks",
+      "Redux and State Management",
+    ],
+  },
+  {
+    ModuleName: "Module 6",
+    title: "Version Control and Collaboration",
+    topics: [
+      "What is Git VCS",
+      "GitHub Introduction",
+      "GitHub Basic Commands (add, commit, log, checkout, etc)",
+      "Git for Working in Teams Practices",
+    ],
+  },
+];
+
+// basic module
+export const WebDevBasicModules = [
+  {
+    ModuleName: "Module 1",
+    title: "Web Fundamentals",
+    topics: [
+      "Why Web Development",
+      "Case Studies of some best websites for Inspiration",
+      "Introduction to the Web",
+      "HTML5 (Basic tags, Forms, Validations, Buttons, Basic Components)",
+      "CSS3 (Basics, Chrome Inspector tool, CSS Colors, Text, Font, Specificity, Flat UI colors, UI Gradients)",
+      "Introduction to MDN and Google Stuff",
+    ],
+  },
+  {
+    ModuleName: "Module 2",
+    title: "Learn JavaScript and jQuery",
+    topics: [
+      "Introduction to the JavaScript (Primitives, Variables, Null, Built-in Methods)",
+      "JS Control Flow (Arithmetic & Comparison operators, Conditionals, Switch, Loops, etc.)",
+      "JS Functions (Basics, Return keyword, Arrow Functions)",
+      "JS Arrays, JS Oops (Objects, 'this' keyword, Objects v/s Arrays)",
+    ],
+  },
+  {
+    ModuleName: "Module 3",
+    title: "Backend Development (Server-Side Programming)",
+    topics: [
+      "Introduction to Backend",
+      "Working behind HTTPS",
+      "The workflow of Front-end and Back-end with a case study",
+      "Intro to Node.js and How Node.js Works",
+      "Installing Node.js & NPM",
+      "Difference between Framework & Library",
+      "Use of Server Side Framework",
+      "Intro to Express.JS and Why Express",
+      "Running Express App & Express Basics",
+    ],
+  },
+  {
+    ModuleName: "Module 4",
+    title: "Data Management and Storage",
+    topics: [
+      "Use of Databases",
+      "Basic SQL Queries to perform data operations",
+      "MongoDB Intro & Installation",
+      "Intro to Mongoose & Basic Commands",
+    ],
+  },
+  {
+    ModuleName: "Module 5",
+    title: "React (Front End library and framework)",
+    topics: [
+      "Need for Front-end Frameworks",
+      "What is MVC Framework",
+      "Introducing React",
+      "Setting up React and its essentials",
+      "React Components, Libraries and Frameworks",
+      "Practical use cases",
+    ],
+  },
+  {
+    ModuleName: "Module 6",
+    title: "Version Control and Collaboration",
+    topics: [
+      "What is Git VCS",
+      "GitHub Introduction",
+      "GitHub Basic Commands (add, commit, log, checkout, etc)",
+    ],
+  },
+];

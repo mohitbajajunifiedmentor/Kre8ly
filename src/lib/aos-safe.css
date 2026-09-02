@@ -1,0 +1,37 @@
+/*
+ * AOS failure guard.
+ *
+ * `aos/dist/aos.css` contains these two unconditional rules:
+ *
+ *     [data-aos^=fade][data-aos^=fade] { opacity: 0 }
+ *     [data-aos^=zoom][data-aos^=zoom] { opacity: 0 }
+ *
+ * Elements only become visible once AOS's JavaScript adds `.aos-animate`.
+ * This site has 1,276 `data-aos` attributes across 72 components, so if AOS
+ * never initialises — for any reason: a chunk that fails to parse, a hydration
+ * error, a browser extension that mangles the bundle, an ad blocker — every
+ * section below the hero stays at `opacity: 0` forever. The markup is present
+ * and correct in the HTML; it is simply invisible.
+ *
+ * A broken animation must never permanently hide content. So the opacity:0
+ * rules are neutralised until AOS has actually started, tracked by the
+ * `aos-ready` class on <html>:
+ *
+ *   - `aos-ready` is set by a tiny inline script in <head> (app/layout.jsx),
+ *     before first paint, so when everything works there is no flash and the
+ *     animations behave exactly as before.
+ *   - That same script arms a watchdog. If AOS has not reported back within
+ *     3 seconds, `aos-ready` is removed and the content is revealed unanimated.
+ *
+ * Imported *after* aos.css in src/lib/Providers.jsx so source order is
+ * deterministic; `!important` guards against any further re-ordering.
+ */
+
+html:not(.aos-ready) [data-aos^="fade"][data-aos^="fade"],
+html:not(.aos-ready) [data-aos^="zoom"][data-aos^="zoom"],
+html:not(.aos-ready) [data-aos^="flip"][data-aos^="flip"],
+html:not(.aos-ready) [data-aos^="slide"][data-aos^="slide"] {
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
+}

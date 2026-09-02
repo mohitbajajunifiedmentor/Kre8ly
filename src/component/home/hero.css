@@ -1,0 +1,54 @@
+/* Kre8ly hero animations.
+   Only `transform` and `opacity` animate, so everything stays on the
+   compositor and never triggers layout or paint. `prefers-reduced-motion` is
+   neutralised globally in src/styles/tokens.css. */
+
+@keyframes k-rise {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 14px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.k-rise {
+  opacity: 0;
+  animation: k-rise 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.k-d1 { animation-delay: 0.04s; }
+.k-d2 { animation-delay: 0.10s; }
+.k-d3 { animation-delay: 0.16s; }
+.k-d4 { animation-delay: 0.22s; }
+.k-d5 { animation-delay: 0.28s; }
+.k-d6 { animation-delay: 0.34s; }
+.k-d7 { animation-delay: 0.40s; }
+
+/* Very fine dot field, masked so it fades out well before the edges.
+   Replaces the previous full-bleed aurora blobs. */
+.k-dots {
+  background-image: radial-gradient(
+    hsl(var(--k-text) / 0.13) 1px,
+    transparent 1px
+  );
+  background-size: 22px 22px;
+  -webkit-mask-image: radial-gradient(ellipse 70% 55% at 50% 0%, #000, transparent 75%);
+  mask-image: radial-gradient(ellipse 70% 55% at 50% 0%, #000, transparent 75%);
+}
+
+/* Single soft brand wash behind the headline. One light source, not three. */
+.k-wash {
+  background: radial-gradient(
+    ellipse 55% 45% at 15% 0%,
+    hsl(var(--k-brand) / 0.10),
+    transparent 70%
+  );
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .k-rise {
+    opacity: 1;
+  }
+}

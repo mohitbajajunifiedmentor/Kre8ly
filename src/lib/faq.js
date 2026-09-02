@@ -1,0 +1,864 @@
+// lib/faq.js
+//
+// KNOWLEDGE BASE ONLY.
+//
+// This file used to contain a *second* matching engine (tokenize + idf +
+// scoreEntry + matchFAQ) that duplicated lib/faqSearch.js. Two engines meant
+// two tokenizers, two IDF tables and two scoring formulas — and the API route
+// happened to import the weaker one, so every fix made in faqSearch.js had no
+// effect at runtime. All matching now lives in lib/faqSearch.js. This file
+// only owns data: entries, synonyms, stopwords, quick replies and the two
+// small text classifiers (wantsHuman / detectPriority).
+//
+// ANSWER LANGUAGE: every user-facing answer is English.
+// MATCHING LANGUAGE: Hinglish, English and common typos all match, via the
+// SYNONYMS map and the tokenizer in faqSearch.js. So "fees kitni hai",
+// "what is the fee" and "course ka daam" all resolve to the same entry.
+
+const SUPPORT_EMAIL = "hello@kre8ly.com";
+const SUPPORT_HOURS = "Mon–Sat, 10 AM – 7 PM IST";
+
+/**
+ * Hinglish / typo / synonym normalisation, applied before and after light
+ * stemming. Keys must be lowercase single tokens.
+ */
+const SYNONYMS = {
+  // pricing
+  // "kitna/kitni/kitne" is a QUANTITY word, not a price word. Mapping it to
+  // "price" made "kitne project milenge" and "stipend kitna hai" both land on
+  // the fees answer. It is now its own token that several entries index.
+  kitni: "kitna", kitne: "kitna", kitna_hai: "kitna", paisa: "price", paise: "price",
+  rupay: "price", rupaye: "price", fees: "fee", fis: "fee", charge: "price",
+  charges: "price", cost: "price", pricing: "price", daam: "price", kharcha: "price",
+  // enrolment
+  enroll: "enrol", enrolment: "enrol", enrollment: "enrol", admission: "enrol",
+  join: "enrol", jvoin: "enrol", bharti: "enrol", register: "enrol",
+  signup: "enrol", "sign-up": "enrol",
+  // greetings people actually type
+  hii: "hi", hiii: "hi", hlo: "hello", helo: "hello", hy: "hi", namaskar: "namaste",
+  // time words
+  ghanta: "hour", ghante: "hour", ghanto: "hour", roz: "daily",
+  // auth
+  signin: "login", "sign-in": "login", loggin: "login", logn: "login",
+  // refund
+  wapas: "refund", "money-back": "refund", moneyback: "refund",
+  cancelation: "cancel", cancellation: "cancel",
+  // certificate
+  certi: "certificate", certificat: "certificate", cert: "certificate",
+  // duration
+  kitnedin: "duration", mahina: "duration", mahine: "duration",
+  months: "duration", month: "duration", weeks: "duration", saal: "duration",
+  // placement / jobs
+  naukri: "job", nokri: "job", jobs: "job", hiring: "job", salary: "salary",
+  package: "salary", stipend: "stipend",
+  // support
+  madad: "help", sahayata: "help", problem: "issue", dikkat: "issue",
+  samasya: "issue", pareshani: "issue",
+  // courses
+  courses: "course", kors: "course", program: "course", programs: "course",
+  classes: "class", classe: "class",
+  webdev: "webdevelopment", "web-dev": "webdevelopment",
+  ml: "machinelearning", ds: "datascience", ui: "uiux", ux: "uiux",
+  "ui/ux": "uiux", dm: "digitalmarketing", da: "dataanalyst",
+};
+
+/**
+ * Words that carry no intent. Deduplicated — "me" was listed twice.
+ */
+const STOPWORDS = new Set([
+  "the", "a", "an", "is", "are", "was", "to", "of", "in", "on", "for", "and",
+  "or", "me", "my", "i", "you", "your", "it", "this", "that", "can", "do",
+  "does", "please", "hai", "ha", "he", "ho", "hoga", "hota", "hoti", "ka",
+  "ke", "ki", "ko", "se", "mein", "aur", "ya", "kya", "koi", "bhi",
+  "kar", "karna", "karne", "sakta", "sakte", "raha", "rahi", "rha", "kuch",
+  "apna", "aap", "main", "mera", "meri", "mujhe", "hum", "ye", "yeh", "wo",
+]);
+
+/**
+ * Entry shape:
+ *   id          unique key, also used by the clarification buttons
+ *   category    used for the category-agreement scoring layer
+ *   priority    0-100, tie-break only
+ *   aliases     natural phrasings — drive exact/phrase matching and the labels
+ *   keywords    indexed terms (IDF weighted)
+ *   must        soft gate: at least one of these should appear
+ *   notIf       negative gate: a more specific entry owns this question
+ *   avoidIf     a generic entry stands down when a specific intent is present
+ *   escalateIf  entry answers, but the phrasing signals a real account problem
+ *   related     follow-up chips
+ */
+const FAQ_LIST = [
+  // ── company ───────────────────────────────────────────────────────────────
+  {
+    id: "about",
+    category: "company",
+    priority: 50,
+    aliases: ["what is kre8ly", "about the company"],
+    keywords: ["kre8ly", "about", "company", "who", "kaun", "platform"],
+    must: ["kre8ly", "about", "company", "platform"],
+    answer:
+      `Kre8ly is an online education platform offering courses and fellowships in Web Development, Data Science, Machine Learning, UI/UX, Digital Marketing and Graphic Design. Learn more: /about`,
+    related: ["courses", "fellowship", "legit"],
+  },
+  {
+    id: "legit",
+    category: "company",
+    priority: 50,
+    aliases: ["is kre8ly genuine", "is this a scam"],
+    keywords: ["legit", "genuine", "real", "fake", "trust", "scam", "fraud", "safe", "asli"],
+    must: ["legit", "genuine", "fake", "trust", "scam", "fraud", "asli"],
+    answer:
+      `Yes. Kre8ly is a registered company. You can see our students' placement stories at /placement and /our-stories. More detail: /is-unified-mentor-internship-legit`,
+    related: ["placement", "certificate", "about"],
+  },
+  {
+    id: "contact",
+    category: "support",
+    priority: 50,
+    aliases: ["how do i contact you", "support email", "contact details"],
+    keywords: ["contact", "email", "phone", "number", "call", "reach", "sampark", "baat"],
+    must: ["contact", "phone", "call", "reach", "sampark"],
+    answer: `You can email us at ${SUPPORT_EMAIL}, or use the form at /contact-us. Our office is in Gurugram, Haryana.`,
+    related: ["hours", "grievance"],
+  },
+  {
+    id: "hours",
+    category: "support",
+    priority: 50,
+    aliases: ["support timings", "when are you open", "working hours"],
+    // "available" removed from both lists: "emi available hai" tied with this
+    // entry because "available" was a gate word here.
+    keywords: ["hours", "timing", "time", "open", "kab", "khula", "support"],
+    must: ["timing", "open", "khula"],
+    // "hours" alone belongs to attendance_hours for interns.
+    notIf: ["attendance", "daily", "everyday"],
+    answer: `Our support team is available ${SUPPORT_HOURS}. Outside those hours, leave a message and you will get a reply on the next working day.`,
+    related: ["contact"],
+  },
+
+  // ── courses ───────────────────────────────────────────────────────────────
+  {
+    id: "courses",
+    category: "course",
+    priority: 40,
+    aliases: ["what courses do you offer", "list of courses"],
+    keywords: ["course", "list", "available", "offer", "kaunse", "which", "options", "subjects"],
+    must: ["course"],
+    // "kitna" added: "course kitne ka hai" is a fees question, not a listing.
+    avoidIf: ["price", "fee", "duration", "enrol", "refund", "certificate", "placement", "kitna"],
+    answer:
+      `We offer 6 main programs: Web Development, Data Science, Machine Learning, UI/UX Design, Digital Marketing and Graphic Design. See them all at /courses`,
+    related: ["price", "duration", "enrol", "fellowship"],
+  },
+  {
+    id: "course_webdev",
+    category: "course",
+    priority: 55,
+    aliases: ["web development course"],
+    keywords: ["webdevelopment", "web", "frontend", "backend", "fullstack", "react", "node", "mern"],
+    must: ["webdevelopment", "web", "frontend", "backend", "fullstack", "react", "node", "mern"],
+    answer:
+      `The Web Development course covers HTML/CSS, JavaScript, React and backend development, with real projects. Details: /web-development`,
+    related: ["price", "enrol", "placement"],
+  },
+  {
+    id: "course_ds",
+    category: "course",
+    priority: 55,
+    aliases: ["data science course"],
+    keywords: ["datascience", "data", "python", "statistics", "analytics", "dataanalyst", "sql"],
+    must: ["datascience", "data", "python", "analytics", "dataanalyst", "sql"],
+    answer:
+      `Data Science covers Python, statistics, SQL and machine learning basics. Details: /data-science — for the Data Analyst track see /data-analyst`,
+    related: ["course_ml", "price", "placement"],
+  },
+  {
+    id: "course_ml",
+    category: "course",
+    priority: 55,
+    aliases: ["machine learning course"],
+    keywords: ["machinelearning", "ai", "deeplearning", "model", "mlops"],
+    must: ["machinelearning", "ai", "deeplearning", "mlops"],
+    answer:
+      `The Machine Learning course covers models, deep learning and MLOps. Details: /machine-learning`,
+    related: ["course_ds", "price"],
+  },
+  {
+    id: "course_uiux",
+    category: "course",
+    priority: 55,
+    aliases: ["ui ux design course"],
+    keywords: ["uiux", "design", "figma", "wireframe", "prototype", "graphic", "designer"],
+    must: ["uiux", "figma", "wireframe", "prototype", "graphic", "designer"],
+    answer:
+      `UI/UX Design covers Figma, user research and prototyping: /ui-ux-designer. Graphic Design is a separate track: /graphic-design`,
+    related: ["price", "enrol"],
+  },
+  {
+    id: "course_dm",
+    category: "course",
+    priority: 55,
+    aliases: ["digital marketing course"],
+    keywords: ["digitalmarketing", "marketing", "seo", "ads", "social", "smm"],
+    must: ["digitalmarketing", "marketing", "seo", "ads", "smm"],
+    answer:
+      `Digital Marketing covers SEO, paid ads, social media and analytics. Details: /digital-marketing`,
+    related: ["price", "enrol"],
+  },
+  {
+    id: "duration",
+    category: "course",
+    priority: 50,
+    aliases: ["how long is the course", "course duration"],
+    keywords: ["duration", "long", "lamba", "complete", "finish", "khatam", "kitna"],
+    must: ["duration", "long", "lamba", "complete", "finish", "khatam"],
+    notIf: ["completion", "certificate"],
+    answer:
+      `Course length varies by track. The exact duration is listed on each course page — open your course from /courses. Which course are you looking at?`,
+    related: ["courses", "selfpaced", "batch"],
+  },
+  {
+    id: "selfpaced",
+    category: "course",
+    priority: 50,
+    aliases: ["are the courses self paced", "can i study at my own pace"],
+    keywords: ["selfpaced", "self", "paced", "pace", "own", "schedule", "flexible", "recorded"],
+    must: ["selfpaced", "paced", "pace", "schedule", "flexible", "recorded"],
+    answer:
+      `Yes, most of our courses are self-paced, so you can study at your own convenience. Some tracks also include live sessions and mentorship.`,
+    related: ["pause", "mobile", "live"],
+  },
+  {
+    id: "live",
+    category: "course",
+    priority: 45,
+    aliases: ["are there live classes"],
+    keywords: ["live", "class", "instructor", "teacher", "faculty", "forum"],
+    must: ["live", "class", "instructor", "teacher", "faculty"],
+    notIf: ["doubt", "mentor", "weekly", "induction"],
+    answer:
+      `Live sessions are run by industry experts, and there are discussion forums where you can ask questions of instructors and other learners.`,
+    related: ["selfpaced", "courses"],
+  },
+  {
+    id: "pause",
+    category: "course",
+    priority: 50,
+    aliases: ["can i pause the course", "take a break"],
+    keywords: ["pause", "break", "stop", "resume", "chhutti", "gap", "later"],
+    must: ["pause", "break", "resume", "chhutti", "gap"],
+    answer:
+      `You can pause your studies at any time. Your progress is saved and you can resume from where you left off.`,
+    related: ["selfpaced"],
+  },
+  {
+    id: "mobile",
+    category: "course",
+    priority: 50,
+    aliases: ["can i study on mobile", "is there an app"],
+    keywords: ["mobile", "phone", "app", "android", "ios", "tablet", "laptop", "device"],
+    must: ["mobile", "app", "android", "ios", "tablet", "laptop", "device"],
+    answer:
+      `Yes, the platform is mobile-responsive. You can access your courses from a phone, tablet or laptop.`,
+    related: ["login", "selfpaced"],
+  },
+  {
+    id: "prereq",
+    category: "course",
+    priority: 50,
+    aliases: ["do i need coding experience", "eligibility"],
+    keywords: ["prerequisite", "requirement", "beginner", "fresher", "background", "coding", "zaroori", "eligibility"],
+    must: ["prerequisite", "requirement", "beginner", "fresher", "background", "eligibility"],
+    answer:
+      `Most courses are designed for beginners and need no prior coding experience. Each course page lists its own prerequisites: /courses`,
+    related: ["courses", "enrol"],
+  },
+
+  // ── fellowship / internship ───────────────────────────────────────────────
+  {
+    id: "fellowship",
+    category: "internship",
+    priority: 50,
+    aliases: ["what is the fellowship", "fellowship programme", "internship programme"],
+    keywords: ["fellowship", "internship", "intern", "trainee", "experience"],
+    must: ["fellowship", "internship", "intern", "trainee"],
+    notIf: ["start", "begin", "starting", "terms", "condition"],
+    answer:
+      `Fellowship programs give you real-world project experience. Ten tracks are available: Full Stack, Frontend, Backend, UI/UX, Data Science, Machine Learning, Digital Marketing, Financial Analyst, Business Analyst and Data Analyst. See them at /fellowships`,
+    related: ["stipend", "placement", "enrol", "intern_terms"],
+  },
+  {
+    id: "stipend",
+    category: "internship",
+    priority: 50,
+    aliases: ["is the internship paid", "stipend details"],
+    keywords: ["stipend", "salary", "paid", "unpaid", "earn", "money", "kitna"],
+    must: ["stipend", "salary", "paid", "unpaid"],
+    answer:
+      `Stipend and compensation details differ per fellowship track and are listed on each track's page. Which fellowship are you interested in? /fellowships`,
+    related: ["fellowship", "placement"],
+  },
+  {
+    id: "intern_terms",
+    category: "internship",
+    priority: 50,
+    aliases: ["internship terms and conditions"],
+    keywords: ["internship", "terms", "condition", "agreement", "rules"],
+    must: ["terms", "condition", "agreement"],
+    answer: `You can read the internship terms and conditions here: /internship-terms-and-conditions`,
+    related: ["fellowship", "terms"],
+  },
+
+  // ── enrolment / payment ───────────────────────────────────────────────────
+  {
+    id: "enrol",
+    category: "payment",
+    priority: 50,
+    aliases: ["how do i enrol", "how to join", "how do i sign up", "how to register"],
+    keywords: ["enrol", "start", "begin", "shuru", "apply", "purchase", "buy"],
+    must: ["enrol", "apply", "purchase", "buy"],
+    notIf: ["internship", "project", "attendance", "registration", "registered"],
+    answer:
+      `Enrolling is simple: open the course page and complete the purchase. You will receive access to the LMS portal by email before your batch starts. Browse courses at /courses`,
+    related: ["price", "payment", "batch", "login"],
+  },
+  {
+    id: "price",
+    category: "payment",
+    priority: 60,
+    aliases: ["how much does it cost", "what is the fee", "course fees", "pricing"],
+    keywords: ["price", "fee", "emi", "installment", "discount", "offer", "scholarship", "afford", "kitna"],
+    must: ["price", "fee", "emi", "installment", "discount", "scholarship", "kitna"],
+    answer:
+      `Pricing for each course is listed on its own page — open your course from /courses. For group or scholarship discounts, please get in touch via /contact-us`,
+    related: ["payment", "refund", "courses"],
+  },
+  {
+    id: "payment",
+    category: "payment",
+    priority: 65,
+    aliases: ["payment failed", "money deducted", "payment not going through", "transaction failed"],
+    keywords: ["payment", "pay", "card", "upi", "netbanking", "razorpay", "transaction", "failed", "debited"],
+    must: ["payment", "pay", "card", "upi", "netbanking", "razorpay", "transaction", "debited"],
+    answer:
+      `Payments are processed securely through Razorpay and support UPI, cards and net banking. If money was deducted but your enrolment was not confirmed, tell me and I will raise a ticket right away.`,
+    related: ["refund", "enrol"],
+    escalateIf: ["failed", "debited", "deducted", "cut", "nahi", "not"],
+  },
+  {
+    id: "batch",
+    category: "payment",
+    priority: 50,
+    aliases: ["when does the batch start", "next batch"],
+    keywords: ["batch", "start", "date", "kab", "next", "schedule"],
+    must: ["batch"],
+    answer:
+      `Batch start dates are kept up to date on each course page. After enrolling, you will receive the full schedule by email before the batch begins.`,
+    related: ["enrol", "login"],
+  },
+
+  // ── refund / policy ───────────────────────────────────────────────────────
+  {
+    id: "refund",
+    category: "refund",
+    priority: 65,
+    aliases: ["how do refunds work", "want a refund", "cancel and refund", "money back"],
+    keywords: ["refund", "cancel", "return", "withdraw", "money"],
+    must: ["refund", "cancel", "return", "withdraw"],
+    answer: `The refund policy depends on the course and the circumstances. The full policy is here: /cancellation-and-refund. Share your order details and I can raise a ticket, or email ${SUPPORT_EMAIL}`,
+    related: ["price", "grievance", "terms"],
+    escalateIf: ["refund", "withdraw"],
+  },
+  {
+    id: "privacy",
+    category: "legal",
+    priority: 50,
+    aliases: ["privacy policy"],
+    keywords: ["privacy", "data", "personal", "gdpr", "information", "share"],
+    must: ["privacy", "gdpr"],
+    answer: `You can read our privacy policy here: /privacy-policy`,
+    related: ["terms"],
+  },
+  {
+    id: "terms",
+    category: "legal",
+    priority: 50,
+    aliases: ["terms and conditions"],
+    keywords: ["terms", "condition", "policy", "legal", "agreement"],
+    must: ["terms", "legal"],
+    notIf: ["internship", "intern"],
+    answer: `You can read our Terms and Conditions here: /terms-and-conditions`,
+    related: ["privacy", "refund"],
+  },
+  {
+    id: "shipping",
+    category: "legal",
+    priority: 50,
+    aliases: ["shipping and delivery policy"],
+    keywords: ["shipping", "delivery", "dispatch", "courier"],
+    must: ["shipping", "delivery", "dispatch", "courier"],
+    answer: `Our shipping and delivery policy is here: /shipping-and-delivery`,
+    related: ["order"],
+  },
+  {
+    id: "grievance",
+    category: "support",
+    priority: 50,
+    aliases: ["grievance officer", "file a complaint"],
+    keywords: ["grievance", "complaint", "escalate", "officer", "shikayat"],
+    must: ["grievance", "complaint", "officer", "shikayat"],
+    answer:
+      `If your complaint has not been resolved, you can contact our Grievance Officer: /grievance-officer. I can also raise a support ticket for you now — just let me know.`,
+    related: ["contact", "refund"],
+    escalateIf: ["complaint", "shikayat", "grievance"],
+  },
+  {
+    id: "order",
+    category: "payment",
+    priority: 50,
+    aliases: ["track my order", "order status"],
+    keywords: ["order", "track", "tracking", "status", "purchase"],
+    must: ["order", "track", "tracking"],
+    answer:
+      `You can check your order status in the 'My Orders' section of your account. Share your Order ID and I can help more specifically.`,
+    related: ["payment", "shipping", "login"],
+  },
+
+  // ── account / access ──────────────────────────────────────────────────────
+  {
+    id: "login",
+    category: "account",
+    priority: 65,
+    aliases: [
+      "cannot log in", "unable to login", "login not working", "login issue",
+      "cannot access my account", "locked out",
+    ],
+    keywords: ["login", "log", "signin", "access", "account", "portal", "lms", "locked", "cannot"],
+    must: ["login", "log", "signin", "account", "locked"],
+    notIf: ["password", "forgot", "reset"],
+    answer:
+      `Learning Portal: https://learning.unifiedmentor.com/s/authenticate and Project Portal: https://projects.unifiedmentor.com/sign-in. If you cannot sign in, try 'Forgot Password' first — if that does not work, tell me and I will raise a ticket.`,
+    related: ["password", "batch", "contact"],
+    escalateIf: ["locked", "blocked", "nahi", "not", "still", "phir"],
+  },
+  {
+    id: "password",
+    category: "account",
+    priority: 70,
+    aliases: [
+      "reset my password", "forgot my password", "password recovery",
+      "cannot remember my password", "lost password", "change my password", "password reset",
+    ],
+    keywords: ["password", "forgot", "reset", "otp", "bhool"],
+    must: ["password", "forgot", "reset", "otp", "bhool"],
+    notIf: ["project"],
+    answer:
+      `On the login page, click 'Forgot Password' and reset it using your registered email address. If the reset link does not arrive, please check your spam folder.`,
+    related: ["login", "contact"],
+    escalateIf: ["nahi", "not", "still", "phir", "spam"],
+  },
+
+  // ── outcomes ──────────────────────────────────────────────────────────────
+  {
+    id: "certificate",
+    category: "certificate",
+    priority: 50,
+    aliases: ["do i get a certificate", "verify a certificate", "certificate verification"],
+    keywords: ["certificate", "certification", "verify", "umid", "proof"],
+    must: ["certificate", "certification", "verify", "umid"],
+    notIf: ["completion", "delay", "late", "missing", "yet", "received"],
+    answer:
+      `You receive a certificate on completing a course, which you can add to your resume or LinkedIn profile. To verify a certificate, enter the UMID at /verify-certificate`,
+    related: ["placement", "courses"],
+  },
+  {
+    id: "placement",
+    category: "placement",
+    priority: 50,
+    aliases: ["placement support", "do you help with jobs", "job assistance"],
+    keywords: ["placement", "job", "career", "hire", "interview", "resume"],
+    must: ["placement", "job", "career", "interview", "resume"],
+    notIf: ["portal", "assistance"],
+    answer:
+      `Placement support and our students' success stories are here: /placement and /our-stories. Current job openings: /jobs`,
+    related: ["certificate", "fellowship", "hire"],
+  },
+  {
+    id: "hire",
+    category: "company",
+    priority: 50,
+    aliases: ["hire from kre8ly", "recruit your students"],
+    keywords: ["hire", "recruit", "talent", "employer", "partner"],
+    must: ["hire", "recruit", "talent", "employer"],
+    answer:
+      `If you would like to hire talent from Kre8ly, see /hire-from-us. For partnerships, see /mou`,
+    related: ["placement", "about"],
+  },
+
+  // ── programs / community ──────────────────────────────────────────────────
+  {
+    id: "refer",
+    category: "community",
+    priority: 50,
+    aliases: ["refer and earn", "referral program"],
+    keywords: ["refer", "referral", "earn", "reward", "invite", "friend", "link"],
+    must: ["refer", "referral", "reward", "invite"],
+    answer:
+      `There is no limit on Refer & Earn — you earn a reward for every person who joins a paid course through your link. Your link and referral status are in the 'Refer & Earn' section of your dashboard: /refer-and-earn`,
+    related: ["price", "login"],
+  },
+  {
+    id: "ambassador",
+    category: "community",
+    priority: 50,
+    aliases: ["campus ambassador program"],
+    keywords: ["ambassador", "campus", "college", "represent", "student"],
+    must: ["ambassador", "campus"],
+    answer: `Details of the Campus Ambassador program are here: /campus-ambassador`,
+    related: ["refer", "leaderboard"],
+  },
+  {
+    id: "leaderboard",
+    category: "community",
+    priority: 50,
+    aliases: ["leaderboard"],
+    keywords: ["leaderboard", "rank", "top", "winner", "contest"],
+    must: ["leaderboard", "rank", "contest"],
+    answer: `You can view the leaderboard here: /leaderboard`,
+    related: ["ambassador"],
+  },
+  {
+    id: "blog",
+    category: "company",
+    priority: 50,
+    aliases: ["blog", "press releases"],
+    keywords: ["blog", "article", "post", "news", "press"],
+    must: ["blog", "article", "press"],
+    answer: `Our blog is at /our-blogs and press releases are at /press-releases`,
+    related: ["about"],
+  },
+
+  // ── internship onboarding ─────────────────────────────────────────────────
+  {
+    id: "offer_letter",
+    category: "internship",
+    priority: 55,
+    aliases: ["when will i get the offer letter", "offer letter not received"],
+    keywords: ["offer", "letter", "offerletter", "joining", "confirmation"],
+    must: ["offer", "letter", "offerletter"],
+    answer: `Your offer letter is sent within 24 hours of registration, to the email address you registered with.`,
+    related: ["after_registration", "whatsapp_community", "induction"],
+    escalateIf: ["nahi", "not", "still", "yet", "missing"],
+  },
+  {
+    id: "after_registration",
+    category: "internship",
+    priority: 50,
+    aliases: ["what happens after registration", "next steps after registering"],
+    keywords: ["registration", "registered", "next", "process", "after", "steps"],
+    must: ["registration", "registered", "process"],
+    answer: `Within 24 hours of registering you will receive your offer letter by email, and one of our executives will call you to verify your details.`,
+    related: ["offer_letter", "internship_start", "induction"],
+  },
+  {
+    id: "whatsapp_community",
+    category: "internship",
+    priority: 50,
+    aliases: ["whatsapp group link", "official community"],
+    keywords: ["whatsapp", "community", "group", "link", "official"],
+    must: ["whatsapp", "community"],
+    answer: `The official WhatsApp community link is included in your offer letter email.`,
+    related: ["offer_letter", "mentor_session"],
+  },
+  {
+    id: "internship_start",
+    category: "internship",
+    priority: 60,
+    aliases: ["when will the internship start", "internship starting date", "when does the internship begin"],
+    keywords: ["internship", "start", "begin", "starting", "commence", "date"],
+    must: ["internship", "start", "begin", "starting"],
+    answer: `Your internship begins on the start date you selected. On that day you will receive portal access by email, and the HR induction session is held at 5 PM.`,
+    related: ["portal_access", "induction", "after_registration"],
+  },
+  {
+    id: "induction",
+    category: "internship",
+    priority: 50,
+    aliases: ["induction session link", "is the induction mandatory", "hr induction"],
+    keywords: ["induction", "hr", "orientation", "mandatory", "attend", "link"],
+    must: ["induction", "orientation"],
+    notIf: ["missed", "miss", "recording", "replay", "skipped"],
+    answer: `The induction session is mandatory — HR explains the full internship procedure there. The Google Meet link is in your offer letter email, and the session runs at 5 PM on your internship start date.`,
+    related: ["induction_missed", "internship_start", "portal_access"],
+  },
+  {
+    id: "induction_missed",
+    category: "internship",
+    priority: 70,
+    aliases: ["missed the induction session", "induction recording"],
+    keywords: ["missed", "miss", "recording", "replay", "couldnt", "unable", "skipped"],
+    must: ["missed", "miss", "recording", "replay", "skipped"],
+    answer: `If you miss the induction session, the recording is posted on the official WhatsApp community the next morning.`,
+    related: ["induction", "whatsapp_community"],
+  },
+  {
+    id: "mentor_session",
+    category: "internship",
+    priority: 60,
+    aliases: ["doubt session", "mentor support", "are the sessions live"],
+    keywords: ["mentor", "doubt", "guidance", "guide", "weekly", "interactive", "live", "session"],
+    must: ["mentor", "doubt", "guidance", "guide"],
+    answer: `Yes. A mentor doubt session is held once a week and it is a live, interactive session. The date, time and link are shared on the official WhatsApp community.`,
+    related: ["whatsapp_community", "learning_modules"],
+  },
+  {
+    id: "portal_access",
+    category: "account",
+    priority: 55,
+    aliases: ["learning portal access", "project portal access", "portal access", "when do i get portal access", "lms access"],
+    keywords: ["portal", "access", "lms", "credentials", "learningportal", "projectportal"],
+    must: ["portal", "access", "credentials", "learningportal", "projectportal"],
+    notIf: ["job", "jobportal", "password", "reset", "forgot"],
+    answer: `Portal access is emailed to your registered address on your internship start date. It covers both the Learning Portal and the Project Portal.`,
+    related: ["project_portal_password", "learning_modules", "internship_start"],
+    escalateIf: ["nahi", "not", "still", "yet"],
+  },
+  {
+    id: "project_portal_password",
+    category: "account",
+    priority: 70,
+    aliases: ["project portal password", "cannot see the password", "portal password reset"],
+    keywords: ["password", "project", "portal", "projectportal", "reset", "forgot", "credentials"],
+    // "projectportal" is what the tokenizer produces for "project portal".
+    must: ["password", "reset", "forgot", "projectportal"],
+    answer: `Open the Project Portal directly, enter your registered email address as the username, and use the reset option to set your own password.`,
+    related: ["portal_access", "password"],
+  },
+  {
+    id: "learning_modules",
+    category: "course",
+    priority: 50,
+    aliases: ["learning modules", "where do i start learning"],
+    keywords: ["learning", "modules", "module", "curriculum", "syllabus"],
+    // Bare "learning" is NOT a gate word: "machine learning" was landing here
+    // instead of on course_ml.
+    must: ["modules", "module", "curriculum", "syllabus"],
+    avoidIf: ["machinelearning", "machine", "deeplearning", "webdevelopment",
+      "datascience", "digitalmarketing", "uiux", "dataanalyst"],
+    answer: `After the induction session teaches you the correct login process, start with the learning modules on the Learning Portal.`,
+    related: ["portal_access", "projects_start", "mentor_session"],
+  },
+  {
+    id: "projects_assigned",
+    category: "project",
+    priority: 50,
+    aliases: ["where are projects assigned", "who assigns the project"],
+    keywords: ["project", "assigned", "assignment", "allocate", "where"],
+    must: ["assigned", "assignment", "allocate"],
+    answer: `Projects are assigned to you on the Project Portal.`,
+    related: ["projects_count", "projects_start", "attendance_where"],
+  },
+  {
+    id: "projects_count",
+    category: "project",
+    priority: 55,
+    aliases: ["how many projects", "number of projects"],
+    keywords: ["project", "many", "number", "count", "kitna"],
+    must: ["many", "number", "count", "kitna"],
+    answer: `The number of projects depends on your internship duration:
+• 1 month — 1 project
+• 2 months — 1 project
+• 3 months — 2 projects
+• 4 months — 3 projects
+• 6 months — 4 to 5 projects`,
+    related: ["projects_start", "projects_assigned", "certificate_completion"],
+  },
+  {
+    id: "projects_start",
+    category: "project",
+    priority: 50,
+    aliases: ["when to start the project", "when do projects begin"],
+    keywords: ["start", "project", "begin", "simultaneously"],
+    must: ["project"],
+    notIf: ["many", "number", "count", "assigned", "password", "portal", "attendance"],
+    answer: `Start your projects once you have finished the learning modules. If you already know the concepts well, you may work on both at the same time.`,
+    related: ["learning_modules", "projects_count", "attendance_when"],
+  },
+  {
+    id: "attendance_when",
+    category: "project",
+    priority: 60,
+    aliases: ["when to mark attendance", "when does attendance start"],
+    keywords: ["attendance", "mark", "marked", "when"],
+    must: ["attendance"],
+    notIf: ["where", "profile", "dashboard", "kaise", "hours", "daily", "everyday"],
+    answer: `Attendance is marked only once your project work has started. You do not need to mark attendance during the learning phase.`,
+    related: ["attendance_where", "attendance_hours", "projects_start"],
+  },
+  {
+    id: "attendance_where",
+    category: "project",
+    priority: 65,
+    aliases: ["where to mark attendance", "how to mark attendance"],
+    // "kaise" (how) belongs here, not on attendance_when: "attendance kaise
+    // mark kare" is asking for the button, not for the timing.
+    keywords: ["attendance", "where", "profile", "dashboard", "corner", "option", "kaise"],
+    must: ["where", "profile", "dashboard", "kaise"],
+    answer: `Mark attendance on the Project Portal — click the profile option in the top right corner of your dashboard.`,
+    related: ["attendance_when", "attendance_hours"],
+  },
+  {
+    id: "attendance_hours",
+    category: "project",
+    priority: 65,
+    aliases: ["how many hours daily", "minimum hours per day"],
+    keywords: ["hours", "daily", "hour", "minimum", "present", "everyday", "attendance", "kitna"],
+    must: ["hours", "hour", "daily", "everyday", "minimum"],
+    answer: `You need to put in a minimum of 2 to 3 hours a day for your attendance to be marked present.`,
+    related: ["attendance_when", "attendance_where"],
+  },
+  {
+    id: "certificate_completion",
+    category: "certificate",
+    priority: 60,
+    aliases: ["when will i get my certificate", "completion certificate"],
+    keywords: ["certificate", "completion", "issued", "submitted", "milega"],
+    must: ["completion", "milega"],
+    notIf: ["delay", "late", "missing", "yet", "not"],
+    answer: `Once your internship duration is complete and your projects are submitted, the completion certificate is emailed to your registered address within 48 hours.`,
+    related: ["certificate_delay", "certificate", "job_portal"],
+  },
+  {
+    id: "certificate_delay",
+    category: "certificate",
+    priority: 70,
+    aliases: ["certificate not received", "certificate is late", "have not received certificate"],
+    // "nahi mila" / "nahi aaya" is how this is actually asked; without these
+    // tokens "certificate nahi mila" fell to the generic `certificate` answer.
+    keywords: ["certificate", "received", "receive", "delay", "late", "missing", "yet", "nahi", "mila", "aaya"],
+    must: ["received", "receive", "delay", "late", "missing", "yet", "nahi", "mila", "aaya"],
+    answer: `If your certificate has not arrived on time, contact our support team with your registered email address and it will be sent within 24 hours.`,
+    related: ["certificate_completion", "contact"],
+    escalateIf: ["delay", "late", "missing", "yet", "not", "nahi"],
+  },
+  {
+    id: "job_portal",
+    category: "placement",
+    priority: 60,
+    aliases: ["job portal access", "when is the job portal access received", "job portal"],
+    keywords: ["job", "portal", "jobportal", "hiring", "vacancy"],
+    must: ["job", "jobportal"],
+    answer: `Job Portal access is shared after you complete your internship.`,
+    related: ["placement_assistance", "certificate_completion", "placement"],
+  },
+  {
+    id: "placement_assistance",
+    category: "placement",
+    priority: 60,
+    aliases: ["placement assistance sessions"],
+    keywords: ["placement", "assistance", "session", "after"],
+    must: ["assistance"],
+    answer: `Yes. Placement assistance sessions are scheduled after your internship is complete.`,
+    related: ["job_portal", "placement", "certificate_completion"],
+  },
+
+  // ── conversational ────────────────────────────────────────────────────────
+  {
+    id: "greeting",
+    category: "smalltalk",
+    priority: 30,
+    aliases: ["hi", "hello", "hey", "namaste"],
+    keywords: ["hi", "hello", "hey", "namaste", "hola", "morning", "evening", "afternoon"],
+    must: ["hi", "hello", "hey", "namaste", "hola", "morning", "evening", "afternoon"],
+    answer:
+      `Hello! I am the Kre8ly assistant. I can help with courses, fees, enrolment, certificates or login issues. What would you like to know?`,
+    related: ["courses", "price", "fellowship"],
+  },
+  {
+    id: "thanks",
+    category: "smalltalk",
+    priority: 30,
+    aliases: ["thanks", "thank you"],
+    keywords: ["thanks", "thank", "thankyou", "shukriya", "dhanyavad", "great", "awesome", "helpful"],
+    must: ["thanks", "thank", "thankyou", "shukriya", "dhanyavad"],
+    answer: `Happy to help. Let me know if there is anything else.`,
+  },
+  {
+    id: "bye",
+    category: "smalltalk",
+    priority: 30,
+    aliases: ["bye", "goodbye"],
+    keywords: ["bye", "goodbye", "alvida", "later", "done", "nothing"],
+    must: ["bye", "goodbye", "alvida"],
+    answer: `Thank you, and have a great day. You can come back any time.`,
+  },
+];
+
+/**
+ * ONLY explicit requests for a person. Deliberately excludes "not working",
+ * "broken" and "urgent": those describe a problem, not a routing preference,
+ * and letting them escalate meant the commonest questions never saw the FAQ.
+ * They feed detectPriority() instead.
+ */
+const HUMAN_REQUEST_PATTERNS = [
+  /\bhuman\b/i,
+  /\bagent\b/i,
+  /\breal person\b/i,
+  /\bcustomer care\b/i,
+  /\bexecutive\b/i,
+  /\bmanager\b/i,
+  /\btalk to (someone|somebody|a person|team)\b/i,
+  /\b(kisi se|insaan se|banda|team se)\b.*\bbaat\b/i,
+  /\bbaat kar(ni|na|wao)\b/i,
+  /\bconnect me\b/i,
+];
+
+function wantsHuman(text) {
+  return HUMAN_REQUEST_PATTERNS.some((re) => re.test(String(text || "")));
+}
+
+/** Urgency and frustration set priority — they never control routing. */
+function detectPriority(text) {
+  const lower = String(text || "").toLowerCase();
+
+  const urgentSignals = [
+    "fraud", "scam", "cheated", "police", "legal", "consumer court",
+    "money debited", "paisa cut", "paise kat", "double charge",
+  ];
+  const highSignals = [
+    "urgent", "asap", "immediately", "turant", "jaldi",
+    "not working", "broken", "down", "error", "failed", "refund", "payment",
+  ];
+
+  const letters = String(text || "").replace(/[^a-zA-Z]/g, "");
+  const shouting =
+    letters.length > 8 &&
+    (letters.match(/[A-Z]/g) || []).length > letters.length * 0.6;
+
+  if (urgentSignals.some((k) => lower.includes(k))) return "urgent";
+  if (highSignals.some((k) => lower.includes(k)) || shouting) return "high";
+  return "medium";
+}
+
+/** Quick-reply chips for the widget — kept in sync with the entries above. */
+const QUICK_TOPICS = [
+  { id: "courses", label: "📚 Courses", text: "What courses are available?" },
+  { id: "price", label: "💰 Fees", text: "How much does a course cost?" },
+  { id: "fellowship", label: "🎓 Fellowship", text: "What is the fellowship programme?" },
+  { id: "enrol", label: "✍️ Enroll", text: "How do I enrol?" },
+  { id: "login", label: "🔑 Login issue", text: "I cannot log in" },
+  { id: "certificate", label: "📜 Certificate", text: "Do I get a certificate?" },
+  { id: "placement", label: "💼 Placement", text: "Is placement support included?" },
+  { id: "refund", label: "↩️ Refund", text: "How do refunds work?" },
+];
+
+module.exports = {
+  FAQ_LIST,
+  SYNONYMS,
+  STOPWORDS,
+  QUICK_TOPICS,
+  wantsHuman,
+  detectPriority,
+  SUPPORT_EMAIL,
+  SUPPORT_HOURS,
+};

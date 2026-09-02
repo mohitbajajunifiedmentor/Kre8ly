@@ -1,0 +1,20 @@
+{
+  // Console Ninja rewrites the JavaScript the dev server serves, in order to
+  // inject its inline-logging instrumentation. Its Turbopack support is still
+  // marked "PRO / preview" (the extension prints this on startup), and on this
+  // project it mangles vendor chunks — producing errors like
+  //   Uncaught SyntaxError: Unexpected end of input
+  //   Uncaught SyntaxError: Invalid regular expression: missing /
+  //   Uncaught SyntaxError: missing ) after argument list
+  //   Uncaught SyntaxError: Missing initializer in const declaration
+  // in node_modules_next_*.js / node_modules_@reduxjs_*.js.
+  //
+  // The dev server itself compiles fine (GET / 200), so nothing looks wrong in
+  // the terminal — the damage happens between the server and the browser.
+  //
+  // Disabling automatic Next.js instrumentation keeps the extension installed
+  // and usable elsewhere, while leaving this project's bundles untouched.
+  "console-ninja.toolsToEnableSupportAutomaticallyFor": {
+    "next.js": false
+  }
+}

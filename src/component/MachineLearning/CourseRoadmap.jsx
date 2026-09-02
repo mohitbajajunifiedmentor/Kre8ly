@@ -1,0 +1,427 @@
+// const Ellipse = "/assets/Ellipse.webp";
+
+const RoadTrack = "/assets/Road.png";
+const Airplane = "/assets/Airplane2.png";
+import React, { useRef, useEffect, useState } from "react";
+const RoadMapMobile = "/assets/GraphicDesign/RoadMapMobile.svg";
+// import { useGSAP } from "@gsap/react";
+// import { ScrollTrigger } from "gsap/ScrollTrigger";
+// import gsap from "gsap";
+import { motion } from "framer-motion";
+import {
+  MessageCircle,
+  Edit3,
+  Palette,
+  Code,
+  Layout,
+  Building,
+  CheckCircle,
+  Rocket,
+} from "lucide-react";
+
+const CourseRoadmap = ({
+  ModuleInfo,
+  roadmapSteps,
+  // RoadmapIconList,
+  varient,
+  courseName,
+}) => {
+  const [scrollPosition, setScrollPosition] = useState(0);
+  const trackPath = useRef(null);
+  const [trackHeight, setTrackHeight] = useState(0);
+  const [trackTop, setTrackTop] = useState(0);
+  useEffect(() => {
+    const handleScroll = () => {
+      const position = window.pageYOffset;
+      setScrollPosition(position);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (trackPath.current) {
+      setTrackHeight(trackPath.current.offsetHeight);
+      const rect = trackPath.current.getBoundingClientRect();
+      setTrackTop(rect.top + window.pageYOffset);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (trackPath.current) {
+      const updateTrackMetrics = () => {
+        setTrackHeight(trackPath.current.offsetHeight);
+        const rect = trackPath.current.getBoundingClientRect();
+        setTrackTop(rect.top + window.pageYOffset);
+      };
+
+      updateTrackMetrics();
+      window.addEventListener("resize", updateTrackMetrics);
+      return () => window.removeEventListener("resize", updateTrackMetrics);
+    }
+  }, []);
+  const calculateAirplanePosition = () => {
+    if (trackHeight === 0) return 0;
+
+    const viewportHeight = window.innerHeight;
+    const scrollPercentage =
+      (scrollPosition + viewportHeight - trackTop) /
+      (trackHeight + viewportHeight);
+    const clampedPercentage = Math.max(0, Math.min(1, scrollPercentage));
+
+    return clampedPercentage * trackHeight;
+  };
+
+  const calculateProgressPercentage = () => {
+    if (trackHeight === 0) return 0;
+
+    const viewportHeight = window.innerHeight;
+    const scrollPercentage =
+      (scrollPosition + viewportHeight - trackTop) /
+      (trackHeight + viewportHeight);
+
+    const clampedPercentage = Math.max(0, Math.min(1, scrollPercentage));
+
+    return clampedPercentage * 100;
+  };
+
+  const subHeading = (variant) => {
+    switch (variant) {
+      case "DataAnalystFellowship":
+        return `
+        Our <b>Data Analytics Course Fellowship</b> is a structured and mentorship-based program that helps you become a job-ready data analyst. 
+        The fellowship covers everything from data cleaning, visualization, and statistics to advanced data storytelling and predictive analytics.
+        <br/><br/>
+        You’ll work on real projects guided by mentors from top tech companies. 
+        By the end of the fellowship, you’ll have a complete portfolio that helps you stand out in job interviews.
+      `;
+
+      default:
+        return "Our structured 8-step process ensures your project is delivered.";
+    }
+  };
+
+
+  // const roadmapSteps = [
+  //   {
+  //     id: 1,
+  //     title: "Discussion",
+  //     description:
+  //       "Do discussions to ensure that your web design is on the right path.",
+  //     icon: MessageCircle,
+  //     color: "blue",
+  //   },
+  //   {
+  //     id: 2,
+  //     title: "Planning",
+  //     description:
+  //       "Create sitemaps and wireframe.A sitemap is made with the information collected. A wireframe provides a visual description of a site.",
+  //     icon: Edit3,
+  //     color: "green",
+  //   },
+  //   {
+  //     id: 3,
+  //     title: "Visual Design",
+  //     description: "Web design should be according to the target audience.",
+  //     icon: Palette,
+  //     color: "purple",
+  //   },
+  //   {
+  //     id: 4,
+  //     title: "Development",
+  //     description: "Developers develop and run codes on your site.",
+  //     icon: Code,
+  //     color: "orange",
+  //   },
+  //   {
+  //     id: 5,
+  //     title: "Framework",
+  //     description:
+  //       "Create a framework for your site by adding in pages required.",
+  //     icon: Layout,
+  //     color: "indigo",
+  //   },
+  //   {
+  //     id: 6,
+  //     title: "Site Building",
+  //     description: "Build your site by adding in an engaging and SEO content.",
+  //     icon: Building,
+  //     color: "teal",
+  //   },
+  //   {
+  //     id: 7,
+  //     title: "Testing",
+  //     description:
+  //       "Every page and link should be tested before launching the site to make sure nothing is broken.",
+  //     icon: CheckCircle,
+  //     color: "red",
+  //   },
+  //   {
+  //     id: 8,
+  //     title: "Launch",
+  //     description: "Launch your website to attract your audience.",
+  //     icon: Rocket,
+  //     color: "slate",
+  //   },
+  // ];
+
+  const colorClasses = {
+    blue: {
+      badge: "bg-info",
+      iconBg: "bg-info-subtle",
+      iconColor: "text-info",
+    },
+    green: {
+      badge: "bg-success",
+      iconBg: "bg-success-subtle",
+      iconColor: "text-success",
+    },
+    purple: {
+      badge: "bg-brand",
+      iconBg: "bg-brand-subtle",
+      iconColor: "text-brand",
+    },
+    orange: {
+      badge: "bg-warning",
+      iconBg: "bg-warning-subtle",
+      iconColor: "text-warning",
+    },
+    indigo: {
+      badge: "bg-brand",
+      iconBg: "bg-brand-subtle",
+      iconColor: "text-brand",
+    },
+    teal: {
+      badge: "bg-success",
+      iconBg: "bg-success-subtle",
+      iconColor: "text-success",
+    },
+    red: {
+      badge: "bg-error",
+      iconBg: "bg-error-subtle",
+      iconColor: "text-error",
+    },
+    slate: {
+      badge: "bg-slate-600",
+      iconBg: "bg-slate-50",
+      iconColor: "text-slate-600",
+    },
+  };
+
+  return (
+    <div className="w-full relative bg-transparent rounded-lg mb-6 mt-8">
+      <section className="">
+        <div className="max-w-7xl mx-auto">
+          {/* Header */}
+          <div
+            data-aos="fade-up"
+            data-aos-delay="0"
+            data-aos-duration="800"
+            className="text-center md:mb-16 mb-4 "
+          >
+            <h2 className="text-3xl lg:text-4xl font-semibold text-content mb-4 mt-2">
+              {`${courseName}`}
+            </h2>
+            <p className="text-lg text-content-secondary max-w-2xl mx-auto"
+            dangerouslySetInnerHTML={{ __html: `${subHeading(varient)}` }}
+            />
+             
+            
+          </div>
+
+          {/* Desktop Timeline */}
+          <div
+            data-aos="fade-up"
+            data-aos-delay="0"
+            data-aos-duration="800"
+            className="hidden lg:block"
+          >
+            {/* First Row */}
+            <div className="relative md:mb-16 mb-4 ">
+              <div className="absolute top-1/2 left-0 right-0 h-0.5 bg-surface-sunken transform -translate-y-1/2"></div>
+              <div className="grid grid-cols-4 gap-8">
+                {roadmapSteps.slice(0, 4).map((step, index) => (
+                  <RoadmapCard
+                    key={step.id}
+                    step={step}
+                    colorClasses={colorClasses}
+                    index={index}
+                  />
+                ))}
+              </div>
+            </div>
+
+            {/* Second Row */}
+            <div className="relative">
+              <div className="absolute top-1/2 left-0 right-0 h-0.5 bg-surface-sunken transform -translate-y-1/2"></div>
+              <div className="grid grid-cols-4 gap-8">
+                {roadmapSteps.slice(4, 8).map((step, index) => (
+                  <RoadmapCard
+                    key={step.id}
+                    step={step}
+                    colorClasses={colorClasses}
+                    index={index + 4}
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Mobile Timeline */}
+          <div
+            data-aos="fade-up"
+            data-aos-delay="0"
+            data-aos-duration="800"
+            className="lg:hidden relative"
+            ref={trackPath}
+          >
+            {/* Scroll Progress Bar */}
+            <div className="absolute left-2 top-0 bottom-0 w-1 bg-surface-sunken rounded-full overflow-hidden z-0">
+              <div
+                className="bg-brand w-full transition-all duration-300"
+                style={{ height: `${calculateProgressPercentage()}%` }}
+              />
+            </div>
+
+            {/* Roadmap Steps */}
+            <div
+              data-aos="fade-up"
+              data-aos-delay="0"
+              data-aos-duration="800"
+              className="space-y-8 pl-8"
+            >
+              {roadmapSteps.map((step, index) => (
+                <div key={step.id} className="relative flex items-center">
+                  <div
+                    data-aos="fade-up"
+                    data-aos-delay="0"
+                    data-aos-duration="800"
+                    className="absolute -left-[30px] top-6 w-4 h-4 bg-brand border-2 border-line rounded-full shadow-sm z-10"
+                  ></div>
+                  <RoadmapCard
+                    step={step}
+                    colorClasses={colorClasses}
+                    index={index}
+                    mobile
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* <figure
+        data-aos="zoom-in-down"
+        data-aos-delay="0"
+        data-aos-duration="800"
+        className="hidden md:block w-full mb-6 relative z-20">
+        <img
+          src={ModuleInfo[0]?.image}
+          alt={ModuleInfo[0]?.alt}
+          className="w-full h-full rounded-lg object-cover mx-auto"
+        />
+      </figure>
+      <figure
+        data-aos="fade-up"
+        data-aos-delay="0"
+        data-aos-duration="800"
+        className="md:hidden p-4">
+        <img
+          src={ModuleInfo[1]?.image}
+          alt={ModuleInfo[1]?.alt}
+          className="w-full h-auto md:hidden rounded-lg object-cover mx-auto"
+        />
+      </figure> */}
+      {/* <div
+        className="w-full md:hidden flex items-start justify-between flex-col gap-10 relative"
+        ref={trackPath}
+      >
+        <div className="absolute w-8 left-[0.3rem]">
+          <figure
+            className={`relative w-full ${
+              varient === "WebDev" ? "webDevPlane h-[60rem]" : ""
+            }
+            
+            ${varient === "DataScience" ? "dataSciencePlane " : ""}
+
+            ${varient === "DigitalMarketing" ? "DigitalMarketingPlane" : ""}
+
+
+            ${varient === "MachineLearning" ? "MachineLearningPlane" : ""}
+
+            ${varient === "UiDesign" ? "UiDesignPlane" : ""}
+            ${varient === "Data Analyst" ? "UiDesignPlane" : ""}
+            ${varient === "graphic-design" ? "graphic-design-plane" : ""}`}
+          >
+            <img
+              src={RoadTrack}
+              alt="Road to Success"
+              className="w-full h-full"
+            />
+          </figure>
+        </div>
+        <figure className="">
+          <img
+            src={Airplane}
+            alt="Airplane"
+            className="w-20 h-auto absolute -left-[20px] z-30"
+            style={{
+              top: `${calculateAirplanePosition()}px`,
+              transition: "top 0.5s ease-out",
+            }}
+          />
+        </figure>
+
+        {RoadmapIconList?.map((roadmap, i) => (
+          <figure
+            key={i}
+            className="w-full relative z-20 flex items-center justify-start gap-6"
+          >
+            <img
+              className="w-10 h-10 object-cover rounded-full"
+              src={roadmap.Icon}
+              alt={roadmap.headText}
+            />
+            <figcaption className="text-base sm:text-lg font-bold text-content text-left">
+              <p className="text-primary">{roadmap.headText}</p>
+              <p className="text-secondary">{roadmap.text}</p>
+            </figcaption>
+          </figure>
+        ))}
+      </div> */}
+    </div>
+  );
+};
+
+const RoadmapCard = ({ step, colorClasses, index, mobile = false }) => {
+  const IconComponent = step.icon;
+  const colors = colorClasses[step.color];
+
+  return (
+    <div className="bg-surface rounded-xl p-6 shadow-md border border-line relative z-10 transform hover:scale-105 transition-all duration-500">
+      <div className="flex items-center justify-between mb-4">
+        <div
+          className={`w-8 h-8 ${colors.badge} text-brand-fg rounded-full flex items-center justify-center text-sm font-semibold`}
+        >
+          {step.id}
+        </div>
+        <div
+          className={`w-10 h-10 ${colors.iconBg} rounded-lg flex items-center justify-center`}
+        >
+          <IconComponent className={`w-5 h-5 ${colors.iconColor}`} />
+        </div>
+      </div>
+      <h3 className="text-lg font-semibold text-content mb-2">{step.title}</h3>
+      <p className="text-sm text-content-secondary leading-relaxed">
+        {step.description}
+      </p>
+    </div>
+  );
+};
+
+export default CourseRoadmap;
