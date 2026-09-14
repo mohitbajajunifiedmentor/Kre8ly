@@ -1,7 +1,7 @@
 import React from "react";
 import { usePathname } from "next/navigation";
 const ProjectFrame = "/assets/machineLearning/ProjectFrame.png";
-const Certificates = "/assets/machineLearning/Certificates2.webp";
+const Certificates = "/assets/machineLearning/Certificates3.jpg";
 const GoogleCertiDM = "/assets/machineLearning/GoogleCertiDM.png";
 const HotspotCertiDM = "/assets/machineLearning/HotspotCertiDM.png";
 const futureSkillsCertiDM = "/assets/machineLearning/futureSkillsCertiDM.png";

@@ -12,6 +12,7 @@ import { createTicketRecord } from "@/lib/ticketing";
 import { getState, setState, clearState } from "@/lib/conversationState";
 import { detectIntent, isLikelyNewQuestion } from "@/lib/chatIntent";
 import { createChatLogger } from "@/lib/chatLogger";
+import { checkAiAllowed, recordAiUsage, limitMessage } from "@/lib/aiLimits";
 
 // --- Flow -------------------------------------------------------------------
 //  1. rate limit / validation
@@ -327,7 +328,7 @@ async function runAi(sessionId, question, state, log) {
     // Distinguish "temporarily failed" from "not available at all". Offering
     // [Try again] when the key is missing, unauthorised or out of credit sends
     // the user round a loop that can never succeed.
-    const permanent = ["missing_api_key", "http_400", "http_401", "http_403"].includes(ai.reason);
+    const permanent = ai.permanent === true;
     const escalated = ai.reason === "model_escalated";
 
     setState(sessionId, {
