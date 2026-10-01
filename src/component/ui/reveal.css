@@ -1,0 +1,54 @@
+/* Scroll reveal.
+ *
+ * Deliberately NOT built on AOS. `aos.css` sets `[data-aos] { opacity: 0 }`
+ * unconditionally and relies on its runtime adding `.aos-animate` straight to
+ * the DOM node — which React wipes the moment it re-renders that element with a
+ * different className. That is what made the FAQ cards vanish on click.
+ *
+ * Here React owns the class, so nothing can overwrite it, and the hidden state
+ * is applied by the component itself rather than by a stylesheet. If the
+ * JavaScript never runs, `.k-reveal` alone has no visual effect and the content
+ * stays fully visible. A broken animation must never hide content.
+ */
+
+.k-reveal {
+  /* Visible by default. This is the no-JS / JS-failed state. */
+  will-change: transform, opacity;
+}
+
+/* Applied by the component before first paint, only for elements that start
+   off-screen. Above-the-fold content is never hidden, so it cannot flash. */
+.k-reveal--hidden {
+  opacity: 0;
+}
+
+.k-reveal--up.k-reveal--hidden    { transform: translate3d(0, 24px, 0); }
+.k-reveal--down.k-reveal--hidden  { transform: translate3d(0, -24px, 0); }
+.k-reveal--left.k-reveal--hidden  { transform: translate3d(-28px, 0, 0); }
+.k-reveal--right.k-reveal--hidden { transform: translate3d(28px, 0, 0); }
+.k-reveal--scale.k-reveal--hidden { transform: scale(0.94); }
+.k-reveal--fade.k-reveal--hidden  { transform: none; }
+
+.k-reveal--shown {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 600ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 600ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Once the entrance is done, drop the compositor hint — leaving `will-change`
+   on hundreds of elements keeps layers alive and costs memory. */
+.k-reveal--done {
+  will-change: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .k-reveal--hidden {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .k-reveal--shown {
+    transition: none !important;
+  }
+}

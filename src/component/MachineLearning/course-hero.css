@@ -1,0 +1,167 @@
+/* Course hero animations (same motion language as the fellowship hero).
+   Load sequence: headline words rise in -> chips pop -> stars fill -> the
+   price card border starts to glow -> price and stats count up when seen. */
+
+/* ---------- background ---------- */
+.ch-dots {
+  background-image: radial-gradient(currentColor 1px, transparent 1px);
+  background-size: 22px 22px;
+  opacity: 0.12;
+  -webkit-mask-image: radial-gradient(ellipse 70% 70% at 50% 30%, #000 20%, transparent 75%);
+  mask-image: radial-gradient(ellipse 70% 70% at 50% 30%, #000 20%, transparent 75%);
+}
+
+.ch-blob {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(70px);
+  animation: ch-drift 16s ease-in-out infinite alternate;
+}
+
+.ch-blob-b {
+  animation-duration: 20s;
+  animation-direction: alternate-reverse;
+}
+
+@keyframes ch-drift {
+  from { transform: translate3d(0, 0, 0) scale(1); }
+  to   { transform: translate3d(40px, 30px, 0) scale(1.12); }
+}
+
+/* ---------- headline: words rise out of a mask ---------- */
+.ch-word-wrap {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+  padding-bottom: 0.1em;
+  margin-bottom: -0.1em;
+}
+
+.ch-word {
+  display: inline-block;
+  transform: translateY(110%);
+  animation: ch-word 0.85s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: calc(0.1s + var(--i, 0) * 0.07s);
+}
+
+@keyframes ch-word {
+  to { transform: translateY(0); }
+}
+
+/* ---------- chips and stars ---------- */
+.ch-pop {
+  opacity: 0;
+  transform: scale(0.9) translateY(6px);
+  animation: ch-pop 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: calc(0.55s + var(--i, 0) * 0.09s);
+}
+
+@keyframes ch-pop {
+  to { opacity: 1; transform: none; }
+}
+
+.ch-star {
+  opacity: 0;
+  transform: scale(0) rotate(-40deg);
+  animation: ch-star 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  animation-delay: calc(0.8s + var(--i, 0) * 0.09s);
+}
+
+@keyframes ch-star {
+  to { opacity: 1; transform: none; }
+}
+
+/* ---------- price card: a light travels around the border ---------- */
+@property --ch-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.ch-glow {
+  position: relative;
+}
+
+.ch-glow::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1.5px;
+  background: conic-gradient(
+    from var(--ch-angle),
+    transparent 0 68%,
+    hsl(var(--k-brand) / 0.9) 84%,
+    transparent 100%
+  );
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+  animation: ch-spin 6s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes ch-spin {
+  to { --ch-angle: 360deg; }
+}
+
+/* ---------- primary buttons: ring pulse + shine on hover ---------- */
+.ch-btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.ch-btn::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -60%;
+  width: 40%;
+  transform: skewX(-20deg);
+  background: linear-gradient(90deg, transparent, rgb(255 255 255 / 0.35), transparent);
+  pointer-events: none;
+}
+
+.ch-btn:hover::after {
+  animation: ch-shine 0.8s ease;
+}
+
+@keyframes ch-shine {
+  to { left: 130%; }
+}
+
+.ch-ring {
+  animation: ch-ring 2.8s ease-out 1.6s infinite;
+}
+
+.ch-ring:hover {
+  animation: none;
+}
+
+@keyframes ch-ring {
+  0%   { box-shadow: 0 0 0 0 hsl(var(--k-brand) / 0.45); }
+  70%  { box-shadow: 0 0 0 14px hsl(var(--k-brand) / 0); }
+  100% { box-shadow: 0 0 0 0 hsl(var(--k-brand) / 0); }
+}
+
+/* ---------- reduced motion: show the finished state, nothing moves ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .ch-blob,
+  .ch-glow::before,
+  .ch-ring {
+    animation: none;
+  }
+
+  .ch-word,
+  .ch-pop,
+  .ch-star {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  .ch-btn:hover::after {
+    animation: none;
+  }
+}

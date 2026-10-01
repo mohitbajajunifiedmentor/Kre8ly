@@ -1,0 +1,238 @@
+/* ===========================================================================
+   KRE8LY THEME
+   ---------------------------------------------------------------------------
+   Single source of truth for every colour, shadow and radius in the site.
+
+   ┌─────────────────────────────────────────────────────────────────────────┐
+   │  TO RE-THEME THE WHOLE WEBSITE, EDIT ONLY THE "THEME CONTROLS" BLOCK    │
+   │  DIRECTLY BELOW. Everything after it is derived and should be left      │
+   │  alone unless you want to change the system itself.                     │
+   └─────────────────────────────────────────────────────────────────────────┘
+
+   Colours are stored as three separate HSL channels (hue / saturation /
+   lightness) rather than finished hex codes. That is what makes one-value
+   re-theming possible: change `--brand-h` from 258 to 12 and every brand
+   surface, hover state, focus ring, subtle tint and gradient shifts from
+   violet to red together, in both light and dark mode, because they are all
+   computed from that one number.
+
+   Storing HSL channels also lets Tailwind compose opacity — `bg-surface/60`,
+   `border-brand/35` — which finished hex values cannot do.
+   =========================================================================== */
+
+:root {
+  /* ========================================================================
+     THEME CONTROLS — edit these
+     ======================================================================== */
+
+  /* Brand: the primary identity colour. Buttons, links, active states.
+     Hue examples: 258 violet (current) · 217 blue · 160 green · 12 red
+                   200 cyan · 35 amber · 330 pink */
+  --brand-h: 258;
+  --brand-s: 79%;
+
+  /* Accent: used sparingly for highlights. Never for body text. */
+  --accent-h: 190;
+  --accent-s: 95%;
+
+  /* Neutrals: greys, surfaces, borders, text. A hue near the brand hue makes
+     the greys feel related to it; 0 gives pure neutral grey. */
+  --neutral-h: 232;
+  --neutral-s: 20%;
+
+  /* Typeface for the whole site.
+     Change this one value and every heading, button, input and paragraph
+     follows — there is no other place a font is named.
+
+     To switch: set --font-sans here AND update FONT in app/layout.jsx so the
+     right file is actually downloaded. Both are needed: this line decides what
+     the CSS asks for, that one decides what the browser fetches. */
+ --font-sans: "Manrope";
+  --font-mono: "JetBrains Mono";
+
+  /* Corner rounding across the product. Raise for softer, lower for sharper. */
+  --radius-control: 0.5rem; /* inputs, buttons */
+  --radius-card: 0.875rem; /* cards */
+  --radius-panel: 1.25rem; /* modals, sheets */
+
+  /* ========================================================================
+     DERIVED — you should not need to edit below this line
+     ======================================================================== */
+
+  /* --- brand ------------------------------------------------------------ */
+  --k-brand: var(--brand-h) var(--brand-s) 56%;
+  --k-brand-hover: var(--brand-h) calc(var(--brand-s) - 5%) 48%;
+  --k-brand-active: var(--brand-h) calc(var(--brand-s) - 9%) 41%;
+  --k-brand-subtle: var(--brand-h) 84% 96%;
+  --k-brand-fg: 0 0% 100%;
+
+  --k-accent: var(--accent-h) var(--accent-s) 42%;
+  --k-accent-fg: var(--accent-h) 100% 8%;
+
+  /* --- surfaces ---------------------------------------------------------
+     Four steps, not one flat white. `canvas` is faintly tinted so a white
+     card sitting on it still reads as elevated. */
+  --k-canvas: var(--neutral-h) 30% 99%;
+  --k-surface: 0 0% 100%;
+  --k-surface-raised: var(--neutral-h) 25% 98%;
+  --k-surface-sunken: var(--neutral-h) 20% 96%;
+  --k-overlay: 0 0% 100%;
+
+  /* --- text ------------------------------------------------------------- */
+  --k-text: var(--neutral-h) 42% 13%;
+  --k-text-secondary: var(--neutral-h) 16% 38%;
+  --k-text-muted: var(--neutral-h) 12% 55%;
+  --k-text-inverse: 0 0% 100%;
+
+  /* --- lines ------------------------------------------------------------ */
+  --k-border: var(--neutral-h) var(--neutral-s) 90%;
+  --k-border-strong: var(--neutral-h) 18% 82%;
+  --k-ring: var(--k-brand);
+
+  /* --- status ----------------------------------------------------------
+     Fixed hues on purpose: green must stay green when the brand turns red,
+     or a success message would read as an error. */
+  --k-success: 152 62% 36%;
+  --k-success-subtle: 152 60% 95%;
+  --k-warning: 36 92% 46%;
+  --k-warning-subtle: 36 90% 95%;
+  --k-error: 356 72% 51%;
+  --k-error-subtle: 356 80% 96%;
+  --k-info: 212 88% 50%;
+  --k-info-subtle: 212 90% 96%;
+
+  /* --- decorative gradients --------------------------------------------
+     Four soft pairs used for module / roadmap / swiper cards. They carry no
+     meaning, only variety, so they are free to be re-picked. Derived from the
+     brand and accent hues with fixed offsets, which keeps them in the same
+     family as the rest of the palette when the brand hue changes. */
+  --k-deco-1a: calc(var(--brand-h) + 120) 100% 80%;
+  --k-deco-1b: calc(var(--brand-h) + 120) 100% 91%;
+  --k-deco-2a: calc(var(--brand-h) + 72) 96% 84%;
+  --k-deco-2b: calc(var(--brand-h) + 72) 92% 92%;
+  --k-deco-3a: calc(var(--accent-h) - 45) 81% 62%;
+  --k-deco-3b: calc(var(--accent-h) - 45) 100% 85%;
+  --k-deco-4a: var(--brand-h) 50% 77%;
+  --k-deco-4b: var(--brand-h) 47% 90%;
+
+  /* --- elevation --------------------------------------------------------
+     Two-layer shadows (tight contact + soft ambient) rather than one large
+     blur, which is what makes cheap UI look cheap. */
+  --k-shadow-xs: 0 1px 2px hsl(var(--neutral-h) 30% 12% / 0.06);
+  --k-shadow-sm: 0 1px 2px hsl(var(--neutral-h) 30% 12% / 0.06),
+    0 2px 6px hsl(var(--neutral-h) 30% 12% / 0.05);
+  --k-shadow-md: 0 2px 4px hsl(var(--neutral-h) 30% 12% / 0.06),
+    0 8px 20px hsl(var(--neutral-h) 30% 12% / 0.08);
+  --k-shadow-lg: 0 4px 8px hsl(var(--neutral-h) 30% 12% / 0.07),
+    0 20px 40px hsl(var(--neutral-h) 30% 12% / 0.1);
+  --k-shadow-focus: 0 0 0 3px hsl(var(--k-ring) / 0.35);
+}
+
+/* ===========================================================================
+   DARK MODE
+   Authored, not inverted. Only lightness and a little saturation change —
+   the hues come from the same controls above, so re-theming updates both
+   modes at once.
+   =========================================================================== */
+
+.dark {
+  /* Brand is *lifted* in dark mode. The light-mode 56% lightness fails
+     contrast on a dark surface, so it moves to 68% and the foreground flips
+     to a deep tint of the same hue. */
+  --k-brand: var(--brand-h) calc(var(--brand-s) + 9%) 68%;
+  --k-brand-hover: var(--brand-h) calc(var(--brand-s) + 11%) 74%;
+  --k-brand-active: var(--brand-h) var(--brand-s) 62%;
+  --k-brand-subtle: var(--brand-h) 40% 18%;
+  --k-brand-fg: var(--brand-h) 60% 10%;
+
+  --k-accent: var(--accent-h) calc(var(--accent-s) - 5%) 55%;
+  --k-accent-fg: var(--accent-h) 100% 8%;
+
+  /* A desaturated navy base, not black, so borders and shadows stay visible.
+     Surfaces still step *up* in lightness as they elevate, so depth reads the
+     same way it does in light mode. */
+  --k-canvas: var(--neutral-h) 38% 8%;
+  --k-surface: var(--neutral-h) 32% 11%;
+  --k-surface-raised: var(--neutral-h) 28% 15%;
+  --k-surface-sunken: var(--neutral-h) 40% 6%;
+  --k-overlay: var(--neutral-h) 30% 13%;
+
+  --k-text: var(--neutral-h) 24% 96%;
+  --k-text-secondary: var(--neutral-h) 16% 76%;
+  --k-text-muted: var(--neutral-h) 12% 60%;
+  --k-text-inverse: var(--neutral-h) 42% 13%;
+
+  --k-border: var(--neutral-h) 22% 22%;
+  --k-border-strong: var(--neutral-h) 20% 32%;
+  --k-ring: var(--k-brand);
+
+  --k-success: 152 55% 52%;
+  --k-success-subtle: 152 40% 15%;
+  --k-warning: 36 88% 60%;
+  --k-warning-subtle: 36 45% 16%;
+  --k-error: 356 78% 65%;
+  --k-error-subtle: 356 40% 18%;
+  --k-info: 212 90% 65%;
+  --k-info-subtle: 212 45% 17%;
+
+  /* Decorative gradients get much darker and less saturated in dark mode —
+     the light-mode pastels stayed near-white on a dark surface and blew out
+     any text sitting on them. */
+  --k-deco-1a: calc(var(--brand-h) + 120) 45% 26%;
+  --k-deco-1b: calc(var(--brand-h) + 120) 40% 18%;
+  --k-deco-2a: calc(var(--brand-h) + 72) 45% 26%;
+  --k-deco-2b: calc(var(--brand-h) + 72) 40% 18%;
+  --k-deco-3a: calc(var(--accent-h) - 45) 45% 26%;
+  --k-deco-3b: calc(var(--accent-h) - 45) 40% 18%;
+  --k-deco-4a: var(--brand-h) 40% 28%;
+  --k-deco-4b: var(--brand-h) 35% 20%;
+
+  /* Dark UI reads elevation from lightness, not shadow — keep shadows tight
+     and let --k-surface-raised do the work. */
+  --k-shadow-xs: 0 1px 2px hsl(0 0% 0% / 0.4);
+  --k-shadow-sm: 0 1px 2px hsl(0 0% 0% / 0.4), 0 2px 6px hsl(0 0% 0% / 0.3);
+  --k-shadow-md: 0 2px 4px hsl(0 0% 0% / 0.4), 0 8px 20px hsl(0 0% 0% / 0.35);
+  --k-shadow-lg: 0 4px 8px hsl(0 0% 0% / 0.45), 0 20px 40px hsl(0 0% 0% / 0.45);
+  --k-shadow-focus: 0 0 0 3px hsl(var(--k-ring) / 0.45);
+}
+
+/* ===========================================================================
+   BASE BEHAVIOUR
+   =========================================================================== */
+
+/* Theme transition. Scoped to colour properties only so layout never animates,
+   and suppressed while the theme is being switched programmatically (see
+   src/lib/app-context.jsx) to avoid a smeared repaint. */
+:root:not(.k-theme-switching) body,
+:root:not(.k-theme-switching) body * {
+  transition: background-color 160ms ease, border-color 160ms ease,
+    color 160ms ease, fill 160ms ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Visible, consistent keyboard focus everywhere. */
+:where(a, button, input, select, textarea, [tabindex]):focus-visible {
+  outline: 2px solid hsl(var(--k-ring));
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Modal / dropdown entrance. Kept short (150ms) so the UI never feels slow. */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

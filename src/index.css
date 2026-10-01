@@ -1,0 +1,437 @@
+/* Poppins is now self-hosted via next/font (see app/layout.jsx).
+   The @import that used to live here was render-blocking. */
+
+@import "./styles/tokens.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Was `.dark body { background: #fff }` — dark mode painted the page white.
+   Both themes now read from the token layer. */
+body {
+  background-color: hsl(var(--k-canvas));
+  color: hsl(var(--k-text));
+}
+
+.bg-start-mobile {
+  background-position: center; /* Default for larger screens */
+}
+
+@media (max-width: 767px) {
+  .bg-start-mobile {
+    background-position: left; /* Align background to left on mobile */
+  }
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-250px * 5));
+  }
+}
+
+@layer utilities {
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+}
+
+:root {
+  --play: running;
+  --direction: normal;
+  --duration: 20s;
+  --delay: 0s;
+  --iteration-count: infinite;
+}
+
+.slider-track {
+  animation: slide var(--duration) linear var(--delay) var(--iteration-count)
+    var(--direction) var(--play);
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  display: flex;
+}
+
+.slide-item {
+  width: 250px;
+}
+
+.swiper-horizontal > .swiper-pagination-bullets .swiper-pagination-bullet,
+.swiper-pagination-horizontal.swiper-pagination-bullets
+  .swiper-pagination-bullet {
+  margin: 0 10px;
+  background: #fff;
+}
+
+.swiper-pagination {
+  display: block !important;
+  margin-top: 40px;
+  position: relative;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  display: none;
+}
+.Rollup {
+  animation: rollUp 1s ease-in-out infinite;
+}
+
+@keyframes rollUp {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+iframe {
+  pointer-events: auto;
+}
+
+.scaleEffect {
+  animation: ScaleEffect 2s ease-in-out infinite;
+}
+
+@keyframes ScaleEffect {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.25);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.swiper-slide {
+  touch-action: pan-y;
+}
+
+.homePageRoad {
+  height: 45rem;
+}
+
+/* Sparkles Animation */
+.sparkle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #fff9c4 0%, #ff9800 60%, transparent 100%);
+  box-shadow: 0 0 15px 5px rgba(255, 215, 0, 0.5);
+  animation: sparkleMove 6s ease-in-out infinite;
+  opacity: 0.8;
+}
+.sparkle-1 { top: 20%; left: 10%; animation-delay: 0s; }
+.sparkle-2 { top: 40%; left: 70%; animation-delay: 1s; }
+.sparkle-3 { top: 60%; left: 30%; animation-delay: 2s; }
+.sparkle-4 { top: 80%; left: 50%; animation-delay: 3s; }
+.sparkle-5 { top: 25%; left: 85%; animation-delay: 4s; }
+
+@keyframes sparkleMove {
+  0% { transform: scale(0.8) translateY(0); opacity: 0.7; }
+  50% { transform: scale(1.3) translateY(-10px); opacity: 1; }
+  100% { transform: scale(0.8) translateY(0); opacity: 0.7; }
+}
+
+/* String Lights Animation */
+.light-bulb {
+  width: 10px;
+  height: 14px;
+  border-radius: 50%;
+  margin: 0 6px;
+  background: gold;
+  box-shadow: 0 0 15px 5px rgba(255, 215, 0, 0.6);
+  animation: lightBlink 2s infinite;
+}
+
+@keyframes lightBlink {
+  0%, 100% { opacity: 0.3; transform: translateY(0); }
+  50% { opacity: 1; transform: translateY(3px) scale(1.2); }
+}
+
+@keyframes floatLight {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(5px); }
+}
+.light-bulb {
+  animation: lightBlink 2s infinite, floatLight 3s ease-in-out infinite;
+}
+
+
+@media screen and (max-width: 768px) {
+  .dataSciencePlane {
+    height: 75rem !important;
+  }
+  .UiDesignPlane {
+    height: 75rem !important;
+  }
+  .MachineLearningPlane {
+    height: 77rem !important;
+  }
+  .graphic-design-plane {
+    height: 62rem !important;
+  }
+}
+@media screen and (max-width: 640px) {
+  .dataSciencePlane {
+    height: 57rem !important;
+  }
+  .DigitalMarketingPlane {
+    height: 65rem !important;
+  }
+  .UiDesignPlane {
+    height: 62rem !important;
+  }
+  .MachineLearningPlane {
+    height: 62rem !important;
+  }
+}
+@media screen and (max-width: 510px) {
+  .DigitalMarketingPlane {
+    height: 75rem !important;
+  }
+  .UiDesignPlane {
+    height: 70rem !important;
+  }
+  .MachineLearningPlane {
+    height: 70rem !important;
+  }
+  .testimonial-Image-6 {
+    top: 65% !important;
+  }
+  .testimonial-Image-8 {
+    top: 60% !important;
+  }
+  .testimonial-Image-9 {
+    top: 80% !important;
+  }
+}
+@media screen and (max-width: 426px) {
+  .DigitalMarketingPlane {
+    height: 88rem !important;
+  }
+  .MachineLearningPlane {
+    height: 78rem !important;
+  }
+}
+
+@media screen and (max-width: 605px) {
+  .dataSciencePlane {
+    height: 65rem !important;
+  }
+}
+@media screen and (max-width: 465px) {
+  .dataSciencePlane {
+    height: 75rem !important;
+  }
+  .UiDesignPlane {
+    height: 75rem !important;
+  }
+  .homePageRoad {
+    height: 50rem !important;
+  }
+}
+@media screen and (max-width: 400px) {
+  .dataSciencePlane {
+    height: 83rem !important;
+  }
+  .UiDesignPlane {
+    height: 82rem !important;
+  }
+}
+
+@media screen and (max-width: 381px) {
+  .homePageRoad {
+    height: 56rem !important;
+  }
+}
+
+@media screen and (max-width: 376px) {
+  .dataSciencePlane {
+    height: 90rem !important;
+  }
+  .DigitalMarketingPlane {
+    height: 97rem !important;
+  }
+  .UiDesignPlane {
+    height: 88rem !important;
+  }
+  .MachineLearningPlane {
+    height: 84rem !important;
+  }
+}
+@media screen and (max-width: 335px) {
+  .dataSciencePlane {
+    height: 98rem !important;
+  }
+  .DigitalMarketingPlane {
+    height: 110rem !important;
+  }
+  .UiDesignPlane {
+    height: 100rem !important;
+  }
+  .MachineLearningPlane {
+    height: 96rem !important;
+  }
+  .homePageRoad {
+    height: 60rem !important;
+  }
+}
+@media screen and (max-width: 323px) {
+  .dataSciencePlane {
+    height: 107rem !important;
+  }
+  .DigitalMarketingPlane {
+    height: 121rem !important;
+  }
+}
+
+@media screen and (max-width: 385px) {
+  .webDevPlane {
+    height: 65rem !important;
+  }
+}
+@media screen and (max-width: 325px) {
+  .webDevPlane {
+    height: 75rem !important;
+  }
+}
+
+/* Updated CSS */
+.blog-detail a {
+  color: #c7b4f4;
+  /* transition: color 0.3s; */
+}
+
+/* Add hover styles if needed */
+.blog-detail a:hover {
+  color: #2e69a8; /* Darker shade on hover */
+}
+
+.blog-detail > h1 {
+  font-size: 36px;
+  word-wrap: break-word;
+}
+.blog-detail > h2 {
+  font-size: 27px;
+  word-wrap: break-word;
+}
+.blog-detail > h3 {
+  font-size: 24px;
+  word-wrap: break-word;
+}
+.blog-detail > p {
+  font-size: 18px;
+  word-wrap: break-word;
+}
+
+.blog-detail > ol {
+  list-style-type: decimal;
+  margin-left: 20px;
+  padding-left: 10px;
+  line-height: 24px;
+  font-size: 16px;
+  word-wrap: break-word;
+}
+.blog-detail > ul {
+  list-style-type: disc;
+  margin-left: 20px;
+  padding-left: 10px;
+  line-height: 24px;
+  font-size: 16px;
+  word-wrap: break-word;
+}
+
+.ck .ck-content {
+  padding: 20px 30px !important;
+}
+
+@keyframes slideFromTop {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.custom-swiper .swiper-pagination-bullet {
+  background-color: #9ca3af !important; /* gray-400 */
+}
+
+.custom-swiper .swiper-pagination-bullet-active {
+  background-color: gray !important; /* blue-500 */
+}
+
+.dark .custom-swiper .swiper-pagination-bullet {
+  background-color: white !important; /* gray-600 */
+}
+
+.dark .custom-swiper .swiper-pagination-bullet-active {
+  background-color: gray !important; /* blue-400 */
+}
+
+.animate-slide-from-top {
+  animation: slideFromTop 0.5s ease-in-out;
+}
+
+@layer utilities {
+  /* Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+}
+
+/* Side images (CKEditor specific) */
+.blog-detail .image-style-side {
+  float: right;
+  margin: 0 0 1em 1.5em;
+  max-width: 40%;
+  clear: right;
+}
+
+
+
+
