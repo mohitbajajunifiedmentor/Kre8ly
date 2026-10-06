@@ -64,7 +64,7 @@ const PlacementSupportSwiper = ({ PlacementSupportInfo = [] }) => {
           Our Hiring Partners
         </h2>
         <p className="mt-2 text-base text-content-secondary max-w-2xl mx-auto">
-          Clear the cut-off marks in your graduation project to get access to jobs at our partner companies
+          Some of the companies we work with on hiring.
         </p>
       </div>
 

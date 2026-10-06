@@ -1,15 +1,15 @@
 import BusinessAnalystFellowshipClient from "./BusinessAnalystFellowshipClient";
 
 export const metadata = {
-  title: "Business Analyst Fellowship Program | Kre8ly",
-  description: "Advance your career with the Business Analyst Fellowship Program at Kre8ly. Gain essential skills, mentorship, and certification in business analysis.",
+  title: "Business Analyst Internship Program Online | Kre8ly",
+  description: "Learn business analysis online with mentors: SQL, Excel, Power BI, real projects and a certificate. For freshers across India. From ₹399.",
   keywords: ["Business Analyst fellowship program", "Business Analyst training", "Business Analyst mentorship", "Business Analyst certification", "online Business Analyst course", "Business Analyst program", "Business Analyst skills", "Business Analyst career development"],
   authors: [{ name: "Kre8ly" }],
   robots: { index: true, follow: true },
   alternates: { canonical: "https://www.unifiedmentor.com/fellowship/business-analyst" },
   openGraph: {
-    title: "Business Analyst Fellowship Program | Kre8ly",
-    description: "Advance your career with the Business Analyst Fellowship Program at Kre8ly. Gain essential skills, mentorship, and certification in business analysis.",
+    title: "Business Analyst Internship Program Online | Kre8ly",
+    description: "Learn business analysis online with mentors: SQL, Excel, Power BI, real projects and a certificate. For freshers across India. From ₹399.",
     url: "https://www.unifiedmentor.com/fellowship/business-analyst",
     siteName: "Kre8ly",
     type: "website",
@@ -17,8 +17,8 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Business Analyst Fellowship Program | Kre8ly",
-    description: "Advance your career with the Business Analyst Fellowship Program at Kre8ly. Gain essential skills, mentorship, and certification in business analysis.",
+    title: "Business Analyst Internship Program Online | Kre8ly",
+    description: "Learn business analysis online with mentors: SQL, Excel, Power BI, real projects and a certificate. For freshers across India. From ₹399.",
   },
 };
 

@@ -16,38 +16,38 @@ const Affordable = "/assets/Affordable.png";
 export const DreamJobSection = [
   {
     imgSrc: Certificates,
-    imgAlt: "Industry-Recognized Certifications",
-    title: "Industry-Recognized Certifications",
-    description: "Gain globally respected, career-boosting certifications.",
+    imgAlt: "Industry-recognised certifications",
+    title: "Industry-recognised certifications",
+    description: "A certificate you can add to LinkedIn and your resume once you complete the course.",
   },
   {
     imgSrc: FlexibleLearning,
     imgAlt: "Flexible Learning",
     title: "Flexible Learning",
-    description: "Flexible online or in-person programs for your schedule.",
+    description: "Online or in-person options that fit around college or a job.",
   },
   {
     imgSrc: HandsOnExperience,
     imgAlt: "Hands-On Experience",
     title: "Hands-On Experience",
-    description: "Work on real-time projects for experience.",
+    description: "Live projects instead of hours of passive video.",
   },
   {
     imgSrc: CareerSupport,
     imgAlt: "Career Support",
     title: "Career Support",
-    description: "Guidance and resources for your successful career path.",
+    description: "Resume help, interview practice and advice on where to apply.",
   },
   {
     imgSrc: SelfLearning,
     imgAlt: "Self paced learning",
     title: "Self paced learning",
-    description: "Engage in Recorded Sessions with Expert Guidance",
+    description: "Recorded sessions with expert guidance, so you can revisit a topic at 11 pm if that's when you study.",
   },
   {
     imgSrc: Affordable,
     imgAlt: "Affordable",
     title: "Affordable",
-    description: "Transition to your dream career for an affordable price",
+    description: "Fees kept realistic for students and families outside the metros.",
   },
 ];

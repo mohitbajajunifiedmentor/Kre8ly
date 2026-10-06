@@ -72,7 +72,8 @@ import FloatingEnrollBar from "../../../component/FloatingEnrollBar";
 import Certificate from "../../../component/MachineLearning/Certificate";
 import ProgramTimeline from "../../../component/MachineLearning/ProgramTimeline";
 import ChatBot from "@/component/ChatBot/ChatBot";
-
+import PlacementSupportSwiper from "@/component/PlacementSupportSwiper";
+import Reveal from "@/component/ui/Reveal";
 const DataAnalystFellowship = ({ darkMode, setDarkMode, location }) => {
   const [closeForm, setCloseForm] = useState(false);
   const [moduleFormOpen, setModuleFormOpen] = useState(false);
@@ -81,16 +82,10 @@ const DataAnalystFellowship = ({ darkMode, setDarkMode, location }) => {
   const handleModuleFormToggle = (isOpen) => {
     setModuleFormOpen(isOpen);
   };
-  // Shared section styling for this page. Was hard-coded `text-content` with
-  // a `text-content` counterpart (where the legacy `primary` token is
-  // plain #fff); both are now single semantic tokens that theme themselves.
-  // `text-justify` was also dropped — justified text on narrow mobile columns
-  // opens large uneven word gaps and hurts readability.
   const sectionStylings = {
     section:
       "w-full h-full flex justify-center items-center gap-5 flex-col overflow-x-hidden",
-    title:
-      "text-base md:text-xl font-semibold text-content mb-4",
+    title: "text-base md:text-xl font-semibold text-content mb-4",
     subTitle: "text-content-secondary text-xs md:text-lg mb-4",
   };
 
@@ -114,7 +109,7 @@ const DataAnalystFellowship = ({ darkMode, setDarkMode, location }) => {
       icon: Extra1,
       icon_alt: "Professional Certificate",
       title: "Professional Certificate",
-      subtitle: `Become a certified Web Development  with an official certificate from Kre8ly.`,
+      subtitle: `Become a certified data analyst with an official certificate from Kre8ly.`,
       link: "#certificate",
       target: "No",
     },
@@ -123,7 +118,7 @@ const DataAnalystFellowship = ({ darkMode, setDarkMode, location }) => {
       icon_alt: "Resume Builder",
       title: "Resume Builder",
       subtitle:
-        "Get dedicated career guidance and mentoring from our mentors to enhance your resume using our builder.",
+        "Get guidance from mentors and build a stronger resume with our builder.",
       link: "https://jobs.unifiedmentor.com/",
       target: "Yes",
     },
@@ -132,7 +127,7 @@ const DataAnalystFellowship = ({ darkMode, setDarkMode, location }) => {
       icon_alt: "Resume Builder",
       title: "Job Portal",
       subtitle:
-        "Get dedicated career guidance and mentoring from our mentors to improve your job prospects on our portal.",
+        "Browse openings from our hiring partners and apply from one place.",
       link: "https://jobs.unifiedmentor.com/",
       target: "Yes",
     },
@@ -141,7 +136,7 @@ const DataAnalystFellowship = ({ darkMode, setDarkMode, location }) => {
       icon_alt: "Chance to work on real project",
       title: "Chance to work on real project",
       subtitle:
-        "Get a chance to work on real project in Kre8ly or any other real projects while learning!",
+        "Work on real projects at Kre8ly or elsewhere while you learn.",
       link: "#projects",
       target: "no",
     },
@@ -150,13 +145,11 @@ const DataAnalystFellowship = ({ darkMode, setDarkMode, location }) => {
   return (
     <>
       <Helmet>
-        <title>
-          Data Analyst Fellowship Program | Learn & Get Certified
-        </title>
+        <title>Data Analyst Internship Programs Online in India | Kre8ly</title>
 
         <meta
           name="description"
-          content="Join the best Data Analyst Fellowship Program at Kre8ly. Get hands-on training, expert mentorship & certification to boost your analytics career. "
+          content="Join Kre8ly's online data analyst internship program: learn Excel, SQL, Python and Power BI, build real projects and get mentor guidance. Starts at ₹399."
         />
         <meta
           name="keywords"
@@ -182,27 +175,6 @@ const DataAnalystFellowship = ({ darkMode, setDarkMode, location }) => {
             <FellowshipHomeSection PageDetails={DataAnalystHeroSection} />
           </section>
 
-          {/* <section
-            data-aos="fade-up"
-            data-aos-delay="0"
-            data-aos-duration="800"
-            className={`${sectionStylings?.section} container mx-auto`}
-          >
-            <h5
-              data-aos="fade-up"
-              data-aos-delay="0"
-              data-aos-duration="800"
-              className={`${sectionStylings?.title}`}
-              style={{
-                lineHeight: "1.5em",
-              }}
-            >
-              Our Accreditation
-            </h5>
-            <AccredationSwiper />
-            <AccreditationFellowship />
-          </section> */}
-
           <section
             data-aos="fade-up"
             data-aos-delay="0"
@@ -210,30 +182,12 @@ const DataAnalystFellowship = ({ darkMode, setDarkMode, location }) => {
             // data-aos-delay="0"
             className="w-full h-full flex flex-col items-center justify-center text-center  relative pb-3 md:my-20"
           >
-            <div className="absolute md:-top-32 w-[250px] md:w-[450px] -left-10 select-none blur-md  z-10">
-              {/* <figure>
-                <img src={Ellipse} alt="Ellipse" />
-              </figure> */}
-            </div>
-            {/* <h3
-              data-aos="fade-up"
-              data-aos-delay="0"
-              data-aos-duration="800"
-              // data-aos-delay="0"
-              className="text-lg md:text-3xl text-content font-semibold text-center mb-10"
-            >
-              Our Accreditation
-            </h3> */}
+            <div className="absolute md:-top-32 w-[250px] md:w-[450px] -left-10 select-none blur-md  z-10"></div>
             <AccredationSwiper />
             <div
               className={`md:grid hidden grid-cols-4 gap-4 md:gap-6 relative z-20 w-full`}
             >
-              <div
-                // data-aos="flip-right"
-                // data-aos-delay="0"
-                // data-aos-duration="800"
-                className="flex justify-center items-center rounded-lg w-full max-w-xs p-2  max-h-20 md:max-h-24 hover:scale-105 transition-all duration-300 ease-in-out"
-              >
+              <div className="flex justify-center items-center rounded-lg w-full max-w-xs p-2  max-h-20 md:max-h-24 hover:scale-105 transition-all duration-300 ease-in-out">
                 <figure className="w-1/2 md:w-1/3">
                   <img
                     src={darkMode ? Accreditation1_light : Accreditation1}
@@ -288,73 +242,19 @@ const DataAnalystFellowship = ({ darkMode, setDarkMode, location }) => {
             </div>
           </section>
 
-          {/* <section
-            data-aos="fade-up"
-            data-aos-delay="0"
-            data-aos-duration="800"
-            className={`${sectionStylings?.section} container mx-auto`}
-          >
-            <div
-              data-aos="fade-up"
-              data-aos-delay="0"
-              data-aos-duration="800"
-              className="w-full h-full flex flex-col justify-center items-center"
-            >
-              {" "}
-              <h2
-                data-aos="fade-up"
-                data-aos-delay="0"
-                data-aos-duration="800"
-                className={`${sectionStylings?.title}`}
-              >
-                Technologies & Tools You Will Learn
-              </h2>
-              <p
-                data-aos="fade-up"
-                data-aos-delay="0"
-                data-aos-duration="800"
-                className={`${sectionStylings?.subTitle}`}
-              >
-                Master cutting-edge technologies and tools, including HTML, CSS,
-                JavaScript, Python, SQL, and more.
-              </p>
-            </div>
-
-            <TechStack
-              TechStacksArray={DataAnalystTechstack}
-              MainImage={MainImage}
-            />
-          </section> */}
-
           <section
             data-aos="fade-up"
             data-aos-delay="0"
             data-aos-duration="800"
             className="w-full h-full flex flex-col items-center justify-center text-center gap-10 bg-surface-sunken"
           >
-            {/* <h2
-                          data-aos="zoom-out"
-                          data-aos-delay="0"
-                          data-aos-duration="800"
-                          className="text-lg md:text-3xl font-semibold text-content"
-                        >
-                          {`${CourseName}`} Roadmap
-                        </h2> */}
-            {/* <h2 className="text-3xl lg:text-4xl font-semibold text-gray-900 mb-4">
-                          {`${CourseName}`} Roadmap
-                        </h2> */}
-            {/* <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                          Our structured 8-step process ensures your project is delivered
-                          on time, within budget, and exceeds your expectations.
-                        </p> */}
             <CourseRoadmap
               ModuleInfo={roadmapSteps}
               roadmapSteps={roadmapSteps}
               varient={"DataAnalystFellowship"}
-              courseName={"Data Analytics Course Fellowship"}
+              courseName={"How Our Data Analyst Internship Course Online Works"}
             />
           </section>
-
           <section
             data-aos="fade-up"
             data-aos-delay="0"
@@ -369,18 +269,8 @@ const DataAnalystFellowship = ({ darkMode, setDarkMode, location }) => {
               onFormToggle={handleModuleFormToggle}
               varient={"DataAnalystFellowship"}
             />
-            {/* <button
-                data-aos="zoom-out-up"
-                data-aos-delay="0"
-                data-aos-duration="800"
-                onClick={handleDownloadFile}
-                className="hidden border border-line-strong hover:bg-surface-sunken gap-2 -z-10 dark:hover:text-content hover:bg-surface-sunken dark:bg-transparent dark:text-white text-content px-4  py-3 md:flex items-center font-bold w-fit justify-center rounded-md text-base transition-all duration-300"
-              >
-                Download Detailed Curriculum
-                <FaCloudDownloadAlt size={25} />
-              </button> */}
             {closeForm && (
-              <div className="fixed  top-0 left-0 w-full h-full  flex items-center justify-center bg-black/50 md:data-aos=zoom-out-up md:data-aos-delay=0 md:data-aos-duration=800">
+              <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black/50 md:data-aos=zoom-out-up md:data-aos-delay=0 md:data-aos-duration=800">
                 <Forms
                   setCloseForm={setCloseForm}
                   setShowCurriculum={setShowCurriculum}
@@ -389,69 +279,112 @@ const DataAnalystFellowship = ({ darkMode, setDarkMode, location }) => {
             )}
           </section>
 
-          {/* <section
-            data-aos="fade-up"
-            data-aos-delay="0"
-            data-aos-duration="800"
-            className={`${sectionStylings?.section} md:gap-10 container mx-auto`}
-          >
-            <h4
-              data-aos="fade-up"
-              data-aos-delay="0"
-              data-aos-duration="800"
-              className={`${sectionStylings?.title}`}
-            >
-              Join Kre8ly Internship to Shape <br /> the future of
-              development
-            </h4>
-            <FutureDevelopmentComponent swiperColor={swiperColor} />
-          </section> */}
-
+          {/* ========================================================= */}
+          {/* NEW SECTION: Affordable Internship & Is This Right For You */}
+          {/* ========================================================= */}
           <section
             data-aos="fade-up"
             data-aos-delay="0"
             data-aos-duration="800"
-            className={`w-full h-full flex flex-col items-center justify-center text-center py-5 bg-surface-sunken pt-24 pb-16 px-6 ${moduleFormOpen ? "mt-24" : ""
-              }`}
+            className="w-full py-16 px-6 bg-canvas"
           >
-            {/* <h3
-                data-aos="zoom-in-down"
-                data-aos-delay="0"
-                data-aos-duration="800"
-                className="text-lg md:text-3xl font-semibold text-content text-center"
-              >
-                Meet Our Industry Experts
-              </h3>
-              <p
-                data-aos="zoom-in-up"
-                data-aos-delay="0"
-                data-aos-duration="800"
-                className="text-sm hidden md:block text-content-secondary w-full "
-                style={{
-                  lineHeight: "2.5",
-                }}
-              >
-                Learn Web Development, Data Science, Digital Marketing, Machine
-                Learning, and UI/UX Design from experts. Master skills and{" "}
-                <br /> accelerate your career!
-              </p> */}
+            <div className="max-w-6xl mx-auto flex flex-col gap-14">
+              {/* Block 1: Affordable Data Analyst Internship in India */}
+              <div className="rounded-2xl border border-line bg-surface p-8 md:p-12 shadow-sm text-left">
+                <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-content leading-tight">
+                  Affordable Data Analyst Internship in India
+                </h2>
 
+                <p className="mt-4 text-base md:text-lg leading-relaxed text-content-secondary font-medium">
+                  Good analytics training shouldn't need a big-city fee. The
+                  fellowship starts at ₹399, so students in Jaipur, Lucknow,
+                  Patna or Coimbatore can begin without a big ask from the
+                  family.
+                </p>
+
+                <p className="mt-4 text-base md:text-lg leading-relaxed text-content-secondary">
+                  You'll learn data analytics, business intelligence and data
+                  visualization from working professionals, and practise on the
+                  tools Indian employers ask for: Excel, SQL, Python and Power
+                  BI. Most hiring teams want people who can clean messy data and
+                  explain the result clearly. The projects are built to train
+                  exactly that.
+                </p>
+              </div>
+
+              {/* Block 2: Is This Fellowship Right for You? */}
+              <div className="rounded-2xl border border-line bg-surface p-8 md:p-12 shadow-sm text-left">
+                <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-content leading-tight">
+                  Is This Fellowship Right for You?
+                </h2>
+
+                <p className="mt-4 text-base md:text-lg font-medium text-content">
+                  It's a good fit if:
+                </p>
+
+                <ul className="mt-5 space-y-4">
+                  <li className="flex items-start gap-3.5">
+                    <span
+                      className="mt-1 flex h-2 w-2 shrink-0 rounded-full bg-brand"
+                      aria-hidden="true"
+                    />
+                    <span className="text-base md:text-lg leading-relaxed text-content-secondary">
+                      You're a student or recent graduate (BCom, BSc, BCA, BTech
+                      or MBA) looking for a first job in analytics.
+                    </span>
+                  </li>
+
+                  <li className="flex items-start gap-3.5">
+                    <span
+                      className="mt-1 flex h-2 w-2 shrink-0 rounded-full bg-brand"
+                      aria-hidden="true"
+                    />
+                    <span className="text-base md:text-lg leading-relaxed text-content-secondary">
+                      You work in sales, operations, finance or support and want
+                      to move into a data role.
+                    </span>
+                  </li>
+
+                  <li className="flex items-start gap-3.5">
+                    <span
+                      className="mt-1 flex h-2 w-2 shrink-0 rounded-full bg-brand"
+                      aria-hidden="true"
+                    />
+                    <span className="text-base md:text-lg leading-relaxed text-content-secondary">
+                      You live outside the big metros and need training you can
+                      follow from home.
+                    </span>
+                  </li>
+
+                  <li className="flex items-start gap-3.5">
+                    <span
+                      className="mt-1 flex h-2 w-2 shrink-0 rounded-full bg-brand"
+                      aria-hidden="true"
+                    />
+                    <span className="text-base md:text-lg leading-relaxed text-content-secondary">
+                      You're starting from scratch. No prior analytics
+                      experience is needed.
+                    </span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          
+          <section
+            data-aos="fade-up"
+            data-aos-delay="0"
+            data-aos-duration="800"
+            className={`w-full h-full flex flex-col items-center justify-center text-center py-5 bg-surface-sunken pt-24 pb-16 px-6 ${
+              moduleFormOpen ? "mt-24" : ""
+            }`}
+          >
             <h2 className="text-3xl lg:text-4xl font-semibold text-content mb-4">
-              Data Analyst Fellowship in India
+              Meet Your Data Analyst Mentors
             </h2>
             <p className="text-lg text-content-secondary max-w-6xl ">
-              Learn Data Analytics, Business Intelligence, Machine Learning, and Data Visualization
-              from top industry experts. Get mentored by professionals working with leading
-              companies and gain practical insights from real-world projects. Master essential tools
-              like Excel, SQL, Python, and Power BI with expert guidance to build your career
-              confidently.
-              <br /><br />
-              Join India’s leading <b>Data Analyst Fellowship Program </b> designed to turn your analytical
-              passion into a successful career. Learn from mentors, work on live projects, and gain
-              hands-on experience with data tools used by top companies. Master the skills
-              employers in India are looking for and accelerate your journey to becoming a certified
-              data analyst.
-
+              Learn from analysts who work with data every day.
             </p>
             <div
               data-aos="fade-up"
@@ -473,118 +406,12 @@ const DataAnalystFellowship = ({ darkMode, setDarkMode, location }) => {
               </div>
               <div className="text-content-secondary leading-relaxed">
                 <p>
-                  Start your journey toward becoming a certified data analyst today.
-                </p>
-
-                <p className="mt-2  max-w-2xl">
-                 <span className="font-semibold"> 👉
-                    Apply now for the Data Analyst Fellowship Program at Kre8ly
-                  </span>{" "}
-                  and transform your career with expert guidance and real-world learning.
+                  Start your journey toward becoming a certified data analyst
+                  today. Apply now for the Data Analyst Fellowship at Kre8ly.
                 </p>
               </div>
-
-
             </div>
           </section>
-
-          {/* <section
-            data-aos="fade-up"
-            data-aos-delay="0"
-            data-aos-duration="800"
-            className={`${sectionStylings?.section} container mx-auto overflow-hidden`}
-          >
-            <div
-              data-aos="fade-up"
-              data-aos-delay="0"
-              data-aos-duration="800"
-              className="w-full h-full flex flex-col justify-center items-center gap-10"
-            >
-              <TextAnimation texts={DataAnalystAnimationText} />
-              <div
-                data-aos="fade-up"
-                data-aos-delay="0"
-                data-aos-duration="800"
-                className="w-full h-full flex flex-col justify-center items-center gap-5"
-              >
-                <h6
-                  data-aos="fade-up"
-                  data-aos-delay="0"
-                  data-aos-duration="800"
-                  className={`text-2xl md:text-3xl text-content font-semibold text-center`}
-                >
-                  Data Analyst Most Promising Career
-                </h6>
-                <p
-                  data-aos="fade-up"
-                  data-aos-delay="0"
-                  data-aos-duration="800"
-                  className={`text-content-secondary sm:text-center w-full md:w-[80%] text-justify text-base md:text-xl `}
-                >
-                  The demand for Data Analysts is increasing rapidly. Data
-                  Analysis is ranked highly on Glassdoor’s “Top 25
-                  highest-paying entry-level jobs.” As industries embrace
-                  data-driven decisions, most product or service-based companies
-                  require Data Analysts, driving a steady rise in demand and
-                  average salaries each year.
-                </p>
-              </div>
-            </div>
-
-            <div
-              data-aos="fade-up"
-              data-aos-delay="0"
-              data-aos-duration="800"
-              className="w-full h-full grid grid-cols-2 gap-5 mt-10"
-            >
-              <div
-                data-aos="fade-up"
-                data-aos-delay="0"
-                data-aos-duration="800"
-                className={`w-full h-48 shadow-customSoft shadow-slate-500 dark:bg-[#fff] p-4 flex justify-center items-center flex-col rounded-md`}
-              >
-                <p
-                  data-aos="fade-up"
-                  data-aos-delay="0"
-                  data-aos-duration="800"
-                  className="text-content text-center  text-sm md:text-base mb-3"
-                >
-                  Average Hike at Kre8ly
-                </p>
-                <p
-                  data-aos="fade-up"
-                  data-aos-delay="0"
-                  data-aos-duration="800"
-                  className="text-[#EAB308] text-2xl md:text-5xl font-bold"
-                >
-                  40%
-                </p>
-              </div>
-              <div
-                data-aos="fade-up"
-                data-aos-delay="0"
-                data-aos-duration="800"
-                className="w-full shadow-customSoft shadow-slate-500 h-48 dark:bg-[#fff] p-4 flex justify-center items-center flex-col rounded-md"
-              >
-                <p
-                  data-aos="fade-up"
-                  data-aos-delay="0"
-                  data-aos-duration="800"
-                  className="text-content text-center text-sm md:text-base mb-3"
-                >
-                  Average Salary of Past learners
-                </p>
-                <p
-                  data-aos="fade-up"
-                  data-aos-delay="0"
-                  data-aos-duration="800"
-                  className="text-[#3292FF] text-2xl md:text-5xl font-bold"
-                >
-                  6 to 8 Lakhs
-                </p>
-              </div>
-            </div>
-          </section> */}
 
           <section
             data-aos="fade-up"
@@ -592,33 +419,21 @@ const DataAnalystFellowship = ({ darkMode, setDarkMode, location }) => {
             data-aos-duration="800"
             className="w-full h-full flex flex-col items-center justify-center text-center gap-10 py-5 pt-24 pb-16 px-6"
           >
-            <PlacementSupport
-              PlacementSupportInfo={PlacementSupportInfo}
-              location={location}
-            />
+            <Reveal direction="up">
+              <PlacementSupport
+                PlacementSupportInfo={PlacementSupportInfo}
+                location={location}
+                varient={"DataAnalystFellowship"}
+              />
+            </Reveal>
+
+            <Reveal direction="up">
+              <PlacementSupportSwiper
+                PlacementSupportInfo={PlacementSupportInfo}
+                darkMode={darkMode}
+              />
+            </Reveal>
           </section>
-
-          {/* <section
-            className={`${sectionStylings?.section} container mx-auto relative`}
-          > */}
-          {/* <img
-              src={Ellipse}
-              alt=""
-              className="absolute hidden dark:block -top-10 w-[250px] md:w-[450px] -left-[35%] md:-left-[15%] select-none blur-md z-0"
-            /> */}
-
-          {/* <div className="w-full h-full relative z-10 ">
-              <h6
-                data-aos="fade-up"
-                data-aos-delay="0"
-                data-aos-duration="800"
-                className={`${sectionStylings?.title} `}
-              >
-                Perks of internship at Kre8ly
-              </h6>
-            </div>
-            <PerksOfInternship />
-          </section> */}
 
           <section
             data-aos="fade-up"
@@ -628,73 +443,12 @@ const DataAnalystFellowship = ({ darkMode, setDarkMode, location }) => {
           >
             <BookYourSeat
               Images={MainImage}
-              altforImage={"Data Analyst Fellowship "}
-              titles={DataAnalystAnimationText}
-              subtitles1={"Build a Promising Career with a Data Analyst Fellowship Course Online "}
-              // subtitles2={WebDevSubtitles2}
-              subHeadings={WebDevSubHeadings}
-              CourseName={"Data Analyst Fellowship"}
+              altforImage="Data Analyst Fellowship"
+              varient="DataAnalystFellowship"
+              CourseName="Data Analyst Fellowship"
               darkMode={darkMode}
             />
           </section>
-
-          {/* <section
-            data-aos="fade-up"
-            data-aos-delay="0"
-            data-aos-duration="800"
-            className={`${sectionStylings?.section} container mx-auto`}
-          >
-            <div className="w-full h-full ">
-              <h6
-                data-aos="fade-up"
-                data-aos-delay="0"
-                data-aos-duration="800"
-                className={`${sectionStylings?.title}`}
-              >
-                Why Join Best Data Analyst Fellowship <br /> in {location} at
-                Kre8ly
-              </h6>
-            </div>
-            <FellowshipExtraSwiper
-              Extra={ExtraFellowship}
-              SwiperColor={swiperColor}
-            /> */}
-          {/* <motion.div
-              variants={containerVariants}
-              className="grid grid-cols-1 md:grid-cols-2  w-full mx-auto shadow-lg gap-x-10 gap-y-20 mt-5">
-              {ExtraFellowship?.map((highlight, index) => (
-                <div
-                  key={index}
-                  className="flex flex-col items-center gap-4 h-full bg-gradient-to-br from-brand to-brand-active rounded-lg p-6 relative hover:scale-105 transition-all duration-300 cursor-pointer"
-                >
-                  <div
-                    style={{
-                      height: highlight.height,
-                      width: highlight.width,
-                    }}
-                    className="rounded-full p-2 absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex items-center justify-center"
-                  >
-                    <img
-                      src={highlight.icon}
-                      alt={highlight.title}
-                      className="object-contain w-full h-full hover:scale-105 transition-all duration-300 cursor-pointer"
-                    />
-                  </div>
-
-                  <motion.h4
-                    variants={headingVariants}
-                    className="text-primary text-base md:text-lg font-semibold leading-relaxed text-center mt-8">
-                    {highlight.title}
-                  </motion.h4>
-                  <motion.p
-                    variants={paragraphVariants}
-                    className="text-secondary text-sm leading-relaxed text-center w-full md:w-[80%]">
-                    {highlight.subtitle}
-                  </motion.p>
-                </div>
-              ))}
-            </motion.div> */}
-          {/* </section> */}
 
           <section>
             <div
@@ -704,34 +458,11 @@ const DataAnalystFellowship = ({ darkMode, setDarkMode, location }) => {
               className="text-lg md:text-3xl font-semibold text-content leading-tight relative z-20"
             ></div>
             <div className="w-full h-full pt-14">
-              <PerksOfInternship />
+              <PerksOfInternship 
+              varient="DataAnalystFellowship"
+              />
             </div>
           </section>
-
-          {/* <section
-            data-aos="fade-up"
-            data-aos-delay="0"
-            data-aos-duration="800"
-            className={`${sectionStylings?.section} container mx-auto`}
-          >
-            <div
-              data-aos="fade-up"
-              data-aos-delay="0"
-              data-aos-duration="800"
-              className="flex flex-col gap-4 justify-center items-center"
-            >
-              <h6
-                data-aos="fade-up"
-                data-aos-delay="0"
-                data-aos-duration="800"
-                className={`${sectionStylings?.title}`}
-              >
-                {" "}
-                150+ Success Stories
-              </h6>
-            </div>
-            <HallofFameCardTwo hallofFameInfo={NewHallOfFrameInfos} />
-          </section> */}
 
           <section>
             <div
@@ -740,138 +471,25 @@ const DataAnalystFellowship = ({ darkMode, setDarkMode, location }) => {
               data-aos-duration="800"
               className="w-full bg-surface-sunken md:mt-10 py-5 pt-24 pb-16 px-6"
             >
-              {/* <h3
-                  data-aos="zoom-in"
-                  data-aos-delay="0"
-                  data-aos-duration="800"
-                  className="text-lg md:text-3xl font-bold text-content text-center"
-                >
-                  Why Join Best Web Development Course in at Kre8ly
-                </h3> */}
               <ExtraSwiper
                 Extra={Extra}
-                // SwiperColor={SwiperColor}
                 CourseName={"Data Analyst Fellowship"}
+                varient={"DataAnalystFellowship"}
               />
             </div>
           </section>
 
-          {/* <section
-            data-aos="fade-up"
-            data-aos-delay="0"
-            data-aos-duration="800"
-            className={`${sectionStylings?.section} container mx-auto overflow-hidden`}
-          >
-            <h5
-              data-aos="fade-up"
-              data-aos-delay="0"
-              data-aos-duration="800"
-              className={`${sectionStylings?.title}`}
-              style={{
-                lineHeight: "1.5em",
-              }}
-            >
-              Projects You&apos;ll Build in Our <br />
-              Data Analyst Fellowship
-            </h5> */}
-          {/* <ProjectSection Project={DataAnalystProjects} /> */}
-          {/* <FellowshipProjects Project={DataAnalystProjects} />
-          </section> */}
           <section
             data-aos="fade-up"
             data-aos-delay="0"
             data-aos-duration="800"
             className="w-full h-full flex flex-col items-center justify-center gap-10 py-5 pt-24 pb-16 px-6"
           >
-            {/* <h3
-                data-aos="zoom-in"
-                data-aos-delay="0"
-                data-aos-duration="800"
-                className="text-lg md:text-3xl font-bold text-content text-center"
-              >
-                Technologies & Tools You Will Learn
-              </h3> */}
             <Technologies
               varient={"data-analyst"}
               Technology={DataAnalystTechstack}
             />
           </section>
-
-          {/* <section
-            data-aos="fade-up"
-            data-aos-delay="0"
-            data-aos-duration="800"
-            className={`${sectionStylings?.section} container mx-auto overflow-hidden`}
-          >
-            <div
-              data-aos="fade-up"
-              data-aos-delay="0"
-              data-aos-duration="800"
-              className="flex flex-col lg:flex-row items-center justify-between w-full gap-y-10"
-            >
-              <div
-                data-aos="fade-up"
-                data-aos-delay="0"
-                data-aos-duration="800"
-                className="w-full lg:w-[40%]"
-              >
-                <figure className="w-full  mx-auto">
-                  <img
-                    src={Certificates}
-                    alt="Data Analyst Fellowship Fellowship Certificate- Kre8ly"
-                    className="w-full h-auto object-contain rounded-lg shadow-lg"
-                  />
-                </figure>
-              </div>
-              <div
-                data-aos="fade-up"
-                data-aos-delay="0"
-                data-aos-duration="800"
-                className="w-full lg:w-[55%]"
-              >
-                <div
-                  data-aos="fade-up"
-                  data-aos-delay="0"
-                  data-aos-duration="800"
-                >
-                  <h2
-                    className={`${sectionStylings?.title} !text-left text-base md:text-xl`}
-                  >
-                    Data Analyst Fellowship Certificate
-                  </h2>
-                  <p
-                    className="text-content-secondary mb-4 text-xs md:text-lg"
-                    style={{
-                      wordSpacing: "4px",
-                      lineHeight: "1.8em",
-                    }}
-                  >
-                    Data Analyst Fellowship Certificate: Gain immersive,
-                    skill-focused training to accelerate your career. Whether
-                    aiming for a tech firm, joining a creative agency, or
-                    freelancing, this certification equips you with the
-                    expertise needed for professional success in Data Analyst
-                  </p>
-                  <p
-                    className="text-xs md:text-lg text-content-secondary mx-auto md:mx-0 text-justify w-full md:w-[90%] mt-10"
-                    style={{
-                      wordSpacing: "4px",
-                      lineHeight: "1.8em",
-                    }}
-                  >
-                    We also offer Course in {location} and Best{" "}
-                    <Link
-                      to="/digital-marketing"
-                      className="underline text-content"
-                    >
-                      Digital Marketing
-                    </Link>{" "}
-                    Certification in {location}.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </section> */}
 
           <section
             data-aos="fade-up"
@@ -879,21 +497,12 @@ const DataAnalystFellowship = ({ darkMode, setDarkMode, location }) => {
             data-aos-duration="800"
             className="w-full h-full flex flex-col items-center justify-center py-5 pt-24 pb-16 px-6 bg-surface-sunken"
           >
-            {/* <h3
-                data-aos="zoom-in"
-                data-aos-delay="0"
-                data-aos-duration="800"
-                className="text-sm md:text-3xl font-bold text-content text-center"
-              >
-                150+ Success Stories
-              </h3> */}
             <div className="text-center mb-4">
               <h2 className="text-3xl lg:text-4xl font-semibold text-content mb-4">
                 150+ Success Stories
               </h2>
               <p className="text-lg text-content-secondary max-w-2xl mx-auto">
-                Real experiences from learners who achieved their goals and
-                transformed careers with our guidance and support.
+                Real learners with real LinkedIn profiles. Browse by Developer, Analyst or Others.
               </p>
             </div>
             <div className="w-full h-full flex flex-col items-center justify-center py-5">
@@ -920,7 +529,6 @@ const DataAnalystFellowship = ({ darkMode, setDarkMode, location }) => {
             className="w-full h-full flex flex-col items-center justify-center py-5 pt-24 pb-16 px-6"
           >
             <Certificate
-              // Project={WebDevProjectInfo}
               CourseName={"Data Analyst Fellowship"}
               location={location}
             />
@@ -930,22 +538,7 @@ const DataAnalystFellowship = ({ darkMode, setDarkMode, location }) => {
             <ProgramTimeline />
           </section>
 
-          {/* <section
-            className={`${sectionStylings?.section} container mx-auto relative `}
-          >
-            <h6 className={`${sectionStylings?.title} relative z-10`}>
-              Frequently Asked Questions
-            </h6> */}
-          {/* <img
-              src={Ellipse}
-              alt=""
-              className="absolute top-5 hidden dark:block w-[250px] md:w-[450px] -left-[35%] md:-left-[15%] select-none blur-md z-0"
-            /> */}
-          {/* <div className="w-full md:w-10/12 relative z-10">
-              <FaqForFellowship Faqs={DataAnalystFaq} darkMode={darkMode} />
-            </div>
-          </section> */}
-
+         
           {/* FAQ Section */}
           <section
             data-aos="fade-up"
@@ -953,12 +546,6 @@ const DataAnalystFellowship = ({ darkMode, setDarkMode, location }) => {
             data-aos-duration="800"
             className="w-full h-full flex flex-col items-center justify-center py-5 pt-24 pb-16 px-6"
           >
-            {/* <img
-              src={Ellipse}
-              alt=""
-              className="absolute top-5 w-[250px] md:w-[450px] -left-[35%] md:-left-[15%] select-none blur-md z-0 hidden dark:block"
-            /> */}
-            {/* <div className="w-full md:w-10/12 relative z-10"> */}
             <Faqs Faqs={DataAnalystFaq} darkMode={darkMode} />
             {/* </div> */}
           </section>

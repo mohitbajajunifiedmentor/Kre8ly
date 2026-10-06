@@ -1,3 +1,4 @@
+import React from "react";
 import { FellowshipHighlights } from "../../Utils/FellowShip/CommonJson/Common";
 import { usePathname } from "next/navigation";
 
@@ -10,8 +11,45 @@ const iconsBgColors = [
   "bg-[#9DE8CF]",
 ];
 
-// Both grids rendered the same card with slightly different text classes, which
-// is how the `tet-sm` typo survived in only one of them. One component now.
+const VARIANT_CONTENT = {
+  DataAnalystFellowship: {
+    heading: "Perks of the Data Analyst Fellowship at Kre8ly",
+    description:
+      "Industry experience, mentor guidance and career support come with the program.",
+  },
+  FinancialAnalystFellowship: {
+    heading: "Perks of the Financial Analyst Fellowship at Kre8ly",
+    description:
+      "Mentor guidance, practical experience and career support come with the program.",
+  },
+  BusinessAnalystFellowship: {
+    heading: "Perks of the Internship at Kre8ly",
+    description:
+      "Mentorship, project work and career support are all included in the fellowship.",
+  },
+  DigitalMarketingFellowship: {
+    heading: "Perks of the Digital Marketing Fellowship at Kre8ly",
+    description:
+      "Learn live with industry experts, run real campaigns and gain career support.",
+  },
+  "digital-marketing": {
+    heading: "Perks of the Internship at Kre8ly",
+    description:
+      "Hands-on training, mentor access and career support are all part of the package.",
+  },
+  DataScienceFellowship: {
+    heading: "Perks of the Internship at Kre8ly",
+    description:
+      "Mentor access, project work and job support all come with the fellowship.",
+  },
+};
+
+const DEFAULT_CONTENT = {
+  heading: "Perks of the Internship at Kre8ly",
+  description:
+    "Industry experience, mentor guidance and career support come with the program.",
+};
+
 const PerkCard = ({ icon, iconAlt, iconBg, text, textClassName }) => (
   <div
     className="flex items-center gap-4 bg-white dark:bg-surface rounded-lg p-6 w-full
@@ -37,11 +75,15 @@ const PerkCard = ({ icon, iconAlt, iconBg, text, textClassName }) => (
   </div>
 );
 
-const PerksOfInternship = () => {
-  // was `window.location.pathname` — usePathname() returns the same value and
-  // is safe during server rendering, so SSR and client markup match.
+const PerksOfInternship = ({ varient, variant }) => {
   const url = usePathname();
   const isDigitalMarketing = url === "/digital-marketing";
+
+  // Determine active variant key
+  const activeVariantKey =
+    varient || variant || (isDigitalMarketing ? "digital-marketing" : null);
+
+  const content = VARIANT_CONTENT[activeVariantKey] || DEFAULT_CONTENT;
 
   return (
     <div
@@ -52,14 +94,10 @@ const PerksOfInternship = () => {
     >
       <div className="text-center mb-4">
         <h2 className="text-3xl lg:text-4xl font-semibold text-content max-w-4xl mb-4">
-          {isDigitalMarketing
-            ? "Perks of Live Training at Kre8ly"
-            : "Perks of internship at Kre8ly"}
+          {content.heading}
         </h2>
         <p className="text-lg text-content-secondary max-w-2xl mx-auto">
-          Unlock valuable industry experience, expert mentorship, skill
-          development, and career growth opportunities through your internship
-          at Kre8ly.
+          {content.description}
         </p>
       </div>
 

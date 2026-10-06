@@ -6,7 +6,8 @@ import FellowshipHomeSection from "../../../component/FellowShip/FellowshipHomeS
 const Ellipse = "/assets/Ellipse.webp";
 
 import TechStack from "../../../component/FellowShip/TechStack";
-const MainImage = "/assets/fellowship/BusinessAnalyst/BusinessAnalystFellowship.svg";
+const MainImage =
+  "/assets/fellowship/BusinessAnalyst/BusinessAnalystFellowship.svg";
 import IndustryExperts from "../../../component/FellowShip/IndustryExperts";
 import { CarouselInfo } from "../../../Utils/MachineLearning/CarouselInfo";
 import FutureDevelopmentComponent from "../../../component/FellowShip/FutureDevelopmentComponent";
@@ -73,7 +74,9 @@ import FloatingEnrollBar from "../../../component/FloatingEnrollBar";
 import Certificate from "../../../component/MachineLearning/Certificate";
 import ProgramTimeline from "../../../component/MachineLearning/ProgramTimeline";
 import ChatBot from "@/component/ChatBot/ChatBot";
-
+import { FiCheckCircle } from "react-icons/fi";
+import PlacementSupportSwiper from "@/component/PlacementSupportSwiper";
+import Reveal from "@/component/ui/Reveal";
 const BusinessAnalystFellowship = ({ darkMode, setDarkMode, location }) => {
   const [closeForm, setCloseForm] = useState(false);
   const [moduleFormOpen, setModuleFormOpen] = useState(false);
@@ -82,16 +85,10 @@ const BusinessAnalystFellowship = ({ darkMode, setDarkMode, location }) => {
   const handleModuleFormToggle = (isOpen) => {
     setModuleFormOpen(isOpen);
   };
-  // Shared section styling for this page. Was hard-coded `text-content` with
-  // a `text-content` counterpart (where the legacy `primary` token is
-  // plain #fff); both are now single semantic tokens that theme themselves.
-  // `text-justify` was also dropped — justified text on narrow mobile columns
-  // opens large uneven word gaps and hurts readability.
   const sectionStylings = {
     section:
       "w-full h-full flex justify-center items-center gap-5 flex-col overflow-x-hidden",
-    title:
-      "text-base md:text-xl font-semibold text-content mb-4",
+    title: "text-base md:text-xl font-semibold text-content mb-4",
     subTitle: "text-content-secondary text-xs md:text-lg mb-4",
   };
 
@@ -241,7 +238,8 @@ const BusinessAnalystFellowship = ({ darkMode, setDarkMode, location }) => {
       icon: Extra1,
       icon_alt: "Professional Certificate",
       title: "Professional Certificate",
-      subtitle: `Become a certified Web Development  with an official certificate from Kre8ly.`,
+      subtitle:
+        "Finish the fellowship and receive a Kre8ly certificate in business analysis.",
       link: "#certificate",
       target: "No",
     },
@@ -250,38 +248,43 @@ const BusinessAnalystFellowship = ({ darkMode, setDarkMode, location }) => {
       icon_alt: "Resume Builder",
       title: "Resume Builder",
       subtitle:
-        "Get dedicated career guidance and mentoring from our mentors to enhance your resume using our builder.",
+        "Shape your resume with the builder and guidance from your mentors.",
       link: "https://jobs.unifiedmentor.com/",
       target: "Yes",
     },
     {
       icon: Extra3,
-      icon_alt: "Resume Builder",
+      icon_alt: "Job Portal",
       title: "Job Portal",
       subtitle:
-        "Get dedicated career guidance and mentoring from our mentors to improve your job prospects on our portal.",
+        "Apply to openings from our hiring partners without leaving the platform.",
       link: "https://jobs.unifiedmentor.com/",
       target: "Yes",
     },
     {
       icon: Extra4,
-      icon_alt: "Chance to work on real project",
-      title: "Chance to work on real project",
-      subtitle:
-        "Get a chance to work on real project in Kre8ly or any other real projects while learning!",
+      icon_alt: "Chance to Work on Real Projects",
+      title: "Chance to Work on Real Projects",
+      subtitle: "Work on live projects at Kre8ly or elsewhere while you study.",
       link: "#projects",
       target: "no",
     },
   ];
 
+  const eligibilityPoints = [
+    "A final-year student or recent graduate (BCom, BBA, BCA, BSc, BTech or MBA) looking for a first role.",
+    "Living in a city like Raipur, Visakhapatnam, Dehradun or Mysuru, where internships in this field are hard to find.",
+    "Working in sales, support or operations and already know how a business runs day to day.",
+    "Starting without a technical background. The program is beginner friendly.",
+  ];
   return (
     <>
       <Helmet>
-        <title> Business Analyst Fellowship Program | Kre8ly</title>
+        <title> Business Analyst Internship Program Online | Kre8ly</title>
 
         <meta
           name="description"
-          content=" Advance your career with the Business Analyst Fellowship Program at Kre8ly. Gain essential skills, mentorship, and certification in business analysis."
+          content="Learn business analysis online with mentors: SQL, Excel, Power BI, real projects and a certificate. For freshers across India. From ₹399."
         />
 
         <meta
@@ -296,7 +299,7 @@ const BusinessAnalystFellowship = ({ darkMode, setDarkMode, location }) => {
 
         <meta name="robots" content="index, follow" />
       </Helmet>
-      
+
       <div className="flex flex-col w-full min-h-screen">
         <main className="flex-grow gap-5 overflow-hidden">
           <section
@@ -309,58 +312,18 @@ const BusinessAnalystFellowship = ({ darkMode, setDarkMode, location }) => {
             <FellowshipHomeSection PageDetails={BusinessAnalystHeroSection} />
           </section>
 
-          {/* <section
-            data-aos="fade-up"
-            data-aos-delay="0"
-            data-aos-duration="800"
-            className={`${sectionStylings?.section} container mx-auto`}
-          >
-            <h5
-              data-aos="fade-up"
-              data-aos-delay="0"
-              data-aos-duration="800"
-              className={`${sectionStylings?.title}`}
-              style={{
-                lineHeight: "1.5em",
-              }}
-            >
-              Our Accreditation
-            </h5>
-            <AccredationSwiper />
-            <AccreditationFellowship />
-          </section> */}
-
           <section
             data-aos="fade-up"
             data-aos-delay="0"
             data-aos-duration="800"
-            // data-aos-delay="0"
             className="w-full h-full flex flex-col items-center justify-center text-center  relative pb-3 md:my-20"
           >
-            <div className="absolute md:-top-32 w-[250px] md:w-[450px] -left-10 select-none blur-md  z-10">
-              {/* <figure>
-                          <img src={Ellipse} alt="Ellipse" />
-                        </figure> */}
-            </div>
-            {/* <h3
-                        data-aos="fade-up"
-                        data-aos-delay="0"
-                        data-aos-duration="800"
-                        // data-aos-delay="0"
-                        className="text-lg md:text-3xl text-content font-semibold text-center mb-10"
-                      >
-                        Our Accreditation
-                      </h3> */}
+            <div className="absolute md:-top-32 w-[250px] md:w-[450px] -left-10 select-none blur-md  z-10"></div>
             <AccredationSwiper />
             <div
               className={`md:grid hidden grid-cols-4 gap-4 md:gap-6 relative z-20 w-full`}
             >
-              <div
-                // data-aos="flip-right"
-                // data-aos-delay="0"
-                // data-aos-duration="800"
-                className="flex justify-center items-center rounded-lg w-full max-w-xs p-2  max-h-20 md:max-h-24 hover:scale-105 transition-all duration-300 ease-in-out"
-              >
+              <div className="flex justify-center items-center rounded-lg w-full max-w-xs p-2  max-h-20 md:max-h-24 hover:scale-105 transition-all duration-300 ease-in-out">
                 <figure className="w-1/2 md:w-1/3">
                   <img
                     src={darkMode ? Accreditation1_light : Accreditation1}
@@ -415,116 +378,19 @@ const BusinessAnalystFellowship = ({ darkMode, setDarkMode, location }) => {
             </div>
           </section>
 
-          {/* <section
-            data-aos="fade-up"
-            data-aos-delay="0"
-            data-aos-duration="800"
-            className={`${sectionStylings?.section} container mx-auto`}
-          >
-            <div
-              data-aos="fade-up"
-              data-aos-delay="0"
-              data-aos-duration="800"
-              className="w-full h-full flex flex-col justify-center items-center"
-            >
-              {" "}
-              <h2
-                data-aos="fade-up"
-                data-aos-delay="0"
-                data-aos-duration="800"
-                className={`${sectionStylings?.title}`}
-              >
-                Technologies & Tools You Will Learn
-              </h2>
-              <p className={`${sectionStylings?.subTitle}`}>
-                Master cutting-edge technologies and tools, including HTML, CSS,
-                JavaScript, Python, SQL, and more.
-              </p>
-            </div>
-
-            <TechStack
-              TechStacksArray={BusinessAnalystTechStack}
-              MainImage={MainImage}
-            />
-          </section> */}
-
           <section
             data-aos="fade-up"
             data-aos-delay="0"
             data-aos-duration="800"
             className="w-full h-full flex flex-col items-center justify-center text-center gap-10 bg-surface-sunken"
           >
-            {/* <h2
-                                    data-aos="zoom-out"
-                                    data-aos-delay="0"
-                                    data-aos-duration="800"
-                                    className="text-lg md:text-3xl font-semibold text-content"
-                                  >
-                                    {`${CourseName}`} Roadmap
-                                  </h2> */}
-            {/* <h2 className="text-3xl lg:text-4xl font-semibold text-gray-900 mb-4">
-                                    {`${CourseName}`} Roadmap
-                                  </h2> */}
-            {/* <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                                    Our structured 8-step process ensures your project is delivered
-                                    on time, within budget, and exceeds your expectations.
-                                  </p> */}
             <CourseRoadmap
               ModuleInfo={roadmapSteps}
               roadmapSteps={roadmapSteps}
-              varient={"WebDev"}
-              courseName={"Business Analyst Fellowship"}
+              varient={"BusinessAnalystFellowship"}
+              courseName={"How Our Business Analyst Internship Works"}
             />
           </section>
-
-          {/* <section
-            data-aos="fade-up"
-            data-aos-delay="0"
-            data-aos-duration="800"
-            className={`${sectionStylings?.section}`}
-            style={{
-              backgroundImage: `url(${BackGround})`,
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-              backgroundRepeat: "no-repeat",
-            }}
-          >
-            <div
-              data-aos="fade-up"
-              data-aos-delay="0"
-              data-aos-duration="800"
-              className="w-full h-full flex  gap-5 flex-col justify-center items-center"
-            >
-              <h2
-                data-aos="fade-up"
-                data-aos-delay="0"
-                data-aos-duration="800"
-                className={`${sectionStylings?.title}`}
-              >
-                Meet Our Industry Experts
-              </h2>
-              <p
-                data-aos="fade-up"
-                data-aos-delay="0"
-                data-aos-duration="800"
-                className={`text-content-secondary text-base sm:text-xl  text-center w-full md:w-[90%] mx-auto xl:w-[70%]`}
-                style={{
-                  lineHeight: 1.6,
-                }}
-              >
-                Learn Web Development, Data Science, Digital Marketing, Machine
-                Learning, and UI/UX Design from experts. Master skills and
-                accelerate your career!
-              </p>
-            </div>
-            <div className="w-full h-full flex flex-col items-center justify-center text-center gap-10 py-5 container mx-auto">
-              <IndustryExperts
-                CarouselInfo={CarouselInfo}
-                varient={"business-analyst"}
-              />
-            </div>
-            <hr className="w-1/2 md:w-1/4 mt-2 bg-white/50 mx-auto" />
-          </section> */}
 
           <section
             data-aos="fade-up"
@@ -535,21 +401,11 @@ const BusinessAnalystFellowship = ({ darkMode, setDarkMode, location }) => {
             <Module
               BasicModules={BusinessAnalystBasicModules}
               AdvanceModules={BusinessAnalystAdvanceModules}
-              varient={"BusinessAnalyst"}
+              varient={"BusinessAnalystFellowship"}
               showCurriculum={showCurriculum}
               setShowCurriculum={setShowCurriculum}
               onFormToggle={handleModuleFormToggle}
             />
-            {/* <button
-                          data-aos="zoom-out-up"
-                          data-aos-delay="0"
-                          data-aos-duration="800"
-                          onClick={handleDownloadFile}
-                          className="hidden border border-line-strong hover:bg-surface-sunken gap-2 -z-10 dark:hover:text-content hover:bg-surface-sunken dark:bg-transparent dark:text-white text-content px-4  py-3 md:flex items-center font-bold w-fit justify-center rounded-md text-base transition-all duration-300"
-                        >
-                          Download Detailed Curriculum
-                          <FaCloudDownloadAlt size={25} />
-                        </button> */}
             {closeForm && (
               <div className="fixed  top-0 left-0 w-full h-full  flex items-center justify-center bg-black/50 md:data-aos=zoom-out-up md:data-aos-delay=0 md:data-aos-duration=800">
                 <Forms
@@ -560,23 +416,45 @@ const BusinessAnalystFellowship = ({ darkMode, setDarkMode, location }) => {
             )}
           </section>
 
-          {/* <section
+          <section
             data-aos="fade-up"
             data-aos-delay="0"
             data-aos-duration="800"
-            className={`${sectionStylings?.section} md:gap-10 container mx-auto`}
+            className="relative w-full py-16 px-4 sm:px-6 lg:px-8 bg-canvas text-content"
           >
-            <h4
-              data-aos="fade-up"
-              data-aos-delay="0"
-              data-aos-duration="800"
-              className={`${sectionStylings?.title}`}
-            >
-              Join Kre8ly Internship to Shape <br /> the future of
-              development
-            </h4>
-            <FutureDevelopmentComponent swiperColor={swiperColor} />
-          </section> */}
+            <div className="mx-auto max-w-6xl">
+              <div className="group rounded-2xl border border-line bg-surface p-8 sm:p-10 lg:p-12 shadow-xs transition-all duration-300 hover:border-brand/40 hover:shadow-lg">
+                <span className="inline-flex items-center gap-2 rounded-full border border-line bg-surface-sunken px-3.5 py-1 text-xs font-semibold uppercase tracking-wider text-brand">
+                  <span className="h-2 w-2 rounded-full bg-brand animate-pulse" />
+                  Eligibility &amp; Profile Fit
+                </span>
+
+                <h2 className="mt-4 text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-content leading-tight">
+                  Business Analyst Internship for Freshers: Who Can Join
+                </h2>
+
+                <p className="mt-4 text-base sm:text-lg leading-relaxed text-content-secondary">
+                  Business analysis rewards clear thinking and good
+                  communication as much as technical depth, which makes it a
+                  friendly first step into corporate work. The fellowship suits
+                  you if you are:
+                </p>
+
+                <ul className="mt-6 space-y-4">
+                  {eligibilityPoints.map((point, index) => (
+                    <li key={index} className="flex items-start gap-3.5">
+                      <span className="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-subtle text-brand">
+                        <FiCheckCircle className="h-3.5 w-3.5" />
+                      </span>
+                      <span className="text-sm sm:text-base leading-relaxed text-content-secondary">
+                        {point}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </section>
 
           <section
             data-aos="fade-up"
@@ -586,35 +464,12 @@ const BusinessAnalystFellowship = ({ darkMode, setDarkMode, location }) => {
               moduleFormOpen ? "mt-24" : ""
             }`}
           >
-            {/* <h3
-                data-aos="zoom-in-down"
-                data-aos-delay="0"
-                data-aos-duration="800"
-                className="text-lg md:text-3xl font-semibold text-content text-center"
-              >
-                Meet Our Industry Experts
-              </h3>
-              <p
-                data-aos="zoom-in-up"
-                data-aos-delay="0"
-                data-aos-duration="800"
-                className="text-sm hidden md:block text-content-secondary w-full "
-                style={{
-                  lineHeight: "2.5",
-                }}
-              >
-                Learn Web Development, Data Science, Digital Marketing, Machine
-                Learning, and UI/UX Design from experts. Master skills and{" "}
-                <br /> accelerate your career!
-              </p> */}
-
             <h2 className="text-3xl lg:text-4xl font-semibold text-content mb-4">
               Meet Our Industry Experts
             </h2>
             <p className="text-lg text-content-secondary max-w-2xl mx-auto">
-              Learn Web Development, Data Science, Digital Marketing, Machine
-              Learning, and UI/UX Design from experts. Master skills and <br />{" "}
-              accelerate your career!
+              Learn from mentors who have worked on business analysis projects
+              and can explain how it's done in practice.
             </p>
             <div
               data-aos="fade-up"
@@ -622,7 +477,6 @@ const BusinessAnalystFellowship = ({ darkMode, setDarkMode, location }) => {
               data-aos-duration="800"
               className="w-full h-full flex flex-col items-center justify-center text-center gap-10 py-5"
             >
-              {/* <Carousel profileData={CarouselInfo} /> */}
               <div
                 data-aos="zoom-in"
                 data-aos-delay="0"
@@ -637,134 +491,26 @@ const BusinessAnalystFellowship = ({ darkMode, setDarkMode, location }) => {
             </div>
           </section>
 
-          {/* <section
-            data-aos="fade-up"
-            data-aos-delay="0"
-            data-aos-duration="800"
-            className={`${sectionStylings?.section} container mx-auto overflow-hidden`}
-          >
-            <div
-              data-aos="fade-up"
-              data-aos-delay="0"
-              data-aos-duration="800"
-              className="w-full h-full flex flex-col justify-center items-center gap-10"
-            >
-              <TextAnimation texts={BusinessAnalystAnimationText} />
-              <div
-                data-aos="fade-up"
-                data-aos-delay="0"
-                data-aos-duration="800"
-                className="w-full h-full flex flex-col justify-center items-center gap-5"
-              >
-                <h6
-                  data-aos="fade-up"
-                  data-aos-delay="0"
-                  data-aos-duration="800"
-                  className={`text-2xl md:text-3xl text-content font-semibold text-center`}
-                >
-                  Business Analyst Most Promising Career
-                </h6>
-                <p
-                  data-aos="fade-up"
-                  data-aos-delay="0"
-                  data-aos-duration="800"
-                  className={`text-content-secondary sm:text-center w-full md:w-[80%] text-justify text-xs md:text-xl `}
-                >
-                  The demand for Business Analysts is increasing day by day.
-                  Business Analysis is ranked highly on Glassdoor’s “Top 25
-                  highest-paying entry-level jobs.” As companies focus on
-                  improving processes and strategies, most product or
-                  service-based companies require Business Analysts, leading to
-                  a steady rise in demand and average salaries each year.
-                </p>
-              </div>
-            </div>
-
-            <div
-              data-aos="fade-up"
-              data-aos-delay="0"
-              data-aos-duration="800"
-              className="w-full h-full grid grid-cols-2 gap-5 mt-10"
-            >
-              <div
-                data-aos="fade-up"
-                data-aos-delay="0"
-                data-aos-duration="800"
-                className={`w-full h-48 shadow-customSoft shadow-slate-500 dark:bg-[#fff] p-4 flex justify-center items-center flex-col rounded-md`}
-              >
-                <p className="text-content text-center  text-sm md:text-base mb-3">
-                  Average Hike at Kre8ly
-                </p>
-                <p
-                  data-aos="fade-up"
-                  data-aos-delay="0"
-                  data-aos-duration="800"
-                  className="text-[#EAB308] text-2xl md:text-5xl font-bold"
-                >
-                  40%
-                </p>
-              </div>
-              <div
-                data-aos="fade-up"
-                data-aos-delay="0"
-                data-aos-duration="800"
-                className="w-full shadow-customSoft shadow-slate-500 h-48 dark:bg-[#fff] p-4 flex justify-center items-center flex-col rounded-md"
-              >
-                <p
-                  data-aos="fade-up"
-                  data-aos-delay="0"
-                  data-aos-duration="800"
-                  className="text-content text-center text-sm md:text-base mb-3"
-                >
-                  Average Salary of Past learners
-                </p>
-                <p
-                  data-aos="fade-up"
-                  data-aos-delay="0"
-                  data-aos-duration="800"
-                  className="text-[#3292FF] text-2xl md:text-5xl text-center font-bold"
-                >
-                  6 to 8 Lakhs
-                </p>
-              </div>
-            </div>
-          </section> */}
-
           <section
             data-aos="fade-up"
             data-aos-delay="0"
             data-aos-duration="800"
             className="w-full h-full flex flex-col items-center justify-center text-center gap-10 py-5 pt-24 pb-16 px-6"
           >
-            <PlacementSupport
-              PlacementSupportInfo={PlacementSupportInfo}
-              location={location}
-              varient={"BusinessAnalyst"}
-            />
+            <Reveal direction="up">
+              <PlacementSupport
+                PlacementSupportInfo={PlacementSupportInfo}
+                location={location}
+                varient={"BusinessAnalystFellowship"}
+              />
+            </Reveal>
+            <Reveal direction="up">
+              <PlacementSupportSwiper
+                PlacementSupportInfo={PlacementSupportInfo}
+                darkMode={darkMode}
+              />
+            </Reveal>
           </section>
-
-          {/* <section
-            className={`${sectionStylings?.section} container mx-auto relative`}
-          > */}
-          {/* <img
-              src={Ellipse}
-              alt=""
-              className="absolute dark:block hidden -top-10 w-[250px] md:w-[450px] -left-[35%] md:-left-[15%] select-none blur-md z-0"
-            /> */}
-
-          {/* <div className="w-full h-full relative z-10 ">
-              <h6
-                data-aos="fade-up"
-                data-aos-delay="0"
-                data-aos-duration="800"
-                className={`${sectionStylings?.title} `}
-              >
-                Perks of internship at Kre8ly
-              </h6>
-            </div>
-
-            <PerksOfInternship />
-          </section> */}
 
           <section
             data-aos="fade-up"
@@ -775,75 +521,11 @@ const BusinessAnalystFellowship = ({ darkMode, setDarkMode, location }) => {
             <BookYourSeat
               Images={MainImage}
               altforImage={"Data Analyst Fellowship "}
-              titles={BusinessAnalystAnimationText}
-              subtitles1={BusinessAnalystSubtitles1}
-              subtitles2={BusinessAnalystSubtitles2}
-              subHeadings={BusinessAnalystSubHeadings}
               CourseName={"Business Analyst Fellowship"}
               darkMode={darkMode}
+              varient={"BusinessAnalystFellowship"}
             />
           </section>
-
-          {/* <section
-            data-aos="fade-up"
-            data-aos-delay="0"
-            data-aos-duration="800"
-            className={`${sectionStylings?.section} container mx-auto`}
-          >
-            <div className="w-full h-full  ">
-              <h6
-                data-aos="fade-up"
-                data-aos-delay="0"
-                data-aos-duration="800"
-                className={`${sectionStylings?.title}`}
-                style={{
-                  lineHeight: "1.4",
-                }}
-              >
-                Why Join Best Business Analyst <br /> in {location} at Unified
-                Mentor
-              </h6>
-            </div>
-            <FellowshipExtraSwiper
-              Extra={ExtraFellowship}
-              SwiperColor={swiperColor}
-            /> */}
-          {/* <motion.div
-              variants={containerVariants}
-              className="grid grid-cols-1 md:grid-cols-2  w-full mx-auto shadow-lg gap-x-10 gap-y-20 mt-5">
-              {ExtraFellowship?.map((highlight, index) => (
-                <div
-                  key={index}
-                  className="flex flex-col items-center gap-4 h-full bg-gradient-to-br from-brand to-brand-active rounded-lg p-6 relative hover:scale-105 transition-all duration-300 cursor-pointer"
-                >
-                  <div
-                    style={{
-                      height: highlight.height,
-                      width: highlight.width,
-                    }}
-                    className="rounded-full p-2 absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex items-center justify-center"
-                  >
-                    <img
-                      src={highlight.icon}
-                      alt={highlight.title}
-                      className="object-contain w-full h-full hover:scale-105 transition-all duration-300 cursor-pointer"
-                    />
-                  </div>
-
-                  <motion.h4
-                    variants={headingVariants}
-                    className="text-primary text-base md:text-lg font-semibold leading-relaxed text-center mt-8">
-                    {highlight.title}
-                  </motion.h4>
-                  <motion.p
-                    variants={paragraphVariants}
-                    className="text-secondary text-sm leading-relaxed text-center w-full md:w-[80%]">
-                    {highlight.subtitle}
-                  </motion.p>
-                </div>
-              ))}
-            </motion.div> */}
-          {/* </section> */}
 
           <section>
             <div
@@ -853,34 +535,9 @@ const BusinessAnalystFellowship = ({ darkMode, setDarkMode, location }) => {
               className="text-lg md:text-3xl font-semibold text-content leading-tight relative z-20"
             ></div>
             <div className="w-full h-full pt-14">
-              <PerksOfInternship />
+              <PerksOfInternship varient={"BusinessAnalystFellowship"} />
             </div>
           </section>
-
-          {/* <section
-            data-aos="fade-up"
-            data-aos-delay="0"
-            data-aos-duration="800"
-            className={`${sectionStylings?.section} container mx-auto`}
-          >
-            <div
-              data-aos="fade-up"
-              data-aos-delay="0"
-              data-aos-duration="800"
-              className="flex flex-col gap-4 justify-center items-center"
-            >
-              <h6
-                data-aos="fade-up"
-                data-aos-delay="0"
-                data-aos-duration="800"
-                className={`${sectionStylings?.title}`}
-              >
-                {" "}
-                150+ Success Stories
-              </h6>
-            </div>
-            <HallofFameCardTwo hallofFameInfo={NewHallOfFrameInfos} />
-          </section> */}
 
           <section>
             <div
@@ -889,43 +546,15 @@ const BusinessAnalystFellowship = ({ darkMode, setDarkMode, location }) => {
               data-aos-duration="800"
               className="w-full bg-surface-sunken md:mt-10 py-5 pt-24 pb-16 px-6"
             >
-              {/* <h3
-                  data-aos="zoom-in"
-                  data-aos-delay="0"
-                  data-aos-duration="800"
-                  className="text-lg md:text-3xl font-bold text-content text-center"
-                >
-                  Why Join Best Web Development Course in at Kre8ly
-                </h3> */}
               <ExtraSwiper
                 Extra={Extra}
-                // SwiperColor={SwiperColor}
                 CourseName={"Business Analyst Fellowship"}
+                varient={"BusinessAnalystFellowship"}
               />
             </div>
           </section>
 
-          {/* <section
-            data-aos="fade-up"
-            data-aos-delay="0"
-            data-aos-duration="800"
-            className={`${sectionStylings?.section} container mx-auto overflow-hidden`}
-          >
-            <h5
-              data-aos="fade-up"
-              data-aos-delay="0"
-              data-aos-duration="800"
-              className={`${sectionStylings?.title}`}
-              style={{
-                lineHeight: "1.5em",
-              }}
-            >
-              Projects You'll Build in Our <br />
-              Business Analyst Fellowship
-            </h5> */}
-          {/* <ProjectSection Project={BusinessAnalystProjects} /> */}
-          {/* <FellowshipProjects Project={BusinessAnalystProjects} />
-          </section> */}
+          
 
           <section
             data-aos="fade-up"
@@ -933,109 +562,11 @@ const BusinessAnalystFellowship = ({ darkMode, setDarkMode, location }) => {
             data-aos-duration="800"
             className="w-full h-full flex flex-col items-center justify-center gap-10 py-5 pt-24 pb-16 px-6"
           >
-            {/* <h3
-                data-aos="zoom-in"
-                data-aos-delay="0"
-                data-aos-duration="800"
-                className="text-lg md:text-3xl font-bold text-content text-center"
-              >
-                Technologies & Tools You Will Learn
-              </h3> */}
             <Technologies
-              varient={"business-analyst"}
+              varient={"BusinessAnalystFellowship"}
               Technology={BusinessAnalystTechStack}
             />
           </section>
-
-          {/* <section
-            data-aos="fade-up"
-            data-aos-delay="0"
-            data-aos-duration="800"
-            className={`${sectionStylings?.section} container mx-auto overflow-hidden`}
-          >
-            <div
-              data-aos="fade-up"
-              data-aos-delay="0"
-              data-aos-duration="800"
-              className="flex flex-col lg:flex-row items-center justify-between w-full gap-y-10"
-            >
-              <div
-                data-aos="fade-up"
-                data-aos-delay="0"
-                data-aos-duration="800"
-                className="w-full lg:w-[40%]"
-              >
-                <figure className="w-full  mx-auto">
-                  <img
-                    src={Certificates}
-                    alt="Business Analyst Fellowship Certificate- Kre8ly"
-                    className="w-full h-auto object-contain rounded-lg shadow-lg"
-                  />
-                </figure>
-              </div>
-              <div
-                data-aos="fade-up"
-                data-aos-delay="0"
-                data-aos-duration="800"
-                className="w-full lg:w-[55%]"
-              >
-                <div
-                  data-aos="fade-up"
-                  data-aos-delay="0"
-                  data-aos-duration="800"
-                >
-                  <h2
-                    className={`${sectionStylings?.title} !text-left text-base md:text-xl`}
-                  >
-                    Business Analyst fellowship Certification
-                  </h2>
-                  <p
-                    className="text-content-secondary mb-4 text-xs md:text-lg"
-                    style={{
-                      wordSpacing: "4px",
-                      lineHeight: "1.8em",
-                    }}
-                  >
-                    Complete our online Business Analyst certification to earn a
-                    globally recognized certificate. Learn flexibly at your own
-                    pace, save money, and access our exclusive job portal to
-                    explore exciting Business Analyst career opportunities
-                    worldwide!
-                  </p>
-                  <p
-                    className="text-xs md:text-lg text-content-secondary mx-auto md:mx-0 text-justify w-full md:w-[90%] mt-10"
-                    style={{
-                      wordSpacing: "4px",
-                      lineHeight: "1.8em",
-                    }}
-                  >
-                    We also provide{" "}
-                    <Link
-                      to="/web-development"
-                      className="underline text-content"
-                    >
-                      Web Development
-                    </Link>
-                    ,{" "}
-                    <Link
-                      to="/machine-learning"
-                      className="underline text-content"
-                    >
-                      Machine Learning
-                    </Link>{" "}
-                    and best{" "}
-                    <Link
-                      to="/digital-marketing"
-                      className="underline text-content"
-                    >
-                      digital marketing
-                    </Link>{" "}
-                    courses in {location}.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </section> */}
 
           <section
             data-aos="fade-up"
@@ -1043,21 +574,12 @@ const BusinessAnalystFellowship = ({ darkMode, setDarkMode, location }) => {
             data-aos-duration="800"
             className="w-full h-full flex flex-col items-center justify-center py-5 pt-24 pb-16 px-6 bg-surface-sunken"
           >
-            {/* <h3
-                data-aos="zoom-in"
-                data-aos-delay="0"
-                data-aos-duration="800"
-                className="text-sm md:text-3xl font-bold text-content text-center"
-              >
-                150+ Success Stories
-              </h3> */}
             <div className="text-center mb-4">
               <h2 className="text-3xl lg:text-4xl font-semibold text-content mb-4">
                 150+ Success Stories
               </h2>
               <p className="text-lg text-content-secondary max-w-2xl mx-auto">
-                Real experiences from learners who achieved their goals and
-                transformed careers with our guidance and support.
+                See where Kre8ly learners are working now. Browse by Developer, Analyst or Others.
               </p>
             </div>
             <div className="w-full h-full flex flex-col items-center justify-center py-5">
@@ -1074,24 +596,11 @@ const BusinessAnalystFellowship = ({ darkMode, setDarkMode, location }) => {
               Project={BusinessAnalystProjects}
               CourseName={"Business Analyst Fellowship"}
               location={location}
+              varient={"BusinessAnalystFellowship"}
             />
           </section>
 
-          {/* <section
-            className={`${sectionStylings?.section} container mx-auto relative `}
-          >
-            <h6 className={`${sectionStylings?.title} relative z-10`}>
-              Frequently Asked Questions
-            </h6> */}
-          {/* <img
-              src={Ellipse}
-              alt=""
-              className="absolute dark:block hidden top-5 w-[250px] md:w-[450px] -left-[35%] md:-left-[15%] select-none blur-md z-0"
-            /> */}
-          {/* <div className="w-full md:w-10/12 relative z-10">
-              <FaqForFellowship Faqs={BusinessAnalystFaq} darkMode={darkMode} />
-            </div>
-          </section> */}
+          
 
           <section
             data-aos="fade-up"
@@ -1100,7 +609,6 @@ const BusinessAnalystFellowship = ({ darkMode, setDarkMode, location }) => {
             className="w-full h-full flex flex-col items-center justify-center py-5 pt-24 pb-16 px-6"
           >
             <Certificate
-              // Project={WebDevProjectInfo}
               CourseName={"Business Analyst Fellowship"}
               location={location}
             />
@@ -1116,12 +624,6 @@ const BusinessAnalystFellowship = ({ darkMode, setDarkMode, location }) => {
             data-aos-duration="800"
             className="w-full h-full flex flex-col items-center justify-center py-5 pt-24 pb-16 px-6"
           >
-            {/* <img
-              src={Ellipse}
-              alt=""
-              className="absolute top-5 w-[250px] md:w-[450px] -left-[35%] md:-left-[15%] select-none blur-md z-0 hidden dark:block"
-            /> */}
-            {/* <div className="w-full md:w-10/12 relative z-10"> */}
             <Faqs Faqs={BusinessAnalystFaq} darkMode={darkMode} />
             {/* </div> */}
           </section>

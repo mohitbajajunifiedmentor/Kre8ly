@@ -21,25 +21,24 @@ const P5 = "/assets/fellowship/BusinessAnalyst/P5.png";
 const P6 = "/assets/fellowship/BusinessAnalyst/P6.png";
 
 import {
-  MessageCircle,
-  Edit3,
-  Palette,
-  Code,
-  Layout,
-  Building,
-  CheckCircle,
-  Rocket,
+  HelpCircle, // 1. Understand the Problem
+  Users, // 2. Identify Stakeholders (people, decision makers)
+  ClipboardList, // 3. Gather Requirements (interviews, surveys, lists)
+  Workflow, // 4. Analyse Data and Processes (process flows, SQL)
+  FileText, // 5. Document Requirements (PRD, user stories)
+  Sliders, // 6. Propose and Prioritise Solutions (compare cost/impact)
+  Presentation, // 7. Present to Stakeholders (deck/dashboards)
+  Kanban, // 8. Track and Review (Trello board delivery tracking)
 } from "lucide-react";
-
 
 export const BusinessAnalystHeroSection = [
   {
     badge: "Most Popular Course",
     headings: {
-      title: `Business Analyst Fellowship`,
-      subtitle: "Business Analyst Fellowship Program In India - Kre8ly",
+      title: `Business Analyst Internship Program & Fellowship`,
+      subtitle: "Learn business analysis with expert mentors and live projects",
       description:
-        "Learn Business Analyst with expert guidance, hands-on projects, and a curriculum designed for success.",
+        "Business analysts sit between the people who run a company and the people who build things for it. This program teaches you to gather requirements, read the data behind a problem and present a clear recommendation. Mentors guide you through live projects online, so you can join from Nagpur, Bhopal, Kochi or any town with a stable internet connection.",
     },
     card: {
       image: WebCard,
@@ -118,145 +117,147 @@ export const BusinessAnalystTechStack = [
   {
     name: "Sql",
     img: TechIcon1,
-    alt: "Sql  - Technologies & Tools You Will Learn in Business Analyst Fellowship at Kre8ly",
-    description:
-      "Manage and analyze data efficiently with SQL’s powerful querying capabilities.",
+    alt: "Sql - Technologies & Tools You Will Learn in Business Analyst Fellowship at Kre8ly",
+    description: "Pulling and checking data",
   },
   {
     name: "Excel",
     img: TechIcon2,
     alt: "Excel - Technologies & Tools You Will Learn in Business Analyst Fellowship at Kre8ly",
-    description:
-      "Master Excel’s features to boost productivity and streamline data analysis.",
+    description: "Analysis and quick models",
   },
   {
     name: "Trello",
     img: TechIcon3,
     alt: "Trello - Technologies & Tools You Will Learn in Business Analyst Fellowship at Kre8ly",
-    description:
-      "Manage projects easily with Trello’s visual boards and task tools.",
+    description: "Tracking tasks and requirements",
   },
   {
     name: "Microsoft PowerPoint",
     img: TechIcon4,
     alt: "Microsoft PowerPoint - Technologies & Tools You Will Learn in Business Analyst Fellowship at Kre8ly",
-    description:
-      "Create impactful presentations with Microsoft PowerPoint’s design and multimedia tools.",
+    description: "Presenting recommendations",
   },
   {
     name: "Tableau",
     img: TechIcon5,
     alt: "Tableau - Technologies & Tools You Will Learn in Business Analyst Fellowship at Kre8ly",
-    description:
-      "Transform data into insightful visualizations with Tableau’s powerful analytics tools.",
+    description: "Dashboards for non-technical readers",
   },
-
   {
     name: "Power BI",
     img: TechIcon6,
     alt: "Power BI - Technologies & Tools You Will Learn in Business Analyst Fellowship at Kre8ly",
-    description:
-      "Transform data into actionable insights with Power BI’s interactive dashboards.",
+    description: "Dashboards for non-technical readers",
   },
   {
     name: "Google Analytics",
     img: TechIcon7,
     alt: "Google Analytics - Technologies & Tools You Will Learn in Business Analyst Fellowship at Kre8ly",
-    description:
-      "Track and analyze website performance with Google Analytics' powerful insights.",
+    description: "Understanding how people use a website or app",
   },
   {
     name: "R Lang",
     img: TechIcon8,
     alt: "R Lang - Technologies & Tools You Will Learn in Business Analyst Fellowship at Kre8ly",
-    description:
-      "Analyze data and create statistical models with R programming language.",
+    description: "Statistical analysis",
   },
   {
     name: "Lucidchart",
     img: TechIcon9,
     alt: "Lucidchart - Technologies & Tools You Will Learn in Business Analyst Fellowship at Kre8ly",
-    description:
-      "Create diagrams and flowcharts easily with Lucidchart’s intuitive design tools.",
+    description: "Drawing process flows and diagrams",
   },
   {
     name: "QlikView",
     img: TechIcon10,
     alt: "QlikView - Technologies & Tools You Will Learn in Business Analyst Fellowship at Kre8ly",
-    description:
-      "Transform data into interactive visualizations with QlikView’s business intelligence tools.",
+    description: "Interactive business reports",
   },
 ];
 
 export const BusinessAnalystProjects = [
   {
     imgs: P1,
-    title: "Zomato Data Analysis",
-    alt: "Zomato Data Analysis – Kre8ly Business Analyst Fellowship Project",
+    title: "Requirements Document",
+    alt: "Requirements Document – Kre8ly Business Analyst Fellowship Project",
     description:
-      "Analyze Zomato data to uncover insights on restaurants and customer trends.",
+      "Write a full requirements document for an e-commerce checkout feature.",
   },
   {
     imgs: P2,
-    title: "Roadsy",
-    alt: "Roadsy: Automated Traffic Sign Detection and Classification – Kre8ly Business Analyst Fellowship Project",
-    description: "Optimize road management and transportation efficiency.",
+    title: "Process Improvement Map",
+    alt: "Process Improvement Map – Kre8ly Business Analyst Fellowship Project",
+    description:
+      "Map an order fulfilment process, find the delays and propose fixes.",
   },
   {
     imgs: P3,
-    title: "Fake News Detection",
-    alt: "Fake News Detection – Kre8ly Business Analyst Fellowship Project",
+    title: "Sales Dashboard",
+    alt: "Sales Dashboard – Kre8ly Business Analyst Fellowship Project",
     description:
-      "Detect fake news using machine learning algorithms for accurate classification.",
+      "Build a Power BI or Tableau dashboard that tracks sales by region and product.",
   },
   {
     imgs: P4,
-    title: "Smart Vision",
-    alt: "SmartVision: Intelligent Face Mask Monitoring System – Kre8ly Business Analyst Fellowship Project",
-    description: "Develop a enhanced image recognition and real-time analysis.",
+    title: "Customer Churn Analysis",
+    alt: "Customer Churn Analysis – Kre8ly Business Analyst Fellowship Project",
+    description: "Use SQL to find out why customers leave.",
   },
   {
     imgs: P5,
-    title: "Fire & Smoke Detection via CNN",
-    alt: "Fire and Smoke Detection using CNN – Kre8ly Business Analyst Fellowship Project",
-    description:
-      "Detect fire and smoke using CNN for real-time hazard identification.",
+    title: "Website Traffic Report",
+    alt: "Website Traffic Report – Kre8ly Business Analyst Fellowship Project",
+    description: "Read Google Analytics data and recommend changes.",
   },
   {
     imgs: P6,
-    title: "OpenAI API: Customizable Chatbot",
-    alt: "Building a Customisable Chatbot using OpenAI API – Kre8ly Business Analyst Fellowship Project",
-    description:
-      "Build a customizable chatbot using OpenAI API for dynamic interactions.",
+    title: "Stakeholder Presentation",
+    alt: "Stakeholder Presentation – Kre8ly Business Analyst Fellowship Project",
+    description: "Present your recommendations to a mock leadership team.",
   },
 ];
 
 export const BusinessAnalystFaq = [
   {
     question: "What is the Business Analyst Fellowship Program?",
-    answer: `The Business Analyst Fellowship Program offers hands-on training, expert mentorship, and practical projects, enabling you to acquire the skills necessary for a successful business analysis career.`,
+    answer: `It's a mentor-led online program where you learn to gather requirements, analyse data and processes, and present recommendations. It's set up like an internship, so you finish with projects and a certificate.`,
   },
   {
     question: "How long is the Business Analyst Fellowship program?",
-    answer: `The program spans several months, with a flexible learning schedule to accommodate both beginners and professionals seeking to enhance their business analysis expertise.`,
+    answer: `The program runs for four months, with weekly self-paced sessions and mentor doubt sessions.`,
   },
   {
     question: "Will I receive certification after completing the program?",
-    answer: `Yes, upon successful completion of the program, you will earn a Business Analyst certification that will enhance your credibility and help you advance in the field.`,
+    answer: ` Yes. You receive a Kre8ly certificate that you can add to your resume and LinkedIn profile.`,
   },
   {
     question: "Can this program help me switch careers into business analysis?",
-    answer: `Certainly! This fellowship program is designed to support career changers by providing the essential skills, tools, and knowledge needed to transition successfully into business analysis.`,
+    answer: `Yes, especially if you already work in sales, support, operations or a similar role, because you know how businesses run. The fellowship adds the frameworks, tools and project work you need to move into a business analyst role.`,
   },
   {
     question:
       "Is there any job placement assistance after completing the fellowship?",
-    answer: `Yes, Kre8ly provides job placement assistance, including resume building, interview coaching, and access to a network of potential employers in the business analysis field.`,
+    answer: `Yes. You get resume reviews, interview preparation, access to our job portal and interview opportunities with hiring partners. We support your search, but we can't promise a specific job.`,
   },
   {
     question:
       "What types of projects will I work on during the Business Analyst Fellowship Program?",
-    answer: `Throughout the program, you'll engage in real-world business analysis projects focused on requirement gathering, process improvement, data analysis, and problem-solving in business contexts.`,
+    answer: `Projects such as requirements documents, process maps, dashboards, SQL-based analysis and stakeholder presentations.`,
+  },
+  {
+    question: "Do I need a technical background to join?",
+    answer: `No. The program is beginner friendly and starts with the fundamentals. Being comfortable with Excel will help.`,
+  },
+  {
+    question:
+      "Which tools will I learn?",
+    answer: `SQL, Excel, Trello, PowerPoint, Tableau, Power BI, Google Analytics, R, Lucidchart and QlikView.`,
+  },
+  {
+    question:
+      "Can I join from a smaller city?",
+    answer: `Yes. The program is online, so you can learn from Nagpur, Raipur, Kochi or any other town with a stable internet connection. Recordings help if you miss a live session.`,
   },
 ];
 
@@ -269,66 +270,66 @@ export const BusinessAnalystAnimationText = [
 export const roadmapSteps = [
   {
     id: 1,
-    title: "Discussion",
+    title: "Understand the Problem",
     description:
-      "Engage in discussions to clarify project goals and ensure your data science approach aligns with business objectives.",
-    icon: MessageCircle,
+      "Work out what the business is struggling with and what success would look like",
+    icon: HelpCircle,
     color: "blue",
   },
   {
     id: 2,
-    title: "Data Collection",
+    title: "Identify Stakeholders",
     description:
-      "Gather and organize data from various sources, ensuring it is comprehensive and relevant for your analysis.",
-    icon: Edit3,
+      "List who is affected and who decides, since they all want different things.",
+    icon: Users,
     color: "green",
   },
   {
     id: 3,
-    title: "Data Cleaning",
+    title: "Gather Requirements",
     description:
-      "Clean and preprocess the data to handle missing values, outliers, and ensure it is a useable format for analysis.",
-    icon: Palette,
+      "Use interviews, surveys and workshops to find out what people actually need.",
+    icon: ClipboardList,
     color: "purple",
   },
   {
     id: 4,
-    title: "Exploratory Data Analysis (EDA)",
+    title: "Analyse Data and Processes",
     description:
-      "Conduct exploratory data analysis to understand data distributions, identify patterns, and generate insights.",
-    icon: Code,
+      "Check the numbers with SQL and Excel, and map how the work currently flows.",
+    icon: Workflow,
     color: "orange",
   },
   {
     id: 5,
-    title: "Modeling",
+    title: "Document Requirements",
     description:
-      "Develop and train machine learning models using appropriate algorithms to predict, classify, or cluster the data.",
-    icon: Layout,
+      "Write them up as clear requirement documents and user stories that a development team can follow.",
+    icon: FileText,
     color: "indigo",
   },
   {
     id: 6,
-    title: "Validation",
+    title: "Propose and Prioritise Solutions",
     description:
-      "Validate the performance of your models using techniques like cross-validation and adjust parameters to improve accuracy.",
-    icon: Building,
+      "Compare options by cost, effort and impact, and recommend one.",
+    icon: Sliders,
     color: "teal",
   },
   {
     id: 7,
-    title: "Deployment",
+    title: "Present to Stakeholders",
     description:
-      "Deploy the models into a production environment where they can be used to make real-time predictions or decisions.",
-    icon: CheckCircle,
+      "Explain your recommendation in a short presentation or dashboard.",
+    icon: Presentation,
     color: "red",
   },
   {
     id: 8,
-    title: "Monitoring and Maintenance",
+    title: "Track and Review",
     description:
-      "Continuously monitor the performance of deployed models and update them as necessary to maintain accuracy and relevance.",
-    icon: Rocket,
+      "Follow the work through delivery in a tool like Trello, and check whether the problem was solved.",
+    icon: Kanban,
     color: "slate",
   },
 ];

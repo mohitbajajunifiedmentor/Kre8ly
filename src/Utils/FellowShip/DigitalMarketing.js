@@ -34,10 +34,10 @@ export const DigitalMarketingHeroSection = [
   {
     badge: "Most Popular Course",
     headings: {
-      title: `Digital Marketing Fellowship`,
-      subtitle: `Learn Digital Marketing with expert guidance, hands-on projects, and a curriculum designed for success.`,
+      title: `Digital Marketing Internship Program & Fellowship`,
+      subtitle: `Learn to plan, run and measure campaigns with expert mentors`,
       description:
-        "Learn Digital Marketing with expert guidance, hands-on projects, and a curriculum designed for success.",
+        "Learn how to run digital marketing campaigns, from SEO and Google Ads to social media and email. You'll work on real projects with mentors, and because the program is online, you can join from home in Ludhiana, Jabalpur, Madurai or any other town.",
     },
     card: {
       image: WebCard,
@@ -114,73 +114,65 @@ export const DigitalMarketingHeroSection = [
 
 export const DigitalMarketingTechstack = [
   {
-    name: "Yoast",
+    name: "Yoast SEO",
     img: TechIcon1,
-    alt: "Yoast - Technologies & Tools You Will Learn in Digital Marketing Fellowship at Kre8ly",
-    description:
-      "Yoast is a popular SEO plugin for WordPress that helps optimize website content.",
+    alt: "Yoast SEO - Technologies & Tools You Will Learn in Digital Marketing Fellowship at Kre8ly",
+    description: "On-page SEO for websites and blogs.",
   },
   {
     name: "Blogger",
     img: TechIcon2,
     alt: "Blogger - Technologies & Tools You Will Learn in Digital Marketing Fellowship at Kre8ly",
-    description:
-      "Blogger is a popular blogging platform for creating and sharing content.",
+    description: "Publishing and managing content easily.",
   },
   {
-    name: "Similar Web",
+    name: "Similarweb",
     img: TechIcon3,
-    alt: "Similar Web - Technologies & Tools You Will Learn in Digital Marketing Fellowship at Kre8ly",
-    description: "Similar Web is a tool for analyzing and comparing websites.",
+    alt: "Similarweb - Technologies & Tools You Will Learn in Digital Marketing Fellowship at Kre8ly",
+    description: "Checking and analyzing competitor traffic.",
   },
   {
     name: "Pinterest",
     img: TechIcon4,
     alt: "Pinterest - Technologies & Tools You Will Learn in Digital Marketing Fellowship at Kre8ly",
-    description:
-      "Pinterest is a social media platform for creating and sharing visual content.",
+    description: "Reaching visual discovery audiences on social platforms.",
   },
   {
     name: "Facebook",
     img: TechIcon5,
     alt: "Facebook - Technologies & Tools You Will Learn in Digital Marketing Fellowship at Kre8ly",
-    description:
-      "Facebook is a social media platform for connecting with friends and sharing content.",
+    description: "Reaching target audiences and running social ad campaigns.",
   },
-
   {
-    name: "Wordpress",
+    name: "WordPress",
     img: TechIcon6,
     alt: "WordPress - Technologies & Tools You Will Learn in Digital Marketing Fellowship at Kre8ly",
-    description:
-      "Wordpress is a popular content management system for building websites.",
+    description: "Publishing, building, and managing full-fledged websites.",
   },
   {
-    name: "Google Key",
+    name: "Google Keyword Planner",
     img: TechIcon7,
-    alt: "Google Key - Technologies & Tools You Will Learn in Digital Marketing Fellowship at Kre8ly",
-    description: "Google Key is a tool for analyzing and comparing websites.",
+    alt: "Google Keyword Planner - Technologies & Tools You Will Learn in Digital Marketing Fellowship at Kre8ly",
+    description: "Finding what people search for to drive keyword strategies.",
   },
   {
-    name: "Youtube",
+    name: "YouTube",
     img: TechIcon8,
     alt: "YouTube - Technologies & Tools You Will Learn in Digital Marketing Fellowship at Kre8ly",
-    description:
-      "Youtube is a social media platform for creating and sharing video content.",
+    description: "Reaching video audiences and optimizing video content.",
   },
   {
     name: "Canva",
     img: TechIcon9,
     alt: "Canva - Technologies & Tools You Will Learn in Digital Marketing Fellowship at Kre8ly",
-    description:
-      "Canva is a design platform for creating and sharing visual content.",
+    description: "Designing engaging posts, ads, and marketing graphics.",
   },
   {
     name: "Google Analytics",
     img: TechIcon10,
     alt: "Google Analytics - Technologies & Tools You Will Learn in Digital Marketing Fellowship at Kre8ly",
     description:
-      "Google Analytics is a tool for analyzing and comparing websites.",
+      "Measuring what your campaigns achieve and tracking user actions.",
   },
 ];
 
@@ -189,108 +181,83 @@ export const DigitalMarketingProjects = [
     imgs: P1,
     title: "Search Engine Marketing Case Study",
     alt: "Search Engine Marketing Case Study – Kre8ly Digital Marketing Fellowship Project",
-    description:
-      "Effective SEM uses keyword targeting, optimized ads, and performance analysis.",
+    description: "Plan and analyse a paid search campaign for a business.",
   },
   {
     imgs: P2,
     title: "Blogging Website",
     alt: "Blogging Website – Kre8ly Digital Marketing Fellowship Project",
-    description:
-      "Engaging blogs require quality content, SEO, visuals, and consistent updates.",
+    description: "Build a blog and grow it with SEO-friendly content.",
   },
   {
     imgs: P3,
     title: "Analytics Tools Report",
     alt: "Analytics Tools Report – Kre8ly Digital Marketing Fellowship Project",
-    description:
-      "Analytics tools track performance, provide insights, and improve decisions.",
+    description: "Compare analytics tools and report what each one shows you.",
   },
   {
     imgs: P4,
     title: "Marketing Analytics Dashboard",
     alt: "Marketing Analytics Dashboard – Kre8ly Digital Marketing Fellowship Project",
     description:
-      "Marketing dashboards track metrics, visualize data, and improve strategies.",
+      "Bring campaign numbers into one dashboard that's easy to read.",
   },
   {
     imgs: P5,
     title: "Google Ads Campaign Management",
     alt: "Google Ads Campaign Management – Kre8ly Digital Marketing Fellowship Project",
     description:
-      "Google Ads campaigns require keyword research, ad optimization, and analysis.",
+      "Set up and manage a Google Ads campaign, then improve it using results.",
   },
   {
     imgs: P6,
     title: "Email Marketing Automation",
     alt: "Email Marketing Automation – Kre8ly Digital Marketing Fellowship Project",
-    description: "Email automation boosts engagement and conversions",
+    description: "Create an automated email flow that nurtures leads.",
   },
 ];
-
-// export const DigitalMarketingFaq = [
-//   {
-//     question: "Can I learn the front end in 2 months?",
-//     answer: `Focusing on HTML, CSS, and simple JavaScript, it is possible to learn the
-//           fundamentals of front-end development in two months. But mastery necessitates
-//           constant learning and practice.`,
-//   },
-//   {
-//     question: "What course should I do for a front-end developer?",
-//     answer: `Choose HTML, CSS, JavaScript, and responsive design classes from online
-//           education providers like Kre8ly’s top-rated Front-End Web Development
-//           Course.`,
-//   },
-//   {
-//     question: "What's the best way to learn front end web development?",
-//     answer: `Combining online classes, interactive coding environments, and practical
-//           projects is the most effective approach to learn front-end web development. For
-//           efficient skill building, practice constructing websites and ask for advice from
-//           internet forums.`,
-//   },
-//   {
-//     question: "Can I learn front end web development in 3 months?",
-//     answer: `Yes, learning the basics of front-end web development in 3 months is achievable,
-//           focusing on foundational HTML, CSS, and introductory JavaScript. Continued
-//           practice and work on projects can enhance proficiency.`,
-//   },
-//   {
-//     question: "What is the salary of a front-end developer in India?",
-//     answer: `Front-end developer salaries in India vary based on experience and location.
-//           Junior developers might earn around ₹3-5 lakh per annum, while experienced
-//           professionals can earn ₹8-15 lakh or more, depending on the company, experience,
-//           and skill level.`,
-//   },
-// ];
 
 export const DigitalMarketingFaq = [
   {
     question: "What is the Digital Marketing Fellowship at Kre8ly?",
-    answer: `The Digital Marketing Fellowship is an advanced program designed to provide practical skills and mentorship in digital marketing. 
-    It offers hands-on learning experiences to help you launch a successful career in digital marketing.`,
+    answer: `It's a mentor-led online program where you learn SEO, paid ads, social media, email marketing and analytics by working on real projects. It's set up like an internship, so you finish with a portfolio and a certificate.`,
   },
   {
     question: "Is the Digital Marketing Fellowship suitable for beginners?",
-    answer: `Yes, the program is beginner-friendly, but it also provides advanced learning for experienced marketers. It caters to all levels, offering foundational knowledge as well as advanced tactics.`,
+    answer: `Yes. It's beginner friendly and starts from the basics of marketing, so you don't need prior experience.`,
   },
   {
     question:
       "What career opportunities can I pursue after completing the Digital Marketing Fellowship?",
-    answer: `Graduates can pursue various roles such as Digital Marketing Manager, SEO Specialist, Social Media Manager, Content Strategist, and PPC Specialist in top companies or as freelancers.`,
+    answer: `Roles such as SEO executive, social media executive, content marketer, performance marketing executive and email marketer, or you can freelance. What you land depends on your skills and projects.`,
   },
   {
     question:
       "Will I receive any certification upon completion of the fellowship?",
-    answer: `Yes, upon completing the fellowship program, you will receive a certification that highlights your practical knowledge and expertise in digital marketing, enhancing your resume.`,
+    answer: `Yes. You receive a Kre8ly certificate you can add to your resume and LinkedIn profile.`,
   },
   {
     question:
       "How is the mentorship provided in the Digital Marketing Fellowship?",
-    answer: `The fellowship includes one-on-one mentorship with experienced industry professionals who guide you through the curriculum, help with projects, and offer valuable career insights.`,
+    answer: `Through live mentor sessions, weekly doubt sessions and feedback on your projects.`,
   },
   {
     question: "Can I learn digital marketing online through this fellowship?",
-    answer: ` Absolutely! The Digital Marketing Fellowship is an online program, providing flexibility to learn at your own pace while still receiving personalized support and guidance from experts.`,
+    answer: `Yes. Everything runs online with live and recorded sessions, so you can join from any city or town.`,
+  },
+  {
+    question:
+      "Is this a work-from-home internship?",
+    answer: `The program runs online, so you can complete it from home. It's an internship-style learning program with project work. It's not a paid job, though we help with your job search afterwards.`,
+  },
+  {
+    question:
+      "Can I get an Amazon or Facebook internship through this program?",
+    answer: `We can't promise a place at any specific company, since they run their own hiring. What we offer is training, projects, a certificate and job support that make your application stronger.`,
+  },
+  {
+    question: "How much does the fellowship cost?",
+    answer: `Pricing starts at ₹399. Check the enrolment page for the current fee and the next batch date.`,
   },
 ];
 

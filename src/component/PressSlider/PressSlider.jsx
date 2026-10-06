@@ -19,7 +19,7 @@ const PressSlider = () => {
       <div className="mb-8 md:mb-12 flex w-full flex-col sm:flex-row sm:items-end justify-between gap-4 text-center sm:text-left">
         <div>
           <h2 className="mb-2 text-3xl font-semibold tracking-tight text-content lg:text-4xl">
-            Press Releases
+            In the Press
           </h2>
           <p className="text-sm md:text-base text-content-secondary">
             Kre8ly featured across premier media publications and industry portals.

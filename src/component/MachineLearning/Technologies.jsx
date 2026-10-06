@@ -1,56 +1,83 @@
-import React, { useRef, useState } from "react";
-const Ellipse = "/assets/Ellipse.webp";
-import {
-  Navigation,
-  Pagination,
-  Scrollbar,
-  A11y,
-  Autoplay,
-} from "swiper/modules";
+import React from "react";
+import { Pagination, Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css/autoplay";
 import "swiper/css";
-import "swiper/css/navigation";
 import "swiper/css/pagination";
-import {
-  FaArrowRight,
-  FaChevronLeft,
-  FaChevronRight,
-  FaLinkedin,
-} from "react-icons/fa";
 
-const Technologies = ({ Technology, varient }) => {
-  console.log("Technology", Technology);
-  const [isVisible, setIsVisible] = useState(false);
-  const sectionRef = useRef(null);
+const Ellipse = "/assets/Ellipse.webp";
 
+// Default content mapping according to variant
+const VARIANT_CONTENT = {
+  "DigitalMarketingFellowship": {
+    heading: "Social Media Marketing Internship Work From Home: Tools You Will Learn",
+    description:
+      "These are the tools marketers use every day. You'll practise them on your own projects from your laptop at home.",
+  },
+  "data-analytics": {
+    heading: "Technologies & Tools You Will Learn",
+    description:
+      "These are the tools analysts use at work, and you'll practise each one on real datasets.",
+  },
+  "web-development": {
+    heading: "Modern Tech Stack You Will Build With",
+    description:
+      "Master front-end and back-end frameworks used by top engineering teams worldwide.",
+  },
+  "DataScienceFellowship": {
+    heading: "Technologies and Tools You Will Learn",
+    description:
+      "These are the tools data teams use every day. You'll use each one in your projects.",
+  },
+  default: {
+    heading: "Technologies & Tools You Will Learn",
+    description:
+      "Get hands-on experience with the most in-demand tools and frameworks used across the industry.",
+  },
+};
+
+const Technologies = ({
+  Technology = [],
+  varient = "default",
+  title,       // Optional prop to directly override heading
+  subtitle,    // Optional prop to directly override paragraph
+}) => {
   const Styles = {
-    backDropImageShadow:
-      "w-32 cursor-pointer transition-all duration-300 hover:scale-110 hover:filter hover:drop-shadow-[0px_0px_15px_rgba(255,217,0,0.8)]",
+    backDropImageShadow: "w-32 transition-all duration-300 pointer-events-none",
   };
-  // TechCard Component
-  const TechCard = ({ technology, index, isVisible }) => {
-    console.log("technology", technology);
 
-    const delay = (index + 1) * 100;
+  if (varient === "graphic-design") {
+    return null; // Avoid returning <h1>-</h1> which breaks SEO & layout
+  }
 
-    const handleCardClick = () => {
-      console.log(`Clicked on ${technology.name}`);
-      // Handle card click - could show more details, navigate, etc.
-    };
+  // Dynamic text selection
+  const content = VARIANT_CONTENT[varient] || VARIANT_CONTENT.default;
+  const currentHeading = title || content.heading;
+  const currentDescription = subtitle || content.description;
 
+  // TechCard Component for Desktop / Tablet Grid
+  const TechCard = ({ technology }) => {
     return (
-      <div className={`transition-all duration-600 `}>
-        <div
-          className="group bg-surface rounded-xl p-10 text-center shadow-md border border-line cursor-pointer hover:shadow-lg hover:-translate-y-1 hover:scale-102 transition-all duration-300"
-          onClick={handleCardClick}
-        >
-          <div className="w-16 h-16 mx-auto mb-4 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-            <img src={technology.img} alt={technology.alt} />
+      <div className="w-full sm:w-[260px] md:w-[280px]">
+        <div className="group flex h-full flex-col items-center justify-between rounded-card border border-line bg-surface p-7 text-center shadow-xs transition-all duration-300 hover:-translate-y-1 hover:border-brand/40 hover:shadow-md">
+          <div className="flex flex-col items-center">
+            <div className="mb-4 flex h-16 w-16 items-center justify-center transition-transform duration-300 group-hover:scale-110">
+              <img
+                src={technology.img}
+                alt={technology.alt || technology.name}
+                loading="lazy"
+                className="h-14 w-14 object-contain"
+              />
+            </div>
+            <h3 className="text-base font-semibold leading-normal text-content">
+              {technology.name}
+            </h3>
+            {technology.description && (
+              <p className="mt-2 text-xs leading-relaxed text-content-secondary sm:text-sm">
+                {technology.description}
+              </p>
+            )}
           </div>
-          <h3 className="text-sm font-medium text-content">
-            {technology.name}
-          </h3>
         </div>
       </div>
     );
@@ -61,194 +88,92 @@ const Technologies = ({ Technology, varient }) => {
       data-aos="zoom-out-up"
       data-aos-delay="0"
       data-aos-duration="800"
-      className="w-full relative "
+      className="relative w-full py-10"
     >
-      {/* <figure className={Styles.backDropImageShadow} className="hidden md:block relative z-20">
-        <img src={Frames} alt="Frame" />
-      </figure> */}
-      {varient === "graphic-design" ? (
-        // <div
-        //   data-aos-delay="0"
-        //   data-aos-duration="800"
-        //   className="relative z-20 hidden xl:block">
-        //   <div
-        //     data-aos="fade-up"
-        //     data-aos-delay="0"
-        //     data-aos-duration="800"
-        //     className="flex justify-around md:mx-96">
-        //     <figure className={Styles.backDropImageShadow}>
-        //       <img src={Technology[0]?.img} alt={Technology[0].alt} />
-        //       <p className="text-center text-content text-lg font-bold">
-        //         {Technology[0]?.name}
-        //       </p>
-        //     </figure>
-
-        //     <figure className={Styles.backDropImageShadow}>
-        //       <img src={Technology[1]?.img} alt={Technology[1].alt} />
-        //       <p className="text-center text-content text-lg font-bold">
-        //         {Technology[1]?.name}
-        //       </p>
-        //     </figure>
-        //     <figure className={Styles.backDropImageShadow}>
-        //       <img src={Technology[2]?.img} alt={Technology[2].alt} />
-        //       <p className="text-center text-content text-lg font-bold">
-        //         {Technology[2]?.name}
-        //       </p>
-        //     </figure>
-        //   </div>
-        //   <div className="flex justify-around md:mx-96">
-        //     <figure className={Styles.backDropImageShadow}>
-        //       <img src={Technology[3]?.img} alt={Technology[3].alt} />
-        //       <p className="text-center text-content text-lg font-bold">
-        //         {Technology[3]?.name}
-        //       </p>
-        //     </figure>
-
-        //     <figure className={Styles.backDropImageShadow}>
-        //       <img src={Technology[4]?.img} alt={Technology[4].alt} />
-        //       <p className="text-center text-content text-lg font-bold">
-        //         {Technology[4]?.name}
-        //       </p>
-        //     </figure>
-        //   </div>
-        // </div>
-        <h1>-</h1>
-      ) : (
-        <div
-          data-aos="fade-up"
-          data-aos-delay="0"
-          data-aos-duration="800"
-          className="relative"
-        >
-          <div
-            data-aos="fade-up"
-            data-aos-delay="0"
-            data-aos-duration="800"
-            className="text-center mb-4"
-          >
-            <h2 className="text-3xl lg:text-4xl font-semibold text-content mb-4">
-              Technologies & Tools You Will Learn
-            </h2>
-            <p className="text-lg text-content-secondary max-w-2xl mx-auto">
-              Master industry-leading technologies and practical tools that
-              prepare you for real-world development challenges.
+      <div
+        data-aos="fade-up"
+        data-aos-delay="0"
+        data-aos-duration="800"
+        className="relative"
+      >
+        {/* Dynamic Section Heading */}
+        <div className="mb-8 text-center md:mb-12">
+          <h2 className="mb-3 text-3xl font-semibold leading-normal tracking-tight text-content lg:text-4xl">
+            {currentHeading}
+          </h2>
+          {currentDescription && (
+            <p className="mx-auto max-w-2xl px-4 text-base leading-relaxed text-content-secondary lg:text-lg">
+              {currentDescription}
             </p>
-          </div>
-          <div className="max-w-7xl mx-auto">
-            {/* Header */}
+          )}
+        </div>
 
-            {/* MOBILE Swiper */}
-            <div className="block md:hidden mt-10">
-              <Swiper
-                modules={[Pagination, Autoplay]}
-                spaceBetween={15}
-                autoplay={{ delay: 2000 }}
-                pagination={{ clickable: true }}
-                breakpoints={{
-                  0: { slidesPerView: 2 },
-                  500: { slidesPerView: 3 },
-                }}
-              >
-                {Technology.map((tech, index) => (
-                  // Technology entries have no `id` field; `name` is unique.
-                  <SwiperSlide key={tech.name ?? index}>
-                    <div className="bg-surface rounded-xl p-4 shadow-md flex flex-col items-center">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6">
+          {/* MOBILE Swiper */}
+          <div className="block md:hidden">
+            <Swiper
+              modules={[Pagination, Autoplay]}
+              spaceBetween={14}
+              autoplay={{ delay: 2500, disableOnInteraction: false }}
+              pagination={{ clickable: true }}
+              breakpoints={{
+                0: { slidesPerView: 1.2, centeredSlides: true },
+                480: { slidesPerView: 2 },
+              }}
+              className="pb-10"
+            >
+              {Technology.map((tech, index) => (
+                <SwiperSlide key={tech.name ?? index} className="h-auto">
+                  <div className="flex h-full flex-col items-center justify-between rounded-card border border-line bg-surface p-5 text-center shadow-xs">
+                    <div className="flex flex-col items-center">
                       <img
                         src={tech.img}
-                        alt={tech.alt}
-                        className="w-16 h-16 mb-2"
+                        alt={tech.alt || tech.name}
+                        loading="lazy"
+                        className="mb-3 h-12 w-12 object-contain"
                       />
-                      <h3 className="text-xs font-semibold text-content-secondary">
+                      <h3 className="text-sm font-semibold text-content">
                         {tech.name}
                       </h3>
+                      {tech.description && (
+                        <p className="mt-1.5 text-xs leading-relaxed text-content-secondary">
+                          {tech.description}
+                        </p>
+                      )}
                     </div>
-                  </SwiperSlide>
-                ))}
-              </Swiper>
-            </div>
-
-            {/* Technologies Grid */}
-            <div className="hidden md:block">
-              <div
-                data-aos="fade-up"
-                data-aos-delay="0"
-                data-aos-duration="800"
-                className="flex flex-wrap justify-center gap-10"
-              >
-                {Technology.map((tech, index) => (
-                  <TechCard
-                    key={tech.name ?? index}
-                    technology={tech}
-                    index={index}
-                    isVisible={isVisible}
-                  />
-                ))}
-              </div>
-            </div>
+                  </div>
+                </SwiperSlide>
+              ))}
+            </Swiper>
           </div>
-        </div>
-      )}
-      {/* <div className="xl:hidden grid grid-cols-3 gap-4 px-4">
-        {Technology?.map((item, index) => (
-          <div
-            data-aos="fade-up"
-            data-aos-delay="0"
-            data-aos-duration="800"
-            key={item.name}
-            className=" rounded-lg overflow-hidden cursor-pointer transition-all duration-300 hover:scale-110 hover:filter hover:drop-shadow-[0px_0px_15px_rgba(255,217,0,0.8)] "
-          >
+
+          {/* DESKTOP / TABLET Grid */}
+          <div className="hidden md:block">
             <div
               data-aos="fade-up"
               data-aos-delay="0"
               data-aos-duration="800"
-              className="relative w-full h-16"
+              className="flex flex-wrap justify-center gap-6"
             >
-              <img
-                src={item.img}
-                alt={item.name + ", " + item.alt}
-                className="w-full h-full object-contain"
-              />
-            </div>
-            <div className="text-center text-[10px] md:text-xs font-bold text-content p-2">
-              {item.name}
+              {Technology.map((tech, index) => (
+                <TechCard key={tech.name ?? index} technology={tech} />
+              ))}
             </div>
           </div>
-        ))}
-      </div> */}
-      {/* <div
-        data-aos="fade-up"
-        data-aos-delay="1000"
-        className="px-4 lg:px-8 my-8 block relative z-20 md:hidden">
-        <div
-          data-aos="fade-up"
-          data-aos-delay="1000"
-          className="grid grid-cols-2 sm:grid-cols-3  gap-6">
-          {Technology?.map((item) => (
-            <div
-              key={item.name}
-              className=" rounded-lg overflow-hidden cursor-pointer transition-all duration-300 hover:scale-110 hover:filter hover:drop-shadow-[0px_0px_15px_rgba(255,217,0,0.8)] "
-            >
-              <div className="relative w-full h-28">
-                <img
-                  src={item.img}
-                  alt={item.name + ", " + item.alt}
-                  className="w-full h-full object-contain"
-                />
-              </div>
-              <div className="text-center text-sm text-content p-2">
-                {item.name}
-              </div>
-            </div>
-          ))}
         </div>
-      </div> */}
-      <figure className={Styles.backDropImageShadow}>
-        <img
-          src={Ellipse}
-          alt={Technology[0].alt}
-          className="absolute -bottom-16 w-[250px] md:w-[450px] right-0 z-10 hidden dark:block dark:blur-md"
-        />
-      </figure>
+      </div>
+
+      {/* Decorative Blur Background Element */}
+      {Technology[0] && (
+        <figure className={Styles.backDropImageShadow}>
+          <img
+            src={Ellipse}
+            alt=""
+            aria-hidden="true"
+            className="absolute -bottom-16 right-0 z-10 hidden w-[250px] dark:block dark:blur-md md:w-[450px]"
+          />
+        </figure>
+      )}
     </div>
   );
 };

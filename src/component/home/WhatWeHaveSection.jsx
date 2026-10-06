@@ -7,38 +7,38 @@ import { FiArrowUpRight } from "react-icons/fi";
 
 const ITEMS = [
   {
-    title: "Fellowship Cohorts",
-    blurb: "Work on live real-world products with an industry manager and graduate with an authentic proof of work.",
+    title: "Fellowship",
+    blurb: "Work on real tasks while a mentor reviews your output. The Kre8ly fellowship ends with a project you can talk about in interviews.",
     meta: "10 Specialized Tracks",
     href: "/fellowships",
   },
   {
-    title: "Accredited Courses",
-    blurb: "Structured, career-focused learning paths in development, data science, AI and modern design.",
+    title: "Courses",
+    blurb: "Six career tracks, from full-stack development to graphic design, taught live with recordings if you miss a class.",
     meta: "6 Core Programs",
     href: "/courses",
   },
   {
-    title: "AI ATS Resume Checker",
-    blurb: "Score your CV against strict applicant tracking systems and find formatting flaws instantly.",
+    title: "ATS",
+    blurb: "See how your resume reads to the applicant tracking systems many companies use before a person ever opens it.",
     meta: "Free Utility",
     href: "https://jobs.unifiedmentor.com/ats",
   },
   {
-    title: "Recruiter Resume Builder",
-    blurb: "Build clean, single-page, recruiter-approved resumes using battle-tested professional templates.",
+    title: "Resume Builder",
+    blurb: "Build a clean, recruiter-friendly resume from ready templates and get mentor feedback before you apply.",
     meta: "Guided Tool",
     href: "https://jobs.unifiedmentor.com/student/dashboard",
   },
   {
-    title: "Exclusive Job Board",
-    blurb: "Apply directly to vetted opportunities across our verified hiring partner network with your Kre8ly portfolio.",
+    title: "Job Portal",
+    blurb: "ABrowse openings from our hiring partners in one place instead of checking five different sites.",
     meta: "100+ Hiring Partners",
     href: "/jobs",
   },
   {
-    title: "Take-Home CTC Breakdown",
-    blurb: "Calculate actual monthly in-hand compensation, allowances, tax deductions and ESOP components.",
+    title: "Know Your CTC",
+    blurb: "Not sure what salary to ask for? Run your resume through our AI-powered checker. It reads your skills, experience and projects, then shows the salary range that roles like yours usually offer. You can go into interviews and offer discussions with a realistic number instead of a guess. It's an estimate to guide you, and a quick way to see which skills could raise it.",
     meta: "Salary Calculator",
     href: "https://kyc.unifiedmentor.com/",
   },
@@ -49,8 +49,8 @@ export default function WhatWeHaveSection() {
     <Section tone="canvas" space="lg">
       <SectionHeader
         eyebrow="What We Offer"
-        title="Everything You Need Between College and Your First Offer"
-        lead="Comprehensive programs and real tools engineered to make you job-ready on day one."
+        title="Job-Oriented Online Courses, Fellowships, and Career Tools in One Place"
+        lead="Most people in smaller cities don't lack talent. What they lack is a clear route from a degree to a first job. Our job-oriented online courses are built around the skills companies actually test for, and the tools below help you get through the interview door."
         align="left"
       />
 

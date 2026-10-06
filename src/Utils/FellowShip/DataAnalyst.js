@@ -12,28 +12,29 @@ const TechIcon8 = "/assets/fellowship/DataAnalyst/Icon8.png";
 const TechIcon9 = "/assets/fellowship/DataAnalyst/Icon9.png";
 const TechIcon10 = "/assets/fellowship/DataAnalyst/Icon10.png";
 
+import {
+  MessageSquare, // 1. Discussion
+  Database, // 2. Data Collection (spreadsheets, databases)
+  Filter, // 3. Data Cleaning (missing values, duplicates)
+  SearchCheck, // 4. EDA (distributions, trends, outliers)
+  LineChart, // 5. Statistical Analysis (stats, testing)
+  LayoutDashboard, // 6. Validation (Power BI, Tableau dashboards)
+  Presentation, // 7. Data Storytelling (plain language, presenting)
+  Rocket, // 8. Review and Feedback (mentor comments, review)
+} from "lucide-react";
+
 const P1 = "/assets/fellowship/DataAnalyst/P1.png";
 const P2 = "/assets/fellowship/DataAnalyst/P2.png";
 const P3 = "/assets/fellowship/DataAnalyst/P3.png";
-import {
-  MessageCircle,
-  Edit3,
-  Palette,
-  Code,
-  Layout,
-  Building,
-  CheckCircle,
-  Rocket,
-} from "lucide-react";
 
 export const DataAnalystHeroSection = [
   {
     badge: "Most Popular Course",
     headings: {
-      title: `Data Analyst Fellowship`,
+      title: `Data Analyst Internship Program & Fellowship`,
       subtitle: "Become a Job-Ready Data Analyst in 6 Months",
       description:
-        "Launch your career in data analytics with our <b> Data Analyst Fellowship Programs </b>. This fellowship is designed for beginners and professionals who want to build real-world data skills, gain mentorship from industry experts, and secure a strong position in the data-driven world. Learn tools like Excel, SQL, Python, Power BI, and more with practical case studies and live projects.",
+        "Our data analyst internship programs are built for beginners and for working people who want to move into analytics. You'll learn Excel, SQL, Python and Power BI through case studies and live projects, guided by mentors who work with data every day. It works whether you're in a metro or in a smaller city like Bhopal, Kochi or Ranchi.",
     },
     card: {
       image: WebCard,
@@ -113,72 +114,61 @@ export const DataAnalystTechstack = [
     name: "Excel",
     img: TechIcon1,
     alt: "Excel icon - Technologies & Tools You Will Learn in Data Analyst Fellowship at Kre8ly",
-    description:
-      "Excel is a popular spreadsheet software for data analysis and data management.",
-  },
-  {
-    name: "Github",
-    img: TechIcon2,
-    alt: "Github icon - Technologies & Tools You Will Learn in Data Analyst Fellowship at Kre8ly",
-    description:
-      "GitHub is a code hosting platform for version control and collaboration.",
-  },
-  {
-    name: "Pandas",
-    img: TechIcon3,
-    alt: "Pandas icon - Technologies & Tools You Will Learn in Data Analyst Fellowship at Kre8ly",
-    description:
-      "Pandas is a popular Python library for data manipulation and analysis.",
-  },
-  {
-    name: "Jupyter",
-    img: TechIcon4,
-    alt: "Jupyter icon - Technologies & Tools You Will Learn in Data Analyst Fellowship at Kre8ly",
-    description:
-      "Jupyter is an open-source interactive development environment for Python.",
-  },
-  {
-    name: "Python",
-    img: TechIcon5,
-    alt: "Python icon - Technologies & Tools You Will Learn in Data Analyst Fellowship at Kre8ly",
-    description:
-      "Python is a popular programming language for data analysis and machine learning.",
-  },
-
-  {
-    name: "Tableau",
-    img: TechIcon6,
-    alt: "Tableau icon - Technologies & Tools You Will Learn in Data Analyst Fellowship at Kre8ly",
-    description:
-      "Tableau is a data visualization software for creating interactive dashboards.",
+    description: "Cleaning data, pivot tables and quick analysis",
   },
   {
     name: "Sql",
     img: TechIcon7,
     alt: "SQL icon - Technologies & Tools You Will Learn in Data Analyst Fellowship at Kre8ly",
-    description:
-      "SQL is a standard language for querying and manipulating relational databases.",
+    description: "Pulling the right data out of databases",
   },
   {
-    name: "Firebase",
-    img: TechIcon8,
-    alt: "Firebase icon - Technologies & Tools You Will Learn in Data Analyst Fellowship at Kre8ly",
-    description:
-      "Firebase is a cloud-based platform for building and deploying applications.",
+    name: "Python",
+    img: TechIcon5,
+    alt: "Python icon - Technologies & Tools You Will Learn in Data Analyst Fellowship at Kre8ly",
+    description: "Analysing larger datasets",
   },
   {
-    name: "Power BI",
-    img: TechIcon9,
-    alt: "Power BI icon - Technologies & Tools You Will Learn in Data Analyst Fellowship at Kre8ly",
-    description:
-      "Power BI is a data visualization software for creating interactive dashboards.",
+    name: "Pandas",
+    img: TechIcon3,
+    alt: "Pandas icon - Technologies & Tools You Will Learn in Data Analyst Fellowship at Kre8ly",
+    description: "Analysing larger datasets",
+  },
+  {
+    name: "Jupyter",
+    img: TechIcon4,
+    alt: "Jupyter icon - Technologies & Tools You Will Learn in Data Analyst Fellowship at Kre8ly",
+    description: "Writing and sharing your analysis step by step",
   },
   {
     name: "Seaborn",
     img: TechIcon10,
     alt: "Seaborn icon - Technologies & Tools You Will Learn in Data Analyst Fellowship at Kre8ly",
-    description:
-      "Seaborn is a Python data visualization library based on matplotlib.",
+    description: "Charts that show patterns clearly",
+  },
+  {
+    name: "Power BI",
+    img: TechIcon9,
+    alt: "Power BI icon - Technologies & Tools You Will Learn in Data Analyst Fellowship at Kre8ly",
+    description: "Dashboards for non-technical readers",
+  },
+  {
+    name: "Tableau",
+    img: TechIcon6,
+    alt: "Tableau icon - Technologies & Tools You Will Learn in Data Analyst Fellowship at Kre8ly",
+    description: "Dashboards for non-technical readers",
+  },
+  {
+    name: "Github",
+    img: TechIcon2,
+    alt: "Github icon - Technologies & Tools You Will Learn in Data Analyst Fellowship at Kre8ly",
+    description: "Storing your projects so recruiters can find them",
+  },
+  {
+    name: "Firebase",
+    img: TechIcon8,
+    alt: "Firebase icon - Technologies & Tools You Will Learn in Data Analyst Fellowship at Kre8ly",
+    description: "Working with data from a live app backend",
   },
 ];
 
@@ -188,84 +178,61 @@ export const DataAnalystProjects = [
     title: "Capstone Project",
     alt: "Capstone Project - Kre8ly Machine Learning Fellowship Project",
     description:
-      "Showcase your skills with a capstone project analyzing data insights.",
+      " A full analysis of a business problem, from raw data to final presentation.",
   },
   {
     imgs: P2,
     title: "End-to-End Analysis",
     alt: "End-to-End Analysis  - Kre8ly Machine Learning Fellowship Project",
     description:
-      "Gain real-world experience through data collection, analysis, and reporting.",
+      " Take a dataset through cleaning, analysis, a dashboard and written insights.",
   },
   {
     imgs: P3,
     title: "Portfolio-Ready",
     alt: "Portfolio-Ready  - Kre8ly Machine Learning Fellowship Project",
     description:
-      "Showcase expertise with a capstone project to impress employers.",
+      "Projects packaged with clear write-ups, so a recruiter can understand them in a few minutes.",
   },
 ];
-
-// export const DataAnalystFaq = [
-//   {
-//     question: "Can I learn the front end in 2 months?",
-//     answer: `Focusing on HTML, CSS, and simple JavaScript, it is possible to learn the
-//           fundamentals of front-end development in two months. But mastery necessitates
-//           constant learning and practice.`,
-//   },
-//   {
-//     question: "What course should I do for a front-end developer?",
-//     answer: `Choose HTML, CSS, JavaScript, and responsive design classes from online
-//           education providers like Kre8ly’s top-rated Front-End Web Development
-//           Course.`,
-//   },
-//   {
-//     question: "What's the best way to learn front end web development?",
-//     answer: `Combining online classes, interactive coding environments, and practical
-//           projects is the most effective approach to learn front-end web development. For
-//           efficient skill building, practice constructing websites and ask for advice from
-//           internet forums.`,
-//   },
-//   {
-//     question: "Can I learn front end web development in 3 months?",
-//     answer: `Yes, learning the basics of front-end web development in 3 months is achievable,
-//           focusing on foundational HTML, CSS, and introductory JavaScript. Continued
-//           practice and work on projects can enhance proficiency.`,
-//   },
-//   {
-//     question: "What is the salary of a front-end developer in India?",
-//     answer: `Front-end developer salaries in India vary based on experience and location.
-//           Junior developers might earn around ₹3-5 lakh per annum, while experienced
-//           professionals can earn ₹8-15 lakh or more, depending on the company, experience,
-//           and skill level.`,
-//   },
-// ];
 
 export const DataAnalystFaq = [
   {
     question: "What is the Data Analyst Fellowship at Kre8ly?",
-    answer: `The Data Analyst Fellowship is a comprehensive program designed to provide in-depth knowledge and hands-on experience in data analysis, preparing you for real-world challenges.`,
+    answer: `It's a mentor-led program where you learn Excel, SQL, Python and Power BI by working on real projects. It's set up like an internship, so you finish with a portfolio and a certificate.`,
   },
   {
     question: "How long is the Data Analyst Fellowship program?",
-    answer: `The fellowship program typically lasts 6 months, with flexible learning schedules to accommodate working professionals. During this period, you will gain practical experience through projects and mentorship.`,
+    answer: `The program runs for about six months. Each week combines self-paced sessions with mentor doubt sessions.`,
   },
   {
-    question: "Do I need prior experience to join the Data Analyst Fellowship?",
-    answer: `While prior experience is helpful, it is not mandatory. The program is designed to cater to beginners as well as those with some background in data analysis or related fields.`,
+    question: "Do I need prior experience to join?",
+    answer: `No. The fellowship is beginner friendly. If you're comfortable with a computer and curious about numbers, you can start. Working professionals are welcome too.`,
   },
   {
     question:
       "What career opportunities can I expect after completing the fellowship?",
-    answer: `Graduates of the fellowship often secure roles such as Data Analyst, Data Scientist, Business Analyst, and similar positions at top tech companies or in various industries that rely on data-driven decision-making.`,
+    answer: `Roles such as data analyst, business analyst, reporting analyst and BI analyst. What you land depends on your skills, your projects and how you do in interviews.`,
   },
   {
     question: "Is there any job assistance after completing the fellowship?",
-    answer: `Yes, Kre8ly offers career support through job placement assistance, resume building, and interview preparation to help you land a job in the data analysis field.`,
+    answer: `Yes. You get resume reviews, interview preparation, access to our job portal and interview opportunities with hiring partners. We support your search, but we can't promise a specific job.`,
   },
   {
     question: "Can I access the Data Analyst Fellowship online?",
-    answer: `Yes, the fellowship is available as an online program, allowing you to learn at your own pace while receiving mentorship and guidance from industry experts`,
+    answer: `Yes. It runs through live mentor sessions and recorded lessons, so you can join from any city or town.`,
+  },
+  {
+    question: "How much does the fellowship cost?",
+    answer: `Pricing starts at ₹399. Check the enrolment page for the current fee and the next batch date.`,
+  },
+  {
+    question: "Which tools will I learn?",
+    answer: `Excel, SQL, Python, Pandas, Jupyter, Power BI, Tableau, Seaborn and GitHub.`,
+  },
+  {
+    question: "Can I join from a smaller city?",
+    answer: ` Yes. Everything runs online, so you can learn from Jaipur, Patna, Kochi or any other town with a stable internet connection. Recorded sessions help if you miss a live class.`,
   },
 ];
 
@@ -280,63 +247,63 @@ export const roadmapSteps = [
     id: 1,
     title: "Discussion",
     description:
-      "Engage in discussions to clarify project goals and ensure your data science approach aligns with business objectives.",
-    icon: MessageCircle,
+      "Start with the business question. What does the team want to find out, and what would a useful answer look like?",
+    icon: MessageSquare,
     color: "blue",
   },
   {
     id: 2,
     title: "Data Collection",
     description:
-      "Gather and organize data from various sources, ensuring it is comprehensive and relevant for your analysis.",
-    icon: Edit3,
+      "Pull data from spreadsheets, databases and files, and check that it covers what you need.",
+    icon: Database,
     color: "green",
   },
   {
     id: 3,
     title: "Data Cleaning",
     description:
-      "Clean and preprocess the data to handle missing values, outliers, and ensure it is a useable format for analysis.",
-    icon: Palette,
+      "Fix missing values, duplicates and odd entries so the numbers can be trusted. Analysts spend a lot of their time here.",
+    icon: Filter,
     color: "purple",
   },
   {
     id: 4,
     title: "Exploratory Data Analysis (EDA)",
     description:
-      "Conduct exploratory data analysis to understand data distributions, identify patterns, and generate insights.",
-    icon: Code,
+      "Look at distributions, trends and outliers to see what the data is hinting at.",
+    icon: SearchCheck,
     color: "orange",
   },
   {
     id: 5,
-    title: "Modeling",
+    title: "Statistical Analysis",
     description:
-      "Develop and train machine learning models using appropriate algorithms to predict, classify, or cluster the data.",
-    icon: Layout,
+      "Test your ideas with statistics instead of relying on a hunch.",
+    icon: LineChart,
     color: "indigo",
   },
   {
     id: 6,
     title: "Validation",
     description:
-      "Validate the performance of your models using techniques like cross-validation and adjust parameters to improve accuracy.",
-    icon: Building,
+      "Turn your findings into charts and dashboards in Power BI or Tableau.",
+    icon: LayoutDashboard,
     color: "teal",
   },
   {
     id: 7,
-    title: "Deployment",
+    title: "Data Storytelling",
     description:
-      "Deploy the models into a production environment where they can be used to make real-time predictions or decisions.",
-    icon: CheckCircle,
+      "Explain what you found, in plain language, to someone who doesn't work with data.",
+    icon: Presentation,
     color: "red",
   },
   {
     id: 8,
-    title: "Monitoring and Maintenance",
+    title: "Review and Feedback",
     description:
-      "Continuously monitor the performance of deployed models and update them as necessary to maintain accuracy and relevance.",
+      "Present your work to mentors, take their comments and improve it.",
     icon: Rocket,
     color: "slate",
   },

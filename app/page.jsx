@@ -1,8 +1,8 @@
 import HomeClient from "./HomeClient";
 
 export const metadata = {
-  title: "Kre8ly: Top Online Courses Platform & Training",
-  description: "We offer the best job-oriented online certification courses in data science, digital marketing, web development and more. Join the best online courses platform.",
+  title: "Online Certification Courses in India for Jobs | Kre8ly",
+  description: "Job-oriented online certification courses and tech fellowships with live mentors, real projects and placement support. Built for learners across India.",
   keywords: ["Kre8ly", "Job-Oriented Online Courses", "Best Online Courses Platform", "Data Science Online Course", "Digital Marketing Certification", "Web Development Online Course", "Online Training Platform", "Career-Focused Certification Courses", "Best Online Courses for Jobs Skill Development Courses"],
   authors: [{ name: "Kre8ly" }],
   robots: { index: true, follow: true },

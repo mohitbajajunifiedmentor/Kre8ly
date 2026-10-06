@@ -3,14 +3,14 @@ import { getDynamicFutureDate } from "../CourseCardInfos";
 const DataScience = "/assets/DataScience/DataScienceDesktop.svg";
 const DataScienceMobile = "/assets/DataScience/DataScienceCourseMobile.svg";
 import {
-  MessageCircle,
-  Edit3,
-  Palette,
-  Code,
-  Layout,
-  Building,
-  CheckCircle,
-  Rocket,
+  MessageSquare,
+  Database,
+  Eraser, // or Sparkles / Filter
+  BarChart2,
+  Cpu, // or Brain
+  CheckCheck,
+  CloudUpload,
+  Activity,
 } from "lucide-react";
 
 export const DataScienceHomeInfo = [
@@ -107,64 +107,64 @@ export const roadmapSteps = [
     id: 1,
     title: "Discussion",
     description:
-      "Engage in discussions to clarify project goals and ensure your data science approach aligns with business objectives.",
-    icon: MessageCircle,
+      "Pin down the business question first, so the analysis aims at something useful.",
+    icon: MessageSquare, // Replaces MessageCircle (conversation & alignment)
     color: "blue",
   },
   {
     id: 2,
     title: "Data Collection",
     description:
-      "Gather and organize data from various sources, ensuring it is comprehensive and relevant for your analysis.",
-    icon: Edit3,
+      "Pull data from files, databases and other sources, and check that it covers the problem.",
+    icon: Database, // Replaces Edit3 (fits databases and data extraction)
     color: "green",
   },
   {
     id: 3,
     title: "Data Cleaning",
     description:
-      "Clean and preprocess the data to handle missing values, outliers, and ensure it is a useable format for analysis.",
-    icon: Palette,
+      "Handle missing values, outliers and messy formats so the data is ready to use.",
+    icon: Eraser, // Replaces Palette (represents sanitizing & cleaning data)
     color: "purple",
   },
   {
     id: 4,
-    title: "Exploratory Data Analysis (EDA)",
+    title: "Exploratory Data Analysis",
     description:
-      "Conduct exploratory data analysis to understand data distributions, identify patterns, and generate insights.",
-    icon: Code,
+      "Plot distributions, spot patterns and form your first ideas about what's going on.",
+    icon: BarChart2, // Replaces Code (fits statistical plotting and distributions)
     color: "orange",
   },
   {
     id: 5,
     title: "Modeling",
     description:
-      "Develop and train machine learning models using appropriate algorithms to predict, classify, or cluster the data.",
-    icon: Layout,
+      "Train machine learning models to predict, classify or group the data.",
+    icon: Cpu, // Replaces Layout (represents machine learning models / computation)
     color: "indigo",
   },
   {
     id: 6,
     title: "Validation",
     description:
-      "Validate the performance of your models using techniques like cross-validation and adjust parameters to improve accuracy.",
-    icon: Building,
+      "Test your models with methods like cross-validation, then tune them to improve accuracy.",
+    icon: CheckCheck, // Replaces Building (fits verification & tuning)
     color: "teal",
   },
   {
     id: 7,
     title: "Deployment",
     description:
-      "Deploy the models into a production environment where they can be used to make real-time predictions or decisions.",
-    icon: CheckCircle,
+      "Put a model where it can be used to make predictions or decisions.",
+    icon: CloudUpload, // Replaces CheckCircle (standard production deployment symbol)
     color: "red",
   },
   {
     id: 8,
     title: "Monitoring and Maintenance",
     description:
-      "Continuously monitor the performance of deployed models and update them as necessary to maintain accuracy and relevance.",
-    icon: Rocket,
+      "Watch how the model performs over time and update it when it slips.",
+    icon: Activity, // Replaces Rocket (represents performance health and uptime tracking)
     color: "slate",
   },
 ];

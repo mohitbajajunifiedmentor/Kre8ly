@@ -34,10 +34,10 @@ export const DataScienceHeroSection = [
   {
     badge: "Most Popular Course",
     headings: {
-      title: `Data Science Fellowship`,
-      subtitle: "Become a Job-Ready Data Science Engineer in 6 Months",
+      title: `Data Science Internship Program & Fellowship`,
+      subtitle: "Become job-ready in data science in 6 months",
       description:
-        "Master Data Science with expert mentoring, real-world projects, and a success-driven curriculum. Gain practical skills, solve real-world problems, and unlock career opportunities in the dynamic field of data science.",
+        "Learn Python, statistics and machine learning by building real projects with mentors who work in data. The program runs online, so students and freshers in Kanpur, Nashik, Vijayawada or Siliguri can join without moving to a metro.",
     },
     card: {
       image: WebCard,
@@ -114,73 +114,64 @@ export const DataScienceHeroSection = [
 
 export const DataScienceTechstack = [
   {
-    name: "Excel",
-    img: TechIcon1,
-    alt: "Excel icon - Technologies & Tools You Will Learn in Data Science Fellowship at Kre8ly",
-    description:
-      "Excel is a popular spreadsheet software for data analysis and data management.",
-  },
-  {
-    name: "Github",
-    img: TechIcon2,
-    alt: "Github icon - Technologies & Tools You Will Learn in Data Science Fellowship at Kre8ly",
-    description:
-      "GitHub is a code hosting platform for version control and collaboration.",
+    name: "Python",
+    img: TechIcon5,
+    alt: "Python icon - Technologies & Tools You Will Learn in Data Science Fellowship at Kre8ly",
+    description: "The main language for analysis and machine learning.",
   },
   {
     name: "Pandas",
     img: TechIcon3,
     alt: "Pandas icon - Technologies & Tools You Will Learn in Data Science Fellowship at Kre8ly",
-    description:
-      "Pandas is a popular Python library for data manipulation and analysis.",
+    description: "Cleaning and reshaping data.",
   },
   {
     name: "Jupyter",
     img: TechIcon4,
     alt: "Jupyter icon - Technologies & Tools You Will Learn in Data Science Fellowship at Kre8ly",
-    description:
-      "Jupyter is an open-source interactive development environment for Python.",
+    description: "Running and sharing your analysis step by step.",
   },
   {
-    name: "Python",
-    img: TechIcon5,
-    alt: "Python icon - Technologies & Tools You Will Learn in Data Science Fellowship at Kre8ly",
-    description:
-      "Python is a popular programming language for data analysis and machine learning.",
+    name: "MatPlot",
+    img: TechIcon11,
+    alt: "MatPlot icon - Technologies & Tools You Will Learn in Data Science Fellowship at Kre8ly",
+    description: "Plotting charts and statistical visualizations.",
+  },
+  {
+    name: "SQL",
+    img: TechIcon7,
+    alt: "SQL icon - Technologies & Tools You Will Learn in Data Science Fellowship at Kre8ly",
+    description: "Pulling data from databases.",
+  },
+  {
+    name: "Excel",
+    img: TechIcon1,
+    alt: "Excel icon - Technologies & Tools You Will Learn in Data Science Fellowship at Kre8ly",
+    description: "Quick checks and simple analysis.",
   },
   {
     name: "Tableau",
     img: TechIcon6,
     alt: "Tableau icon - Technologies & Tools You Will Learn in Data Science Fellowship at Kre8ly",
-    description:
-      "Tableau is a data visualization software for creating interactive dashboards.",
-  },
-  {
-    name: "Sql",
-    img: TechIcon7,
-    alt: "SQL icon - Technologies & Tools You Will Learn in Data Science Fellowship at Kre8ly",
-    description:
-      "SQL is a standard language for querying and manipulating relational databases.",
-  },
-  {
-    name: "Firebase",
-    img: TechIcon8,
-    alt: "Firebase icon - Technologies & Tools You Will Learn in Data Science Fellowship at Kre8ly",
-    description:
-      "Firebase is a cloud-based platform for building and deploying applications.",
+    description: "Dashboards for non-technical readers.",
   },
   {
     name: "Power BI",
     img: TechIcon9,
     alt: "Power BI icon - Technologies & Tools You Will Learn in Data Science Fellowship at Kre8ly",
-    description:
-      "Power BI is a data visualization software for creating interactive dashboards.",
+    description: "Dashboards and business intelligence reports.",
   },
   {
-    name: "MatPlot",
-    img: TechIcon11,
-    description:
-      "MatPlot is a data visualization software for creating interactive dashboards.",
+    name: "GitHub",
+    img: TechIcon2,
+    alt: "GitHub icon - Technologies & Tools You Will Learn in Data Science Fellowship at Kre8ly",
+    description: "Storing your projects so recruiters can find them.",
+  },
+  {
+    name: "Firebase",
+    img: TechIcon8,
+    alt: "Firebase icon - Technologies & Tools You Will Learn in Data Science Fellowship at Kre8ly",
+    description: "Working with data from a live app backend.",
   },
 ];
 
@@ -190,102 +181,82 @@ export const DataScienceProjects = [
     title: "Zomato Data Analysis",
     alt: "Zomato Data Analysis - Kre8ly Data Science Fellowship Project",
     description:
-      "Analyze Zomato data to uncover insights on restaurants and customer trends.",
+      "Analyse restaurant data from a food delivery platform to find patterns.",
   },
   {
     imgs: P2,
     title: "Roadsy",
-    alt: "Roadsy: Automated Traffic Sign Detection and Classification- Kre8ly Data Science Fellowship Project",
-    description: "Optimize road management and transportation efficiency.",
+    alt: "Roadsy: Automated Traffic Sign Detection and Classification - Kre8ly Data Science Fellowship Project",
+    description: "Detect and classify traffic signs from images.",
   },
   {
     imgs: P3,
     title: "Fake News Detection",
-    alt: "Fake News Detection- Kre8ly Data Science Fellowship Project",
-    description:
-      "Detect fake news using machine learning algorithms for accurate classification.",
+    alt: "Fake News Detection - Kre8ly Data Science Fellowship Project",
+    description: "Train a model that flags misleading news articles.",
   },
   {
     imgs: P4,
     title: "Smart Vision",
-    alt: "SmartVision: Intelligent Face Mask Monitoring System - Kre8ly Data Science Fellowship Project",
-    description: "Develop a enhanced image recognition and real-time analysis.",
+    alt: "Smart Vision: Intelligent Face Mask Monitoring System - Kre8ly Data Science Fellowship Project",
+    description:
+      "Build a system that monitors face mask use with computer vision.",
   },
   {
     imgs: P5,
     title: "Fire & Smoke Detection via CNN",
     alt: "Fire and Smoke Detection using CNN - Kre8ly Data Science Fellowship Project",
     description:
-      "Detect fire and smoke using CNN for real-time hazard identification.",
+      "Use a convolutional neural network to spot fire and smoke in images.",
   },
   {
     imgs: P6,
     title: "OpenAI API: Customizable Chatbot",
     alt: "Building a customisable chatbot using OpenAI API - Kre8ly Data Science Fellowship Project",
-    description:
-      "Build a customizable chatbot using OpenAI API for dynamic interactions.",
+    description: "Build a chatbot that you can tailor using the OpenAI API.",
   },
 ];
-
-// export const DataScienceFaq = [
-//   {
-//     question: "Can I learn the front end in 2 months?",
-//     answer: `Focusing on HTML, CSS, and simple JavaScript, it is possible to learn the
-//           fundamentals of front-end development in two months. But mastery necessitates
-//           constant learning and practice.`,
-//   },
-//   {
-//     question: "What course should I do for a front-end developer?",
-//     answer: `Choose HTML, CSS, JavaScript, and responsive design classes from online
-//           education providers like Kre8ly’s top-rated Front-End Web Development
-//           Course.`,
-//   },
-//   {
-//     question: "What's the best way to learn front end web development?",
-//     answer: `Combining online classes, interactive coding environments, and practical
-//           projects is the most effective approach to learn front-end web development. For
-//           efficient skill building, practice constructing websites and ask for advice from
-//           internet forums.`,
-//   },
-//   {
-//     question: "Can I learn front end web development in 3 months?",
-//     answer: `Yes, learning the basics of front-end web development in 3 months is achievable,
-//           focusing on foundational HTML, CSS, and introductory JavaScript. Continued
-//           practice and work on projects can enhance proficiency.`,
-//   },
-//   {
-//     question: "What is the salary of a front-end developer in India?",
-//     answer: `Front-end developer salaries in India vary based on experience and location.
-//           Junior developers might earn around ₹3-5 lakh per annum, while experienced
-//           professionals can earn ₹8-15 lakh or more, depending on the company, experience,
-//           and skill level.`,
-//   },
-// ];
 
 export const DataScienceFaq = [
   {
     question: "What is the Data Science Fellowship Program at Kre8ly?",
-    answer: `This program offers a combination of mentorship, real-world projects, and training to build a strong foundation in data science, preparing you for a successful career.`,
+    answer: `It's a mentor-led online program where you learn Python, statistics and machine learning by building real projects. It's set up like an internship, so you finish with a portfolio and a certificate.`,
   },
   {
     question: "How long is the Data Science Fellowship program?",
-    answer: `The fellowship lasts for 6 months, providing comprehensive training and hands-on experience in data science concepts and tools.`,
+    answer: `The program runs for about six months, with weekly self-paced sessions and mentor doubt sessions.`,
   },
   {
     question: "What will I learn during the Data Science Fellowship?",
-    answer: `You will learn data analysis, machine learning, statistical modeling, and how to use tools like Python, R, and SQL to solve real business problems.`,
+    answer: `You'll learn Python, statistics and probability, data cleaning, exploratory analysis and machine learning, plus tools like SQL, Pandas, Tableau and Power BI. You'll also work through projects that cover modeling, validation and deployment.`,
   },
   {
     question: "Is the Data Science Fellowship suitable for beginners?",
-    answer: `Yes, the program is designed to cater to beginners as well as professionals, with a focus on practical skills and real-world problem-solving.`,
+    answer: `Yes. It's beginner friendly and starts with the foundations of data science, statistics and Python.`,
   },
   {
     question: "Do I receive a certificate after completing the fellowship?",
-    answer: `Yes, upon successful completion, you will receive a certificate from Kre8ly that validates your expertise in data science.`,
+    answer: `Yes. You receive a Kre8ly certificate that you can add to your resume and LinkedIn profile.`,
   },
   {
     question: "How does the mentorship work during the fellowship?",
-    answer: `You’ll be paired with an experienced mentor who will guide you throughout the program, provide feedback on your work, and help you with career development.`,
+    answer: `Through live mentor sessions, weekly doubt sessions and feedback on your projects.`,
+  },
+  {
+    question: "Do I need coding experience or a maths background?",
+    answer: `No. The program starts from the basics of Python and statistics. Being curious about numbers and patient with practice will help more than a maths degree.`,
+  },
+  {
+    question: "Can undergraduates or people from smaller cities join?",
+    answer: `Yes. Undergraduates can start while still in college. Everything is online, so you can learn from Kanpur, Nashik or any other town with a stable internet connection. Recordings are there if you miss a live session.`,
+  },
+  {
+    question: "Is there job assistance after the fellowship?",
+    answer: `Yes. You get resume reviews, interview preparation, access to our job portal and interview opportunities with hiring partners. We support your search, but we can't promise a specific job.`,
+  },
+  {
+    question: "How much does the fellowship cost?",
+    answer: `Pricing starts at ₹399. Check the enrolment page for the current fee and the next batch date.`,
   },
 ];
 

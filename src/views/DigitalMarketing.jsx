@@ -130,7 +130,7 @@ const DigitalMarketing = ({ darkMode, setDarkMode, location }) => {
       <Helmet>
         {/* Page Title */}
         <title>
-          Best Online Digital Marketing Course Kre8ly
+          Digital Marketing Internship Courses Online | Kre8ly
         </title>
 
         {/* Meta Viewport */}
@@ -145,7 +145,7 @@ const DigitalMarketing = ({ darkMode, setDarkMode, location }) => {
         {/* Meta Description */}
         <meta
           name="description"
-          content={`Join Kre8ly’s Best Online Digital Marketing Course and learn SEO, ads, and content marketing with hands-on projects. Check & enroll now!`}
+          content={`Learn SEO, Google Ads and social media marketing online with mentors. Real projects, certificate, work-from-home friendly. For freshers in India.`}
         />
 
         {/* Canonical Link */}
@@ -172,15 +172,6 @@ const DigitalMarketing = ({ darkMode, setDarkMode, location }) => {
       
       <div className="flex flex-col min-h-screen overflow-hidden">
         <main className="flex-grow flex items-center justify-center relative">
-          {/* <Snowfall
-            color="#fff"
-            snowflakeCount={400}
-            style={{
-              zIndex: 20,
-            }}
-            speed={[0, 0.5]}
-            wind={[0, 0.5]}
-          /> */}
           <div
             data-aos="fade-up"
             data-aos-delay="0"
@@ -194,12 +185,6 @@ const DigitalMarketing = ({ darkMode, setDarkMode, location }) => {
               data-aos-duration="800"
               className="w-full h-full bg-transparent relative overflow-hidden"
             >
-              {/* <img
-                src={Ellipse}
-                alt="Ellipse"
-                className="absolute -top-16 w-[250px] md:w-[450px] -left-[12rem] md:-left-20 z-10 hidden dark:block"
-              /> */}
-              {/* <div className="p-4 sm:p-6 lg:p-8"> */}
               <Home info={DigitalMarketingHomeInfo} location={location} />
               {/* </div> */}
             </section>

@@ -192,8 +192,7 @@ const ProgramTimeline = () => {
           Program Timeline
         </h2>
         <p className="text-lg text-content-secondary max-w-2xl mx-auto">
-          Real experiences from learners who achieved their goals and
-          transformed careers with our guidance and support.
+          Each week has self-paced sessions and mentor doubt sessions, and the month ends with an HR placement session.
         </p>
       </div>
 

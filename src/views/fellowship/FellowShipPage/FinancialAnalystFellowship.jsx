@@ -12,7 +12,8 @@ import {
 } from "../../../Utils/FinancialAnalyst/FinancialAnalystHomeInfo";
 import { roadmapSteps } from "../../../Utils/FinancialAnalyst/FinancialAnalystHomeInfo";
 import TechStack from "../../../component/FellowShip/TechStack";
-const MainImage = "/assets/fellowship/FinancialAnalyst/FinancialAnalystFellowship.svg";
+const MainImage =
+  "/assets/fellowship/FinancialAnalyst/FinancialAnalystFellowship.svg";
 import IndustryExperts from "../../../component/FellowShip/IndustryExperts";
 import { CarouselInfo } from "../../../Utils/MachineLearning/CarouselInfo";
 import FutureDevelopmentComponent from "../../../component/FellowShip/FutureDevelopmentComponent";
@@ -74,6 +75,9 @@ import { DataAnalystHomeInfo } from "../../../Utils/DataAnalyst/DataAnalystHomeI
 import Certificate from "../../../component/MachineLearning/Certificate";
 import ProgramTimeline from "../../../component/MachineLearning/ProgramTimeline";
 import ChatBot from "@/component/ChatBot/ChatBot";
+import { FiCheckCircle, FiArrowRight } from "react-icons/fi";
+import PlacementSupportSwiper from "@/component/PlacementSupportSwiper";
+import Reveal from "@/component/ui/Reveal";
 
 const FinancialAnalystFellowship = ({ darkMode, setDarkMode, location }) => {
   const [closeForm, setCloseForm] = useState(false);
@@ -83,16 +87,11 @@ const FinancialAnalystFellowship = ({ darkMode, setDarkMode, location }) => {
   const handleModuleFormToggle = (isOpen) => {
     setModuleFormOpen(isOpen);
   };
-  // Shared section styling for this page. Was hard-coded `text-content` with
-  // a `text-content` counterpart (where the legacy `primary` token is
-  // plain #fff); both are now single semantic tokens that theme themselves.
-  // `text-justify` was also dropped — justified text on narrow mobile columns
-  // opens large uneven word gaps and hurts readability.
+
   const sectionStylings = {
     section:
       "w-full h-full flex justify-center items-center gap-5 flex-col overflow-x-hidden",
-    title:
-      "text-base md:text-xl font-semibold text-content mb-4",
+    title: "text-base md:text-xl font-semibold text-content mb-4",
     subTitle: "text-content-secondary text-xs md:text-lg mb-4",
   };
 
@@ -242,7 +241,8 @@ const FinancialAnalystFellowship = ({ darkMode, setDarkMode, location }) => {
       icon: Extra1,
       icon_alt: "Professional Certificate",
       title: "Professional Certificate",
-      subtitle: `Become a certified Web Development  with an official certificate from Kre8ly.`,
+      subtitle:
+        "Become a certified data analyst with an official certificate from Kre8ly.",
       link: "#certificate",
       target: "No",
     },
@@ -251,37 +251,43 @@ const FinancialAnalystFellowship = ({ darkMode, setDarkMode, location }) => {
       icon_alt: "Resume Builder",
       title: "Resume Builder",
       subtitle:
-        "Get dedicated career guidance and mentoring from our mentors to enhance your resume using our builder.",
+        "Get guidance from mentors and build a stronger resume with our builder.",
       link: "https://jobs.unifiedmentor.com/",
       target: "Yes",
     },
     {
       icon: Extra3,
-      icon_alt: "Resume Builder",
+      icon_alt: "Job Portal",
       title: "Job Portal",
       subtitle:
-        "Get dedicated career guidance and mentoring from our mentors to improve your job prospects on our portal.",
+        "Browse openings from our hiring partners and apply from one place.",
       link: "https://jobs.unifiedmentor.com/",
       target: "Yes",
     },
     {
       icon: Extra4,
-      icon_alt: "Chance to work on real project",
-      title: "Chance to work on real project",
-      subtitle:
-        "Get a chance to work on real project in Kre8ly or any other real projects while learning!",
+      icon_alt: "Chance to Work on Real Projects",
+      title: "Chance to Work on Real Projects",
+      subtitle: "Work on real projects at Kre8ly or elsewhere while you learn.",
       link: "#projects",
       target: "no",
     },
   ];
 
+  const eligibilityPoints = [
+    "A fresher with a BCom, BBA, MCom, MBA, economics or engineering degree who wants a first job in finance.",
+    "Working in accounts, sales or operations and thinking about moving into analysis.",
+    "Based in a smaller city, where finance internships are rare and moving to a metro costs more than the first salary.",
+    "New to the subject. The fellowship starts with the basics.",
+  ];
+
   return (
     <>
       <Helmet>
-        <title>Financial Analyst Fellowship Program | Kre8ly</title>
+        <title>Online Financial Analyst Internship Program | Kre8ly</title>
         <meta
           name="description"
-          content="Accelerate your career with Kre8ly's Financial Analyst Fellowship. Learn financial analysis from experts & get hands-on training. Apply now!"
+          content="Learn financial analysis online with mentors: Excel, financial statements, Python and real projects, plus placement support. Starts at ₹399."
         />
         <meta
           name="keywords"
@@ -294,7 +300,7 @@ const FinancialAnalystFellowship = ({ darkMode, setDarkMode, location }) => {
 
         <meta name="robots" content="index, follow" />
       </Helmet>
-      
+
       <div className="flex flex-col w-full min-h-screen">
         <main className="flex-grow gap-5 overflow-hidden">
           <section
@@ -307,32 +313,10 @@ const FinancialAnalystFellowship = ({ darkMode, setDarkMode, location }) => {
             <FellowshipHomeSection PageDetails={FinancialAnalystHeroSection} />
           </section>
 
-          {/* <section
-            data-aos="fade-up"
-            data-aos-delay="0"
-            data-aos-duration="800"
-            className={`${sectionStylings?.section} container mx-auto`}
-          >
-            <h5
-              data-aos="fade-up"
-              data-aos-delay="0"
-              data-aos-duration="800"
-              className={`${sectionStylings?.title}`}
-              style={{
-                lineHeight: "1.5em",
-              }}
-            >
-              Our Accreditation
-            </h5>
-            <AccredationSwiper />
-            <AccreditationFellowship />
-          </section> */}
-
           <section
             data-aos="fade-up"
             data-aos-delay="0"
             data-aos-duration="800"
-            // data-aos-delay="0"
             className="w-full h-full flex flex-col items-center justify-center text-center  relative pb-3 md:my-20"
           >
             <div className="absolute md:-top-32 w-[250px] md:w-[450px] -left-10 select-none blur-md  z-10">
@@ -413,116 +397,19 @@ const FinancialAnalystFellowship = ({ darkMode, setDarkMode, location }) => {
             </div>
           </section>
 
-          {/* <section
-            data-aos="fade-up"
-            data-aos-delay="0"
-            data-aos-duration="800"
-            className={`${sectionStylings?.section} container mx-auto`}
-          >
-            <div
-              data-aos="fade-up"
-              data-aos-delay="0"
-              data-aos-duration="800"
-              className="w-full h-full flex flex-col justify-center items-center"
-            >
-              {" "}
-              <h2
-                data-aos="fade-up"
-                data-aos-delay="0"
-                data-aos-duration="800"
-                className={`${sectionStylings?.title}`}
-              >
-                Technologies & Tools You Will Learn
-              </h2>
-              <p className={`${sectionStylings?.subTitle}`}>
-                Master cutting-edge technologies and tools, including HTML, CSS,
-                JavaScript, Python, SQL, and more.
-              </p>
-            </div>
-
-            <TechStack
-              TechStacksArray={FinancialAnalystTechStack}
-              MainImage={MainImage}
-            />
-          </section> */}
-
           <section
             data-aos="fade-up"
             data-aos-delay="0"
             data-aos-duration="800"
             className="w-full h-full flex flex-col items-center justify-center text-center gap-10 bg-surface-sunken"
           >
-            {/* <h2
-                          data-aos="zoom-out"
-                          data-aos-delay="0"
-                          data-aos-duration="800"
-                          className="text-lg md:text-3xl font-semibold text-content"
-                        >
-                          {`${CourseName}`} Roadmap
-                        </h2> */}
-            {/* <h2 className="text-3xl lg:text-4xl font-semibold text-gray-900 mb-4">
-                          {`${CourseName}`} Roadmap
-                        </h2> */}
-            {/* <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                          Our structured 8-step process ensures your project is delivered
-                          on time, within budget, and exceeds your expectations.
-                        </p> */}
             <CourseRoadmap
               ModuleInfo={roadmapSteps}
               roadmapSteps={roadmapSteps}
-              varient={"financial-analyst"}
-              courseName={"Financial Analyst Fellowship Roadmap"}
+              varient={"FinancialAnalystFellowship"}
+              courseName={"How Our Online Financial Analyst Internship Works"}
             />
           </section>
-
-          {/* <section
-            data-aos="fade-up"
-            data-aos-delay="0"
-            data-aos-duration="800"
-            className={`${sectionStylings?.section}`}
-            style={{
-              backgroundImage: `url(${BackGround})`,
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-              backgroundRepeat: "no-repeat",
-            }}
-          >
-            <div
-              data-aos="fade-up"
-              data-aos-delay="0"
-              data-aos-duration="800"
-              className="w-full h-full flex  gap-5 flex-col justify-center items-center"
-            >
-              <h2
-                data-aos="fade-up"
-                data-aos-delay="0"
-                data-aos-duration="800"
-                className={`${sectionStylings?.title}`}
-              >
-                Meet Our Industry Experts
-              </h2>
-              <p
-                data-aos="fade-up"
-                data-aos-delay="0"
-                data-aos-duration="800"
-                className={`text-content-secondary text-base sm:text-xl  text-center w-full md:w-[90%] mx-auto xl:w-[70%]`}
-                style={{
-                  lineHeight: 1.6,
-                }}
-              >
-                Learn Web Development, Data Science, Digital Marketing, Machine
-                Learning, and UI/UX Design from experts. Master skills and
-                accelerate your career!
-              </p>
-            </div>
-            <div className="w-full h-full flex flex-col items-center justify-center text-center gap-10 py-5 container mx-auto">
-              <IndustryExperts
-                CarouselInfo={CarouselInfo}
-                varient={"financial-analyst"}
-              />
-            </div>
-            <hr className="w-1/2 md:w-1/4 mt-2 bg-white/50 mx-auto" />
-          </section> */}
 
           <section
             data-aos="fade-up"
@@ -538,16 +425,6 @@ const FinancialAnalystFellowship = ({ darkMode, setDarkMode, location }) => {
               setShowCurriculum={setShowCurriculum}
               onFormToggle={handleModuleFormToggle}
             />
-            {/* <button
-                data-aos="zoom-out-up"
-                data-aos-delay="0"
-                data-aos-duration="800"
-                onClick={handleDownloadFile}
-                className="hidden border border-line-strong hover:bg-surface-sunken gap-2 -z-10 dark:hover:text-content hover:bg-surface-sunken dark:bg-transparent dark:text-white text-content px-4  py-3 md:flex items-center font-bold w-fit justify-center rounded-md text-base transition-all duration-300"
-              >
-                Download Detailed Curriculum
-                <FaCloudDownloadAlt size={25} />
-              </button> */}
             {closeForm && (
               <div className="fixed  top-0 left-0 w-full h-full  flex items-center justify-center bg-black/50 md:data-aos=zoom-out-up md:data-aos-delay=0 md:data-aos-duration=800">
                 <Forms
@@ -558,23 +435,79 @@ const FinancialAnalystFellowship = ({ darkMode, setDarkMode, location }) => {
             )}
           </section>
 
-          {/* <section
+          <section
             data-aos="fade-up"
             data-aos-delay="0"
             data-aos-duration="800"
-            className={`${sectionStylings?.section} md:gap-10 container mx-auto overflow-hidden`}
+            className="relative w-full py-16 px-4 sm:px-6 lg:px-8 bg-canvas text-content"
           >
-            <h4
-              data-aos="fade-up"
-              data-aos-delay="0"
-              data-aos-duration="800"
-              className={`${sectionStylings?.title}`}
-            >
-              Join Kre8ly Internship to Shape <br /> the future of
-              development
-            </h4>
-            <FutureDevelopmentComponent swiperColor={swiperColor} />
-          </section> */}
+            <div className="mx-auto max-w-6xl space-y-10">
+              {/* Block 1: Financial Analyst Internship for Freshers and Career Switchers */}
+              <div className="group rounded-2xl border border-line bg-surface p-8 sm:p-10 lg:p-12 shadow-xs transition-all duration-300 hover:border-brand/40 hover:shadow-lg">
+                <span className="inline-flex items-center gap-2 rounded-full border border-line bg-surface-sunken px-3.5 py-1 text-xs font-semibold uppercase tracking-wider text-brand">
+                  <span className="h-2 w-2 rounded-full bg-brand animate-pulse" />
+                  Who Is This For
+                </span>
+
+                <h2 className="mt-4 text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-content leading-tight">
+                  Financial Analyst Internship for Freshers and Career Switchers
+                </h2>
+
+                <p className="mt-4 text-base sm:text-lg font-medium text-content-secondary leading-relaxed">
+                  You don't need a finance job to get started. This program
+                  works well if you are:
+                </p>
+
+                <ul className="mt-6 space-y-4">
+                  {eligibilityPoints.map((point, index) => (
+                    <li key={index} className="flex items-start gap-3.5">
+                      <span className="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-subtle text-brand">
+                        <FiCheckCircle className="h-3.5 w-3.5" />
+                      </span>
+                      <span className="text-sm sm:text-base leading-relaxed text-content-secondary">
+                        {point}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Block 2: Preparing for an Investment Banking Internship Online in India for Freshers */}
+              <div className="group rounded-2xl border border-line bg-surface p-8 sm:p-10 lg:p-12 shadow-xs transition-all duration-300 hover:border-brand/40 hover:shadow-lg">
+                <span className="inline-flex items-center gap-2 rounded-full border border-line bg-surface-sunken px-3.5 py-1 text-xs font-semibold uppercase tracking-wider text-brand">
+                  Career Pathway
+                </span>
+
+                <h2 className="mt-4 text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-content leading-tight">
+                  Preparing for an Investment Banking Internship Online in India
+                  for Freshers
+                </h2>
+
+                <p className="mt-4 text-base sm:text-lg leading-relaxed text-content-secondary">
+                  Many freshers search for an investment banking internship and
+                  find that most openings ask for skills they haven't built yet.
+                  Banks screen for a few things: reading financial statements,
+                  building clean Excel models and explaining numbers clearly.
+                  This fellowship gives you practice in those areas. It doesn't
+                  replace a bank's own internship, but it gives you projects and
+                  a certificate to bring to the application.
+                </p>
+
+                <div className="mt-8 pt-6 border-t border-line/60 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                  <span className="text-xs sm:text-sm font-semibold text-content-muted uppercase tracking-wider">
+                    Project-backed Certification &amp; Portfolio
+                  </span>
+                  <Link
+                    to="/fellowships"
+                    className="group/btn inline-flex items-center gap-2 rounded-xl bg-brand px-6 py-3 text-sm font-semibold text-brand-fg shadow-xs transition-all duration-200 hover:bg-brand-hover focus-visible:outline-none"
+                  >
+                    Apply for Fellowship
+                    <FiArrowRight className="h-4 w-4 transition-transform duration-200 group-hover/btn:translate-x-1" />
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </section>
 
           <section
             data-aos="fade-up"
@@ -584,35 +517,12 @@ const FinancialAnalystFellowship = ({ darkMode, setDarkMode, location }) => {
               moduleFormOpen ? "mt-24" : ""
             }`}
           >
-            {/* <h3
-                data-aos="zoom-in-down"
-                data-aos-delay="0"
-                data-aos-duration="800"
-                className="text-lg md:text-3xl font-semibold text-content text-center"
-              >
-                Meet Our Industry Experts
-              </h3>
-              <p
-                data-aos="zoom-in-up"
-                data-aos-delay="0"
-                data-aos-duration="800"
-                className="text-sm hidden md:block text-content-secondary w-full "
-                style={{
-                  lineHeight: "2.5",
-                }}
-              >
-                Learn Web Development, Data Science, Digital Marketing, Machine
-                Learning, and UI/UX Design from experts. Master skills and{" "}
-                <br /> accelerate your career!
-              </p> */}
-
             <h2 className="text-3xl lg:text-4xl font-semibold text-content mb-4">
               Meet Our Industry Experts
             </h2>
             <p className="text-lg text-content-secondary max-w-2xl mx-auto">
-              Learn Web Development, Data Science, Digital Marketing, Machine
-              Learning, and UI/UX Design from experts. Master skills and <br />{" "}
-              accelerate your career!
+              Learn from mentors who work with financial data and can show you
+              how real analysis is done.
             </p>
             <div
               data-aos="fade-up"
@@ -635,129 +545,27 @@ const FinancialAnalystFellowship = ({ darkMode, setDarkMode, location }) => {
             </div>
           </section>
 
-          {/* <section
-            data-aos="fade-up"
-            data-aos-delay="0"
-            data-aos-duration="800"
-            className={`${sectionStylings?.section} container mx-auto overflow-hidden`}
-          >
-            <div
-              data-aos="fade-up"
-              data-aos-delay="0"
-              data-aos-duration="800"
-              className="w-full h-full flex flex-col justify-center items-center gap-10"
-            >
-              <TextAnimation texts={FinancialAnalystAnimationText} />
-              <div
-                data-aos="fade-up"
-                data-aos-delay="0"
-                data-aos-duration="800"
-                className="w-full h-full flex flex-col justify-center items-center gap-5"
-              >
-                <h6
-                  data-aos="fade-up"
-                  data-aos-delay="0"
-                  data-aos-duration="800"
-                  className={`text-2xl md:text-3xl text-content font-semibold text-center`}
-                >
-                  Financial Analyst Most Promising Career
-                </h6>
-                <p
-                  data-aos="fade-up"
-                  data-aos-delay="0"
-                  data-aos-duration="800"
-                  className={`text-content-secondary sm:text-center w-full md:w-[80%] text-start text-base md:text-xl `}
-                >
-                  The demand for Financial Analysts is increasing day by day.
-                  Finance roles are ranked highly on Glassdoor’s “Top 25
-                  highest-paying entry-level jobs.” As businesses focus on
-                  data-driven financial decisions, most product or service-based
-                  companies require Financial Analysts, leading to a steady rise
-                  in demand and average salaries each year.
-                </p>
-              </div>
-            </div>
-
-            <div className="w-full h-full grid grid-cols-2 gap-5 mt-10">
-              <div
-                data-aos="fade-up"
-                data-aos-delay="0"
-                data-aos-duration="800"
-                className="w-full shadow-customSoft shadow-slate-500 h-48 dark:bg-[#fff] p-4 flex justify-center items-center flex-col rounded-md"
-              >
-                <p className="text-content text-center  text-sm md:text-base mb-3">
-                  Average Hike at Kre8ly
-                </p>
-                <p
-                  data-aos="fade-up"
-                  data-aos-delay="0"
-                  data-aos-duration="800"
-                  className="text-[#EAB308] text-2xl md:text-5xl font-bold"
-                >
-                  40%
-                </p>
-              </div>
-              <div
-                data-aos="fade-up"
-                data-aos-delay="0"
-                data-aos-duration="800"
-                className="w-full shadow-customSoft shadow-slate-500 h-48 dark:bg-[#fff] p-4 flex justify-center items-center flex-col rounded-md"
-              >
-                <p
-                  data-aos="fade-up"
-                  data-aos-delay="0"
-                  data-aos-duration="800"
-                  className="text-content text-center text-sm md:text-base mb-3"
-                >
-                  Average Salary of Past learners
-                </p>
-                <p
-                  data-aos="fade-up"
-                  data-aos-delay="0"
-                  data-aos-duration="800"
-                  className="text-[#3292FF] text-2xl md:text-5xl font-bold"
-                >
-                  6 to 8 Lakhs
-                </p>
-              </div>
-            </div>
-          </section> */}
-
           <section
             data-aos="fade-up"
             data-aos-delay="0"
             data-aos-duration="800"
             className="w-full h-full flex flex-col items-center justify-center text-center gap-10 py-5 pt-24 pb-16 px-6"
           >
-            <PlacementSupport
-              PlacementSupportInfo={PlacementSupportInfo}
-              location={location}
-              varient={"FinancialAnalyst"}
-            />
+            <Reveal direction="up">
+              <PlacementSupport
+                PlacementSupportInfo={PlacementSupportInfo}
+                location={location}
+                varient={"FinancialAnalyst"}
+              />
+            </Reveal>
+
+            <Reveal direction="up">
+              <PlacementSupportSwiper
+                PlacementSupportInfo={PlacementSupportInfo}
+                darkMode={darkMode}
+              />
+            </Reveal>
           </section>
-
-          {/* <section
-            className={`${sectionStylings?.section} container mx-auto relative`}
-          > */}
-          {/* <img
-              src={Ellipse}
-              alt=""
-              className="absolute dark:block hidden -top-10 w-[250px] md:w-[450px] -left-[35%] md:-left-[15%] select-none blur-md z-0"
-            /> */}
-
-          {/* <div className="w-full h-full relative z-10 ">
-              <h6
-                data-aos="fade-up"
-                data-aos-delay="0"
-                data-aos-duration="800"
-                className={`${sectionStylings?.title} `}
-              >
-                Perks of internship at Kre8ly
-              </h6>
-            </div>
-
-            <PerksOfInternship />
-          </section> */}
 
           <section
             data-aos="fade-up"
@@ -767,76 +575,12 @@ const FinancialAnalystFellowship = ({ darkMode, setDarkMode, location }) => {
           >
             <BookYourSeat
               Images={MainImage}
-              altforImage={"Data Analyst Fellowship "}
-              titles={FinancialAnalystAnimationText}
-              subtitles1={FinancialAnalystSubtitles1}
-              subtitles2={FinancialAnalystSubtitles2}
-              subHeadings={FinancialAnalystSubHeadings}
-              CourseName={"Frontend Development Fellowship"}
+              altforImage="FinancialAnalyst Fellowship"
+              varient="FinancialAnalystFellowship"
+              CourseName="Financial Analyst Fellowship"
               darkMode={darkMode}
             />
           </section>
-
-          {/* <section
-            data-aos="fade-up"
-            data-aos-delay="0"
-            data-aos-duration="800"
-            className={`${sectionStylings?.section} container mx-auto`}
-          >
-            <div className="w-full h-full  ">
-              <h6
-                data-aos="fade-up"
-                data-aos-delay="0"
-                data-aos-duration="800"
-                className={`${sectionStylings?.title}`}
-                style={{
-                  lineHeight: "1.4",
-                }}
-              >
-                Why Join Best Financial Analyst <br /> in {location} at Unified
-                Mentor
-              </h6>
-            </div>
-            <FellowshipExtraSwiper
-              Extra={ExtraFellowship}
-              SwiperColor={swiperColor}
-            /> */}
-          {/* <motion.div
-              variants={containerVariants}
-              className="grid grid-cols-1 md:grid-cols-2  w-full mx-auto shadow-lg gap-x-10 gap-y-20 mt-5">
-              {ExtraFellowship?.map((highlight, index) => (
-                <div
-                  key={index}
-                  className="flex flex-col items-center gap-4 h-full bg-brand  dark:bg-custom-card-gradient rounded-lg p-6 relative hover:scale-105 transition-all duration-300 cursor-pointer"
-                >
-                  <div
-                    style={{
-                      height: highlight.height,
-                      width: highlight.width,
-                    }}
-                    className="rounded-full p-2 absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex items-center justify-center"
-                  >
-                    <img
-                      src={highlight.icon}
-                      alt={highlight.title}
-                      className="object-contain w-full h-full hover:scale-105 transition-all duration-300 cursor-pointer"
-                    />
-                  </div>
-
-                  <motion.h4
-                    variants={headingVariants}
-                    className="text-primary text-base md:text-lg font-semibold leading-relaxed text-center mt-8">
-                    {highlight.title}
-                  </motion.h4>
-                  <motion.p
-                    variants={paragraphVariants}
-                    className="text-secondary text-sm leading-relaxed text-center w-full md:w-[80%]">
-                    {highlight.subtitle}
-                  </motion.p>
-                </div>
-              ))}
-            </motion.div> */}
-          {/* </section> */}
 
           <section>
             <div
@@ -846,34 +590,11 @@ const FinancialAnalystFellowship = ({ darkMode, setDarkMode, location }) => {
               className="text-lg md:text-3xl font-semibold text-content leading-tight relative z-20"
             ></div>
             <div className="w-full h-full pt-14">
-              <PerksOfInternship />
+              <PerksOfInternship 
+              varient="FinancialAnalystFellowship"
+              />
             </div>
           </section>
-
-          {/* <section
-            data-aos="fade-up"
-            data-aos-delay="0"
-            data-aos-duration="800"
-            className={`${sectionStylings?.section} container mx-auto`}
-          >
-            <div
-              data-aos="fade-up"
-              data-aos-delay="0"
-              data-aos-duration="800"
-              className="flex flex-col gap-4 justify-center items-center"
-            >
-              <h6
-                data-aos="fade-up"
-                data-aos-delay="0"
-                data-aos-duration="800"
-                className={`${sectionStylings?.title}`}
-              >
-                {" "}
-                150+ Success Stories
-              </h6>
-            </div>
-            <HallofFameCardTwo hallofFameInfo={NewHallOfFrameInfos} />
-          </section> */}
 
           <section>
             <div
@@ -882,43 +603,13 @@ const FinancialAnalystFellowship = ({ darkMode, setDarkMode, location }) => {
               data-aos-duration="800"
               className="w-full bg-surface-sunken md:mt-10 py-5 pt-24 pb-16 px-6"
             >
-              {/* <h3
-                  data-aos="zoom-in"
-                  data-aos-delay="0"
-                  data-aos-duration="800"
-                  className="text-lg md:text-3xl font-bold text-content text-center"
-                >
-                  Why Join Best Web Development Course in at Kre8ly
-                </h3> */}
               <ExtraSwiper
                 Extra={Extra}
-                // SwiperColor={SwiperColor}
                 CourseName={"Financial Analyst Fellowship"}
+                varient={"FinancialAnalystFellowship"}
               />
             </div>
           </section>
-
-          {/* <section
-            data-aos="fade-up"
-            data-aos-delay="0"
-            data-aos-duration="800"
-            className={`${sectionStylings?.section} container mx-auto overflow-hidden`}
-          >
-            <h5
-              data-aos="fade-up"
-              data-aos-delay="0"
-              data-aos-duration="800"
-              className={`${sectionStylings?.title}`}
-              style={{
-                lineHeight: "1.5em",
-              }}
-            >
-              Projects You'll Build in Our <br />
-              Financial Analyst Fellowship
-            </h5> */}
-          {/* <ProjectSection Project={FinancialAnalystProjects} /> */}
-          {/* <FellowshipProjects Project={FinancialAnalystProjects} />
-          </section> */}
 
           <section
             data-aos="fade-up"
@@ -926,103 +617,11 @@ const FinancialAnalystFellowship = ({ darkMode, setDarkMode, location }) => {
             data-aos-duration="800"
             className="w-full h-full flex flex-col items-center justify-center gap-10 py-5 pt-24 pb-16 px-6"
           >
-            {/* <h3
-                data-aos="zoom-in"
-                data-aos-delay="0"
-                data-aos-duration="800"
-                className="text-lg md:text-3xl font-bold text-content text-center"
-              >
-                Technologies & Tools You Will Learn
-              </h3> */}
             <Technologies
-              varient={"financial-analyst"}
+              varient={"FinancialAnalystFellowship"}
               Technology={FinancialAnalystTechStack}
             />
           </section>
-
-          {/* <section
-            data-aos="fade-up"
-            data-aos-delay="0"
-            data-aos-duration="800"
-            className={`${sectionStylings?.section} container mx-auto overflow-hidden`}
-          >
-            <div
-              data-aos="fade-up"
-              data-aos-delay="0"
-              data-aos-duration="800"
-              className="flex flex-col lg:flex-row items-center justify-between w-full gap-y-10"
-            >
-              <div
-                data-aos="fade-up"
-                data-aos-delay="0"
-                data-aos-duration="800"
-                className="w-full lg:w-[40%]"
-              >
-                <figure className="w-full  mx-auto">
-                  <img
-                    src={Certificates}
-                    alt="Financial Analyst Fellowship Certificate- Kre8ly"
-                    className="w-full h-auto object-contain rounded-lg shadow-lg"
-                  />
-                </figure>
-              </div>
-              <div
-                data-aos="fade-up"
-                data-aos-delay="0"
-                data-aos-duration="800"
-                className="w-full lg:w-[55%]"
-              >
-                <div
-                  data-aos="fade-up"
-                  data-aos-delay="0"
-                  data-aos-duration="800"
-                >
-                  <h2
-                    className={`${sectionStylings?.title} !text-left text-base md:text-xl`}
-                  >
-                    Financial Analyst Course Certificate
-                  </h2>
-                  <p
-                    className="text-content-secondary mb-4 text-xs md:text-lg"
-                    style={{
-                      wordSpacing: "4px",
-                      lineHeight: "1.8em",
-                    }}
-                  >
-                    Financial Analyst Course Certificate: Our certification
-                    program offers an immersive, skill-focused journey,
-                    enhancing your career prospects. Whether you aim for a
-                    financial institution, consulting firm, or freelance
-                    opportunities, this certification prepares you for success
-                    in the finance industry.
-                  </p>
-                  <p
-                    className="text-xs md:text-lg text-content-secondary mx-auto md:mx-0 text-justify w-full md:w-[90%] mt-10"
-                    style={{
-                      wordSpacing: "4px",
-                      lineHeight: "1.8em",
-                    }}
-                  >
-                    We also offer{" "}
-                    <Link
-                      to="/data-science"
-                      className="underline text-content"
-                    >
-                      Data Science
-                    </Link>{" "}
-                    Course in {location} and Best{" "}
-                    <Link
-                      to="/digital-marketing"
-                      className="underline text-content"
-                    >
-                      Digital Marketing
-                    </Link>{" "}
-                    Certification in {location}.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </section> */}
 
           <section
             data-aos="fade-up"
@@ -1030,21 +629,13 @@ const FinancialAnalystFellowship = ({ darkMode, setDarkMode, location }) => {
             data-aos-duration="800"
             className="w-full h-full flex flex-col items-center justify-center py-5 pt-24 pb-16 px-6 bg-surface-sunken"
           >
-            {/* <h3
-                data-aos="zoom-in"
-                data-aos-delay="0"
-                data-aos-duration="800"
-                className="text-sm md:text-3xl font-bold text-content text-center"
-              >
-                150+ Success Stories
-              </h3> */}
             <div className="text-center mb-4">
               <h2 className="text-3xl lg:text-4xl font-semibold text-content mb-4">
                 150+ Success Stories
               </h2>
               <p className="text-lg text-content-secondary max-w-2xl mx-auto">
-                Real experiences from learners who achieved their goals and
-                transformed careers with our guidance and support.
+                Hear from learners who finished a Kre8ly program and moved into new roles. Browse by Developer, Analyst or Others.
+
               </p>
             </div>
             <div className="w-full h-full flex flex-col items-center justify-center py-5">
@@ -1061,6 +652,7 @@ const FinancialAnalystFellowship = ({ darkMode, setDarkMode, location }) => {
               Project={FinancialAnalystProjects}
               CourseName={"Financial Analyst Fellowship"}
               location={location}
+              varient={"FinancialAnalystFellowship"}
             />
           </section>
 
@@ -1071,7 +663,6 @@ const FinancialAnalystFellowship = ({ darkMode, setDarkMode, location }) => {
             className="w-full h-full flex flex-col items-center justify-center py-5 pt-24 pb-16 px-6"
           >
             <Certificate
-              // Project={WebDevProjectInfo}
               CourseName={"Financial Analyst Fellowship"}
               location={location}
             />
@@ -1081,36 +672,13 @@ const FinancialAnalystFellowship = ({ darkMode, setDarkMode, location }) => {
             <ProgramTimeline />
           </section>
 
-          {/* <section
-            className={`${sectionStylings?.section} container mx-auto relative `}
-          >
-            <h6 className={`${sectionStylings?.title} relative z-10`}>
-              Frequently Asked Questions
-            </h6> */}
-          {/* <img
-              src={Ellipse}
-              alt=""
-              className="absolute top-5 w-[250px] hidden dark:block md:w-[450px] -left-[35%] md:-left-[15%] select-none blur-md z-0"
-            /> */}
-          {/* <div className="w-full md:w-10/12 relative z-10">
-              <FaqForFellowship
-                Faqs={FinancialAnalystFaq}
-                darkMode={darkMode}
-              />
-            </div>
-          </section> */}
+     
           <section
             data-aos="fade-up"
             data-aos-delay="0"
             data-aos-duration="800"
             className="w-full h-full flex flex-col items-center justify-center py-5 pt-24 pb-16 px-6"
           >
-            {/* <img
-              src={Ellipse}
-              alt=""
-              className="absolute top-5 w-[250px] md:w-[450px] -left-[35%] md:-left-[15%] select-none blur-md z-0 hidden dark:block"
-            /> */}
-            {/* <div className="w-full md:w-10/12 relative z-10"> */}
             <Faqs Faqs={FinancialAnalystFaq} darkMode={darkMode} />
             {/* </div> */}
           </section>

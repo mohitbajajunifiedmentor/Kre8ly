@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Helmet } from "@/lib/helmet-compat";
 import { Link, useLocation } from "@/lib/router-compat";
 import { FaStar } from "react-icons/fa";
+import { FiArrowRight } from "react-icons/fi";
 import { motion } from "framer-motion";
 
 import Reveal from "@/component/ui/Reveal";
@@ -57,10 +58,10 @@ export default function Home({ darkMode, setDarkMode }) {
   return (
     <>
       <Helmet>
-        <title>Kre8ly: Top Online Courses Platform &amp; Training</title>
+        <title>Online Certification Courses in India for Jobs | Kre8ly</title>
         <meta
           name="description"
-          content="We offer job-oriented online certification courses in data science, digital marketing, web development and more."
+          content="Job-oriented online certification courses and tech fellowships with live mentors, real projects and placement support. Built for learners across India."
         />
         <link rel="canonical" href="https://www.unifiedmentor.com/" />
         <meta name="robots" content="index, follow" />
@@ -100,8 +101,8 @@ export default function Home({ darkMode, setDarkMode }) {
         <Section tone="canvas" space="lg">
           <SectionHeader
             eyebrow="What you get"
-            title="Built for the part that actually gets you hired"
-            lead="Industry-recognised certification, live projects, flexible pacing and career support — in one place."
+            title="What You'll Gain from Our Practical Skill Development Courses"
+            lead="You leave with a certificate, but the bigger gain is a few finished projects, more confidence in interviews and someone to ask when you get stuck."
           />
 
           <ul className="hidden gap-5 md:grid md:grid-cols-2 lg:grid-cols-3 lg:gap-6 mt-6">
@@ -127,8 +128,7 @@ export default function Home({ darkMode, setDarkMode }) {
                     />
                   </span>
 
-                  {/* Original typography & tracking restored */}
-                  <h3 className="text-base font-semibold leading-snug tracking-[-0.01em] text-content lg:text-lg">
+                  <h3 className="text-base font-semibold leading-normal tracking-[-0.01em] text-content lg:text-lg">
                     {feature.title}
                   </h3>
 
@@ -145,12 +145,101 @@ export default function Home({ darkMode, setDarkMode }) {
           </div>
         </Section>
 
+        {/* 5.1 Redesigned Section: Fellowships & Upskilling Pathways */}
+        <Section tone="sunken" space="lg">
+          <div className="mx-auto max-w-7xl">
+            <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
+              {/* Card 1: Fellowships */}
+              <motion.div
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-40px" }}
+                transition={{ duration: 0.5, ease: "easeOut" }}
+                className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-line bg-surface p-8 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-brand/40 hover:shadow-xl lg:p-10"
+              >
+                <div
+                  aria-hidden="true"
+                  className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-brand/10 blur-3xl transition-opacity duration-300 group-hover:bg-brand/20"
+                />
+
+                <div className="relative z-10">
+                  <div className="flex items-center justify-between gap-4">
+                    <span className="inline-flex items-center gap-1.5 rounded-full bg-brand-subtle px-3 py-1 text-xs font-semibold uppercase tracking-wider text-brand">
+                      <span className="h-1.5 w-1.5 rounded-full bg-brand animate-pulse" />
+                      For Freshers &amp; Students
+                    </span>
+                  </div>
+
+                  <h3 className="mt-5 text-2xl font-bold leading-normal tracking-tight text-content md:leading-[1.35] lg:text-3xl">
+                    Tech Fellowship Programs for Learning on Real Work
+                  </h3>
+
+                  <p className="mt-4 text-base leading-relaxed text-content-secondary">
+                    Our fellowships sit between a course and a job. You get tasks, deadlines and mentor feedback, and you finish with work you can point to. Tracks include data analyst, financial analyst, business analyst, digital marketing and data science, so a commerce, BBA or engineering graduate can find a fit without moving to a metro.
+                  </p>
+                </div>
+
+                <div className="relative z-10 mt-8 pt-6 border-t border-line/60">
+                  <Link
+                    to="/fellowships"
+                    className="group/btn inline-flex h-12 w-full sm:w-auto items-center justify-center gap-2 rounded-xl bg-brand px-7 text-sm font-semibold text-brand-fg shadow-sm transition-all duration-200 hover:bg-brand-hover focus-visible:outline-none focus-visible:shadow-focus"
+                  >
+                    Explore Fellowships
+                    <FiArrowRight className="h-4 w-4 transition-transform duration-200 group-hover/btn:translate-x-1" />
+                  </Link>
+                </div>
+              </motion.div>
+
+              {/* Card 2: Working Professionals */}
+              <motion.div
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-40px" }}
+                transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
+                className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-line bg-surface p-8 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-brand/40 hover:shadow-xl lg:p-10"
+              >
+                <div
+                  aria-hidden="true"
+                  className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-surface-sunken blur-3xl transition-opacity duration-300"
+                />
+
+                <div className="relative z-10">
+                  <div className="flex items-center justify-between gap-4">
+                    <span className="inline-flex items-center gap-1.5 rounded-full border border-line bg-surface-sunken px-3 py-1 text-xs font-semibold uppercase tracking-wider text-content-muted">
+                      Flexible &amp; Self-Paced
+                    </span>
+                  </div>
+
+                  <h3 className="mt-5 text-2xl font-bold leading-normal tracking-tight text-content md:leading-[1.35] lg:text-3xl">
+                    Courses for Working Professionals Who Want to Switch or Upskill
+                  </h3>
+
+                  <p className="mt-4 text-base leading-relaxed text-content-secondary">
+                    If you already have a job in Nagpur, Surat or Bhubaneswar, you probably can't log in for a full day of classes. Recorded sessions and flexible online learning let you study after work and move into a new role at your own speed.
+                  </p>
+                </div>
+
+                <div className="relative z-10 mt-8 pt-6 border-t border-line/60">
+                  <Link
+                    to="/courses"
+                    className="group/btn inline-flex h-12 w-full sm:w-auto items-center justify-center gap-2 rounded-xl border border-line-strong bg-surface px-7 text-sm font-semibold text-content transition-all duration-200 hover:bg-surface-sunken hover:border-brand/40 focus-visible:outline-none focus-visible:shadow-focus"
+                  >
+                    View All Courses
+                    <FiArrowRight className="h-4 w-4 transition-transform duration-200 group-hover/btn:translate-x-1" />
+                  </Link>
+                </div>
+              </motion.div>
+            </div>
+          </div>
+        </Section>
+
         {/* 6. Hiring Partners */}
         <Section tone="sunken" space="md" bleed>
           <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
             <SectionHeader
               eyebrow="Hiring partners"
-              title="Our learners work at 100+ product companies"
+              title="Kre8ly Courses Have Helped Learners Join 100+ Product Companies"
+              lead="Here are some of our learners and where they work now, from Accenture and TCS to PwC and Amazon."
               align="center"
             />
           </div>
@@ -173,11 +262,11 @@ export default function Home({ darkMode, setDarkMode }) {
           </Reveal>
         </Section>
 
-        {/* ---------- our impact (Space ko sm kar diya taaki gap shrink ho jaye) ---------- */}
+        {/* ---------- our impact ---------- */}
         <Section tone="wash" space="sm">
           <SectionHeader
             eyebrow="Our impact"
-            title="Join a network that keeps growing"
+            title="Join a Learning Network Built Around Skill Development Courses"
             align="center"
           />
           <Reveal direction="up">
@@ -189,7 +278,7 @@ export default function Home({ darkMode, setDarkMode }) {
         <Section id="Reviews" tone="sunken" space="lg">
           <SectionHeader
             eyebrow="Reviews"
-            title="What learners say on Google"
+            title="Kre8ly Reviews: What Learners Say on Google"
             aside={
               <p className="flex items-center gap-3">
                 <span aria-hidden="true" className="flex text-warning">
@@ -228,7 +317,7 @@ export default function Home({ darkMode, setDarkMode }) {
                   Refer &amp; earn
                 </p>
 
-                <h3 className="mt-3 text-xl font-semibold leading-snug tracking-[-0.01em] text-content md:text-2xl">
+                <h3 className="mt-3 text-xl font-semibold leading-normal tracking-[-0.01em] text-content md:leading-[1.3] md:text-2xl">
                   Bring a friend,
                   <br />
                   earn rewards
@@ -295,13 +384,12 @@ export default function Home({ darkMode, setDarkMode }) {
                   Newsletter
                 </Eyebrow>
 
-                <h3 className="mt-3 text-2xl font-semibold leading-tight tracking-[-0.01em] text-content md:text-3xl">
-                  Career guidance in your inbox, every week
+                <h3 className="mt-3 text-2xl font-semibold leading-normal tracking-[-0.01em] text-content md:leading-[1.3] md:text-3xl">
+                  Get Job Search Tips From Our Career Newsletter
                 </h3>
 
                 <p className="mt-3 max-w-md text-sm leading-relaxed text-content-secondary md:text-base">
-                  Job-search tactics, interview breakdowns and hiring trends —
-                  written for people applying right now.
+                  This replaces the current heading, &quot;Find Out Job Search With Expert Career Guidance News Letter&quot;.
                 </p>
 
                 <a
@@ -314,7 +402,7 @@ export default function Home({ darkMode, setDarkMode }) {
                 </a>
 
                 <p className="mt-4 text-xs text-content-muted">
-                  Trusted by 50,000+ learners
+                  Trusted by 50k+ Customers | 4.7/5 • 2k+ Reviews
                 </p>
               </div>
             </motion.div>

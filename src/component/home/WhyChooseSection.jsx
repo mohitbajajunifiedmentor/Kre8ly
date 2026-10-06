@@ -7,20 +7,20 @@ import { FiArrowRight, FiCheckCircle } from "react-icons/fi";
 
 const POINTS = [
   {
-    title: "Live Learning with Industry Engineers",
-    body: "Direct real-time sprint sessions with developers and managers from tier-one product firms — no passive video lectures.",
+    title: "Live Learning with Industry Experts",
+    body: "You learn from people who work in tech companies today, and you can put your question to them during the session instead of waiting for a forum reply.",
   },
   {
-    title: "Projects that Survive Tough Technical Rounds",
-    body: "Architect production-grade cloud systems, pipelines, and apps that withstand deep architectural questioning during technical rounds.",
+    title: "Real-World Projects",
+    body: "You build applications with unclear requirements and real deadlines, the way work actually looks. By the end, your portfolio has projects you can explain line by line.",
   },
   {
-    title: "Uncompromising 1-on-1 Placement Coaching",
-    body: "Comprehensive resume tailoring, mock technical drills with feedback loops, and warm introductions to hiring partners.",
+    title: "Job Placements and Career Support",
+    body: "Mock interviews, resume reviews and introductions to hiring partners. We stay with you through the interview rounds.",
   },
   {
-    title: "Free Access to Career Acceleration Tools",
-    body: "In-house ATS score simulators, CTC calculators, and resume builders bundled permanently into every enrollment.",
+    title: "Fellowship Programs and AI Tools",
+    body: "Resume scoring, mock interviews and CTC analysis sit alongside your coursework, so you can practise whenever it suits you.",
   },
 ];
 
@@ -28,18 +28,17 @@ export default function WhyChooseSection() {
   return (
     <Section tone="sunken" space="lg">
       <div className="grid grid-cols-1 gap-12 lg:grid-cols-[minmax(0,24rem),1fr] lg:gap-16 xl:gap-20">
-        
         {/* Left Sticky Heading Section */}
         <div className="lg:sticky lg:top-28 lg:self-start text-left">
           <Eyebrow>Why Kre8ly</Eyebrow>
 
           <h2 className="mt-4 text-3xl sm:text-4xl lg:text-[2.6rem] font-black tracking-tight leading-[1.12] text-content">
-            Closing the distance between college and career
+            Why Choose Kre8ly for Career Transformation Programs
           </h2>
 
           <p className="mt-4 text-sm sm:text-base leading-relaxed text-content-secondary">
-            Traditional programs stop at issuing completion certificates. We prepare you
-            for the critical evaluation that decides whether you receive a job offer.
+            A career transformation program only works if it changes what you
+            can do, not just what your CV says. Here is how we approach that.
           </p>
 
           <Link
@@ -78,7 +77,6 @@ export default function WhyChooseSection() {
             </motion.li>
           ))}
         </ol>
-
       </div>
     </Section>
   );

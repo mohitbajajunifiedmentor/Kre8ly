@@ -24,24 +24,25 @@ const P5 = "/assets/fellowship/DataScience/P5.png";
 const P6 = "/assets/fellowship/DataScience/P6.png";
 
 import {
-  MessageCircle,
-  Edit3,
-  Palette,
-  Code,
-  Layout,
-  Building,
-  CheckCircle,
-  Rocket,
+  HelpCircle, // 1. Understand the Question (business question)
+  FileSpreadsheet, // 2. Collect Financial Data (reports & statements)
+  Filter, // 3. Clean and Organise (tidy numbers in Excel)
+  BarChart3, // 4. Analyse the Statements (ratios, balance sheet)
+  TrendingUp, // 5. Build the Model (forecast revenue, cash flow)
+  Sliders, // 6. Test Scenarios (adjusting variables & what-ifs)
+  Presentation, // 7. Present Your Findings (report/dashboard presentation)
+  Users, // 8. Review with Mentors (mentor feedback & review)
 } from "lucide-react";
 
 export const FinancialAnalystHeroSection = [
   {
     badge: "Most Popular Course",
     headings: {
-      title: `Financial Analyst Fellowship`,
-      subtitle: "Learn Financial Analyst with expert guidance",
+      title: `Online Financial Analyst Internship Program`,
+      subtitle:
+        "Learn financial analysis with expert mentors and hands-on projects",
       description:
-        "Learn Financial Analyst with expert guidance, hands-on projects, and a curriculum designed for success.",
+        "Learn how companies earn, spend and grow, then turn that into analysis a hiring manager can read in five minutes. Mentors guide you through live projects, and everything runs online, so students and working people in Indore, Surat, Jaipur or Coimbatore can join without relocating.",
     },
     card: {
       image: WebCard,
@@ -204,67 +205,44 @@ export const FinancialAnalystProjects = [
   },
 ];
 
-// export const FinancialAnalystFaq = [
-//   {
-//     question: "Can I learn the front end in 2 months?",
-//     answer: `Focusing on HTML, CSS, and simple JavaScript, it is possible to learn the
-//           fundamentals of front-end development in two months. But mastery necessitates
-//           constant learning and practice.`,
-//   },
-//   {
-//     question: "What course should I do for a front-end developer?",
-//     answer: `Choose HTML, CSS, JavaScript, and responsive design classes from online
-//           education providers like Kre8ly’s top-rated Front-End Web Development
-//           Course.`,
-//   },
-//   {
-//     question: "What's the best way to learn front end web development?",
-//     answer: `Combining online classes, interactive coding environments, and practical
-//           projects is the most effective approach to learn front-end web development. For
-//           efficient skill building, practice constructing websites and ask for advice from
-//           internet forums.`,
-//   },
-//   {
-//     question: "Can I learn front end web development in 3 months?",
-//     answer: `Yes, learning the basics of front-end web development in 3 months is achievable,
-//           focusing on foundational HTML, CSS, and introductory JavaScript. Continued
-//           practice and work on projects can enhance proficiency.`,
-//   },
-//   {
-//     question: "What is the salary of a front-end developer in India?",
-//     answer: `Front-end developer salaries in India vary based on experience and location.
-//           Junior developers might earn around ₹3-5 lakh per annum, while experienced
-//           professionals can earn ₹8-15 lakh or more, depending on the company, experience,
-//           and skill level.`,
-//   },
-// ];
-
 export const FinancialAnalystFaq = [
   {
     question: "What is the Financial Analyst Fellowship at Kre8ly?",
-    answer: `The Financial Analyst Fellowship is a comprehensive program designed to equip individuals with the skills and knowledge 
-    needed for a successful career in financial analysis, including hands-on training and mentorship from industry experts.`,
+    answer: `It's a mentor-led online program where you learn to read financial statements, analyse companies and build models using Excel and Python. It's set up like an internship, so you finish with projects and a certificate.`,
   },
   {
     question: "How does the fellowship help in career growth?",
-    answer: `This fellowship provides real-world training, exposure to industry best practices, and personalized mentorship. Graduates gain in-depth financial analysis skills and are prepared to take on roles in top companies.`,
+    answer: `You build a portfolio of projects, earn a certificate, get resume reviews and interview preparation, and gain access to our job portal and hiring partners. Which roles you land depends on your skills and how you do in interviews.`,
   },
   {
     question: "Is the Financial Analyst Fellowship program online?",
-    answer: `Yes, the program is designed to be flexible, offering both online training and mentorship, making it accessible to anyone, anywhere, at any time.`,
+    answer: `Yes. It uses live mentor sessions and recorded lessons, so you can join from any city or town.`,
   },
   {
     question: "What skills will I gain from the Financial Analyst Fellowship?",
-    answer: `Participants will gain expertise in financial modeling, data analysis, budgeting, forecasting, and other core financial analysis techniques that are crucial for success in the finance industry.`,
+    answer: `You'll learn to read financial statements, work with the time value of money and risk against return, use Excel and statistics, and work with data in Python. You'll also practise presenting your findings.`,
   },
   {
     question: "Who can benefit from the Financial Analyst Fellowship?",
-    answer: `This fellowship is ideal for individuals looking to transition into financial analysis, fresh graduates with a background in finance, or professionals seeking to enhance their existing financial knowledge and skills.`,
+    answer: `Commerce, management, economics and engineering students, fresh graduates, and working professionals who want to move into finance. The program is beginner friendly.`,
   },
   {
     question:
       "Is there a certification upon completion of the Financial Analyst Fellowship?",
-    answer: `Yes, upon successful completion, participants will receive a certification that can be added to their resume, validating their expertise in financial analysis.`,
+    answer: ` Yes. You receive a Kre8ly certificate that you can add to your resume and LinkedIn profile.`,
+  },
+  {
+    question: "How much does the fellowship cost?",
+    answer: `Pricing starts at ₹399. Check the enrolment page for the current fee and the next batch date.`,
+  },
+  {
+    question: "Can I join from a smaller city?",
+    answer: `Yes. Everything is online, so you can learn from Indore, Surat, Jaipur or any other town with a stable internet connection. Recordings are there if you miss a live session.`,
+  },
+  {
+    question:
+      "Will this help me get an investment banking internship?",
+    answer: `It helps you build skills that banks look for, such as financial statement analysis and Excel modelling, and gives you projects to show. We can't promise a banking internship, since each bank sets its own hiring process.`,
   },
 ];
 
@@ -277,66 +255,65 @@ export const FinancialAnalystAnimationText = [
 export const roadmapSteps = [
   {
     id: 1,
-    title: "Discussion",
+    title: "Understand the Question",
     description:
-      "Engage in discussions to clarify project goals and ensure your data science approach aligns with business objectives.",
-    icon: MessageCircle,
+      "Work out what the business wants to know. Is it profit, cash flow, risk or a possible investment?",
+    icon: HelpCircle,
     color: "blue",
   },
   {
     id: 2,
-    title: "Data Collection",
+    title: "Collect Financial Data",
     description:
-      "Gather and organize data from various sources, ensuring it is comprehensive and relevant for your analysis.",
-    icon: Edit3,
+      "Gather annual reports, statements and market data from reliable sources.",
+    icon: FileSpreadsheet,
     color: "green",
   },
   {
     id: 3,
-    title: "Data Cleaning",
+    title: "Clean and Organise",
     description:
-      "Clean and preprocess the data to handle missing values, outliers, and ensure it is a useable format for analysis.",
-    icon: Palette,
+      "Tidy the numbers in Excel so they're consistent and easy to compare.",
+    icon: Filter,
     color: "purple",
   },
   {
     id: 4,
-    title: "Exploratory Data Analysis (EDA)",
+    title: "Analyse the Statements",
     description:
-      "Conduct exploratory data analysis to understand data distributions, identify patterns, and generate insights.",
-    icon: Code,
+      "Read the balance sheet, income statement and cash flow statement, and calculate the ratios that matter.",
+    icon: BarChart3,
     color: "orange",
   },
   {
     id: 5,
-    title: "Modeling",
+    title: "Build the Model",
     description:
-      "Develop and train machine learning models using appropriate algorithms to predict, classify, or cluster the data.",
-    icon: Layout,
+      "Forecast revenue, costs and cash flow in a spreadsheet model.",
+    icon: TrendingUp,
     color: "indigo",
   },
   {
     id: 6,
-    title: "Validation",
-    description:
-      "Validate the performance of your models using techniques like cross-validation and adjust parameters to improve accuracy.",
-    icon: Building,
+    title: "Test Scenarios",
+    description: "See what happens to the numbers if sales fall or costs rise.",
+    icon: Sliders,
     color: "teal",
   },
   {
     id: 7,
-    title: "Deployment",
+    title: "Present Your Findings",
     description:
-      "Deploy the models into a production environment where they can be used to make real-time predictions or decisions.",
-    icon: CheckCircle,
+      "Put your conclusions into a short report or dashboard that a manager can act on.",
+    icon: Presentation,
     color: "red",
   },
   {
     id: 8,
-    title: "Monitoring and Maintenance",
+    title: "Review with Mentors",
     description:
-      "Continuously monitor the performance of deployed models and update them as necessary to maintain accuracy and relevance.",
-    icon: Rocket,
+      "Take feedback, fix weak spots and finalise the work for your portfolio.",
+    icon: Users,
     color: "slate",
   },
 ];

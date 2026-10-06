@@ -5,13 +5,13 @@ const DigitalMarkMobile = "/assets/DigitalMarketing/DigitalMarketingMobile.svg";
 const WebDevDeskImage = "/assets/WebDev/WebDevelopmentRoadmapDesktop%20(2).svg";
 const WebDevDeskMobile = "/assets/WebDev/WebDevelopmentRoadmapMobile%20(2).svg";
 import {
-  MessageCircle,
-  Edit3,
-  Palette,
-  Code,
-  Layout,
-  Building,
-  CheckCircle,
+  MessageSquare,
+  CalendarDays,
+  Search,
+  PenTool,
+  Megaphone,
+  TrendingUp,
+  BarChart3,
   Rocket,
 } from "lucide-react";
 
@@ -108,65 +108,64 @@ export const roadmapSteps = [
   {
     id: 1,
     title: "Discussion",
-    description:
-      "Engage in discussions to ensure your digital marketing strategy aligns with your business goals and target audience.",
-    icon: MessageCircle,
+    description: "Agree on the business goal and who you're trying to reach.",
+    icon: MessageSquare, // Replaces MessageCircle (classic conversation dialogue)
     color: "blue",
   },
   {
     id: 2,
     title: "Planning",
     description:
-      "Develop a comprehensive digital marketing plan, including a content calendar and campaign goals.Gather data and insights to inform your strategy.",
-    icon: Edit3,
+      "Build a marketing plan with campaign goals and a content calendar.",
+    icon: CalendarDays, // Replaces Edit3 (fits schedules & content calendars)
     color: "green",
   },
   {
     id: 3,
     title: "Market Research",
     description:
-      "Conduct market research to understand your audience, competitors, and industry trends.This will guide your messaging and positioning.",
-    icon: Palette,
+      "Study your audience, your competitors and what's trending in the industry.",
+    icon: Search, // Replaces Palette (represents research & competitor investigation)
     color: "purple",
   },
   {
     id: 4,
     title: "Content Creation",
     description:
-      "Create engaging, high-quality content tailored to your audience.This includes blog posts, social media updates, videos, and infographics.",
-    icon: Code,
+      "Write blog posts, social updates and scripts, and design graphics that suit your audience.",
+    icon: PenTool, // Replaces Code (better represents writing & graphic design)
     color: "orange",
   },
   {
     id: 5,
     title: "Campaign Development",
     description:
-      "Develop and run marketing campaigns across various channels (social media, email, PPC, SEO). Use analytics to track performance and make data-driven decisions.",
-    icon: Layout,
+      "Set up campaigns across social media, email, paid ads and search, and track how they perform.",
+    icon: Megaphone, // Replaces Layout (standard marketing/broadcast symbol)
     color: "indigo",
   },
   {
     id: 6,
     title: "SEO and SEM Optimization",
     description:
-      "Optimize your website and content for search engines to improve visibility and drive organic traffic.Use SEM strategies to complement your SEO efforts.",
-    icon: Building,
+      "Improve your site and content for search engines, and use paid search to support it.",
+    icon: TrendingUp, // Replaces Building (signifies ranking growth and search optimization)
     color: "teal",
   },
   {
     id: 7,
     title: "Analytics and Reporting",
     description:
-      "Use analytics tools to monitor the performance of your campaigns.Generate reports to understand what's working and identify areas for improvement",
-    icon: CheckCircle,
+      "Read your numbers, report what's working and decide what to change.",
+    icon: BarChart3, // Replaces CheckCircle (standard metrics & data visualization)
     color: "red",
   },
   {
     id: 8,
     title: "Launch",
     description:
-      "Launch your digital marketing campaigns to reach your audience. Continuously monitor and adjust your strategy to maximize results.",
-    icon: Rocket,
+      "Go live, keep watching the results and adjust to get more from the budget.",
+    icon: Rocket, // Preserved (ideal representation for go-live)
     color: "slate",
   },
 ];

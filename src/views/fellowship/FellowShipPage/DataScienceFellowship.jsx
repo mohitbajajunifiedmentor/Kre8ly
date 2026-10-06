@@ -77,7 +77,15 @@ import FloatingEnrollBar from "../../../component/FloatingEnrollBar";
 import Certificate from "../../../component/MachineLearning/Certificate";
 import ProgramTimeline from "../../../component/MachineLearning/ProgramTimeline";
 import ChatBot from "@/component/ChatBot/ChatBot";
-
+import {
+  CheckCircle2,
+  GraduationCap,
+  MapPin,
+  Sparkles,
+  FolderGit2,
+} from "lucide-react";
+import PlacementSupportSwiper from "@/component/PlacementSupportSwiper";
+import Reveal from "@/component/ui/Reveal";
 const DataScienceFellowship = ({ darkMode, setDarkMode, location }) => {
   const [closeForm, setCloseForm] = useState(false);
   const [moduleFormOpen, setModuleFormOpen] = useState(false);
@@ -86,16 +94,10 @@ const DataScienceFellowship = ({ darkMode, setDarkMode, location }) => {
   const handleModuleFormToggle = (isOpen) => {
     setModuleFormOpen(isOpen);
   };
-  // Shared section styling for this page. Was hard-coded `text-content` with
-  // a `text-content` counterpart (where the legacy `primary` token is
-  // plain #fff); both are now single semantic tokens that theme themselves.
-  // `text-justify` was also dropped — justified text on narrow mobile columns
-  // opens large uneven word gaps and hurts readability.
   const sectionStylings = {
     section:
       "w-full h-full flex justify-center items-center gap-5 flex-col overflow-x-hidden",
-    title:
-      "text-base md:text-xl font-semibold text-content mb-4",
+    title: "text-base md:text-xl font-semibold text-content mb-4",
     subTitle: "text-content-secondary text-xs md:text-lg mb-4",
   };
 
@@ -119,47 +121,68 @@ const DataScienceFellowship = ({ darkMode, setDarkMode, location }) => {
       icon: Extra1,
       icon_alt: "Professional Certificate",
       title: "Professional Certificate",
-      subtitle: `Become a certified Web Development  with an official certificate from Kre8ly.`,
+      subtitle: "Earn an official Kre8ly certificate in data science.",
       link: "#certificate",
-      target: "No",
+      target: "No", // or "_self"
     },
     {
       icon: Extra2,
       icon_alt: "Resume Builder",
       title: "Resume Builder",
       subtitle:
-        "Get dedicated career guidance and mentoring from our mentors to enhance your resume using our builder.",
+        "Build a sharper resume with our builder and input from your mentors.",
       link: "https://jobs.unifiedmentor.com/",
-      target: "Yes",
+      target: "Yes", // or "_blank"
     },
     {
       icon: Extra3,
-      icon_alt: "Resume Builder",
+      icon_alt: "Job Portal", // Fixed from "Resume Builder"
       title: "Job Portal",
-      subtitle:
-        "Get dedicated career guidance and mentoring from our mentors to improve your job prospects on our portal.",
+      subtitle: "Use our job portal to find openings from hiring partners.",
       link: "https://jobs.unifiedmentor.com/",
-      target: "Yes",
+      target: "Yes", // or "_blank"
     },
     {
       icon: Extra4,
-      icon_alt: "Chance to work on real project",
-      title: "Chance to work on real project",
-      subtitle:
-        "Get a chance to work on real project in Kre8ly or any other real projects while learning!",
+      icon_alt: "Chance to Work on Real Projects",
+      title: "Chance to Work on Real Projects",
+      subtitle: "Work on real projects at Kre8ly or elsewhere while you learn.",
       link: "#projects",
-      target: "no",
+      target: "No", // or "_self"
+    },
+  ];
+
+  const criteria = [
+    {
+      icon: GraduationCap,
+      title: "Students & Graduates",
+      text: "BSc, BCA, BTech, MCA, or BCom students looking to transition into data.",
+    },
+    {
+      icon: MapPin,
+      title: "Tier-2 & Tier-3 Cities",
+      text: "Aspirants in Bhubaneswar, Kanpur, Nashik, and beyond where local roles are scarce.",
+    },
+    {
+      icon: Sparkles,
+      title: "Beginner Friendly",
+      text: "Designed from ground zero—no prior data science or coding experience needed.",
+    },
+    {
+      icon: FolderGit2,
+      title: "Portfolio & GitHub Ready",
+      text: "Real, documented projects you can showcase directly on your resume and GitHub.",
     },
   ];
 
   return (
     <>
       <Helmet>
-        <title>Data Science Fellowship Program | Kre8ly</title>
+        <title>Online Data Science Internship Program in India | Kre8ly</title>
 
         <meta
           name="description"
-          content="Enroll in Kre8ly's Data Science Fellowship to gain hands-on experience, mentorship, and a strong foundation in data science with expert guidance."
+          content="Learn data science with Python in an online internship program with mentors, real projects and a certificate. For students and freshers across India."
         />
 
         <meta
@@ -173,38 +196,16 @@ const DataScienceFellowship = ({ darkMode, setDarkMode, location }) => {
         />
         <meta name="robots" content="index, follow" />
       </Helmet>
-      
+
       <div className="flex flex-col w-full min-h-screen">
         <main className="flex-grow gap-5 overflow-hidden">
           <section
             id="hero"
             data-aos="fade-up"
-            // data-aos-delay="300"
             className={`${sectionStylings?.section}`}
           >
             <FellowshipHomeSection PageDetails={DataScienceHeroSection} />
           </section>
-
-          {/* <section
-            data-aos="fade-up"
-            data-aos-delay="0"
-            data-aos-duration="800"
-            className={`${sectionStylings?.section} container mx-auto`}
-          >
-            <h5
-              data-aos="fade-up"
-              data-aos-delay="0"
-              data-aos-duration="800"
-              className={`${sectionStylings?.title}`}
-              style={{
-                lineHeight: "1.5em",
-              }}
-            >
-              Our Accreditation
-            </h5>
-            <AccredationSwiper />
-            <AccreditationFellowship />
-          </section> */}
 
           <section
             data-aos="fade-up"
@@ -213,30 +214,12 @@ const DataScienceFellowship = ({ darkMode, setDarkMode, location }) => {
             // data-aos-delay="0"
             className="w-full h-full flex flex-col items-center justify-center text-center  relative pb-3 md:my-20"
           >
-            <div className="absolute md:-top-32 w-[250px] md:w-[450px] -left-10 select-none blur-md  z-10">
-              {/* <figure>
-                <img src={Ellipse} alt="Ellipse" />
-              </figure> */}
-            </div>
-            {/* <h3
-              data-aos="fade-up"
-              data-aos-delay="0"
-              data-aos-duration="800"
-              // data-aos-delay="0"
-              className="text-lg md:text-3xl text-content font-semibold text-center mb-10"
-            >
-              Our Accreditation
-            </h3> */}
+            <div className="absolute md:-top-32 w-[250px] md:w-[450px] -left-10 select-none blur-md  z-10"></div>
             <AccredationSwiper />
             <div
               className={`md:grid hidden grid-cols-4 gap-4 md:gap-6 relative z-20 w-full`}
             >
-              <div
-                // data-aos="flip-right"
-                // data-aos-delay="0"
-                // data-aos-duration="800"
-                className="flex justify-center items-center rounded-lg w-full max-w-xs p-2  max-h-20 md:max-h-24 hover:scale-105 transition-all duration-300 ease-in-out"
-              >
+              <div className="flex justify-center items-center rounded-lg w-full max-w-xs p-2  max-h-20 md:max-h-24 hover:scale-105 transition-all duration-300 ease-in-out">
                 <figure className="w-1/2 md:w-1/3">
                   <img
                     src={darkMode ? Accreditation1_light : Accreditation1}
@@ -246,12 +229,7 @@ const DataScienceFellowship = ({ darkMode, setDarkMode, location }) => {
                 </figure>
               </div>
 
-              <div
-                // data-aos="flip-right"
-                // data-aos-delay="0"
-                // data-aos-duration="800"
-                className="flex items-center justify-center rounded-lg text-primary w-full max-w-xs max-h-20  md:max-h-24 p-2 hover:scale-105 transition-all duration-300 ease-in-out"
-              >
+              <div className="flex items-center justify-center rounded-lg text-primary w-full max-w-xs max-h-20  md:max-h-24 p-2 hover:scale-105 transition-all duration-300 ease-in-out">
                 <figure className="w-1/2">
                   <img
                     src={darkMode ? Accreditation2_light : Accreditation2}
@@ -260,12 +238,7 @@ const DataScienceFellowship = ({ darkMode, setDarkMode, location }) => {
                   />
                 </figure>
               </div>
-              <div
-                // data-aos="flip-right"
-                // data-aos-delay="0"
-                // data-aos-duration="800"
-                className="flex justify-center items-center rounded-lg w-full max-w-xs p-2  max-h-20 md:max-h-24 hover:scale-105 transition-all duration-300 ease-in-out"
-              >
+              <div className="flex justify-center items-center rounded-lg w-full max-w-xs p-2  max-h-20 md:max-h-24 hover:scale-105 transition-all duration-300 ease-in-out">
                 <figure className="flex items-center justify-center">
                   <img
                     src={darkMode ? Accreditation3_light : Accreditation3}
@@ -274,12 +247,7 @@ const DataScienceFellowship = ({ darkMode, setDarkMode, location }) => {
                   />
                 </figure>
               </div>
-              <div
-                // data-aos="flip-right"
-                // data-aos-delay="0"
-                // data-aos-duration="800"
-                className="flex justify-center items-center rounded-lg w-full max-w-xs p-2  max-h-20 md:max-h-24 hover:scale-105 transition-all duration-300 ease-in-out"
-              >
+              <div className="flex justify-center items-center rounded-lg w-full max-w-xs p-2  max-h-20 md:max-h-24 hover:scale-105 transition-all duration-300 ease-in-out">
                 <figure className="flex items-center justify-center">
                   <img
                     src={darkMode ? Accreditation4_light : Accreditation4}
@@ -291,131 +259,21 @@ const DataScienceFellowship = ({ darkMode, setDarkMode, location }) => {
             </div>
           </section>
 
-          {/* <section
-            data-aos="fade-up"
-            // data-aos-delay="400"
-            className={`${sectionStylings?.section} container mx-auto`}
-          >
-            <div
-              data-aos="fade-up"
-              // data-aos-delay="450"
-              className="w-full h-full flex flex-col justify-center items-center"
-            >
-              {" "}
-              <h2
-                data-aos="fade-up"
-                data-aos-delay="0"
-                data-aos-duration="800"
-                className={`${sectionStylings?.title}`}
-              >
-                Technologies & Tools You Will Learn
-              </h2>
-              <p className={`${sectionStylings?.subTitle}`}>
-                Master cutting-edge technologies and tools, including HTML, CSS,
-                JavaScript, Python, SQL, and more.
-              </p>
-            </div>
-
-            <TechStack
-              TechStacksArray={DataScienceTechstack}
-              MainImage={MainImage}
-            />
-          </section> */}
-
           <section
             data-aos="fade-up"
             data-aos-delay="0"
             data-aos-duration="800"
             className="w-full h-full flex flex-col items-center justify-center text-center gap-10 bg-surface-sunken"
           >
-            {/* <h2
-                          data-aos="zoom-out"
-                          data-aos-delay="0"
-                          data-aos-duration="800"
-                          className="text-lg md:text-3xl font-semibold text-content"
-                        >
-                          {`${CourseName}`} Roadmap
-                        </h2> */}
-            {/* <h2 className="text-3xl lg:text-4xl font-semibold text-gray-900 mb-4">
-                          {`${CourseName}`} Roadmap
-                        </h2> */}
-            {/* <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                          Our structured 8-step process ensures your project is delivered
-                          on time, within budget, and exceeds your expectations.
-                        </p> */}
             <CourseRoadmap
               ModuleInfo={roadmapSteps}
               roadmapSteps={roadmapSteps}
-              varient={"data-science"}
-              courseName={"Data Science Fellowship Roadmap"}
+              varient={"DataScienceFellowship"}
+              courseName={
+                "How Our Data Science with Python Internship Program Works"
+              }
             />
           </section>
-
-          {/* <section
-            data-aos="fade-up"
-            data-aos-delay="0"
-            data-aos-duration="800"
-            className={`${sectionStylings?.section}`}
-            style={{
-              backgroundImage: `url(${BackGround})`,
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-              backgroundRepeat: "no-repeat",
-            }}
-          >
-            <div
-              data-aos="fade-up"
-              // data-aos-delay="600"
-              className="w-full h-full flex  gap-5 flex-col justify-center items-center"
-            >
-              <h2
-                data-aos="fade-up"
-                data-aos-delay="0"
-                data-aos-duration="800"
-                className={`${sectionStylings?.title}`}
-              >
-                Meet Our Industry Experts
-              </h2>
-              <p
-                data-aos="fade-up"
-                data-aos-delay="0"
-                data-aos-duration="800"
-                className={`text-content-secondary text-base sm:text-xl  text-center w-full md:w-[90%] mx-auto xl:w-[70%]`}
-                style={{
-                  lineHeight: 1.6,
-                }}
-              >
-                Learn Web Development, Data Science, Digital Marketing, Machine
-                Learning, and UI/UX Design from experts. Master skills and
-                accelerate your career!
-              </p>
-            </div>
-            <div className="w-full h-full flex flex-col items-center justify-center text-center gap-10 py-5 container mx-auto">
-              <IndustryExperts
-                CarouselInfo={CarouselInfo}
-                varient={"data-science"}
-              />
-            </div>
-            <hr className="w-1/2 md:w-1/4 mt-2 bg-white/50 mx-auto" />
-          </section> */}
-
-          {/* <section
-            data-aos="fade-up"
-            data-aos-delay="0"
-            data-aos-duration="800"
-            className={`${sectionStylings?.section} md:gap-10 container mx-auto`}
-          >
-            <h4
-              data-aos="fade-up"
-              data-aos-delay="0"
-              data-aos-duration="800"
-              className={`${sectionStylings?.title}`}
-            >
-              Join Kre8ly Internship to Shape <br /> the future of
-              development
-            </h4>
-            <FutureDevelopmentComponent swiperColor={swiperColor} />
-          </section> */}
 
           <section
             data-aos="fade-up"
@@ -426,21 +284,11 @@ const DataScienceFellowship = ({ darkMode, setDarkMode, location }) => {
             <Module
               BasicModules={DataScienceBasicModules}
               AdvanceModules={DataScienceAdvanceModules}
-              varient={"DataScience"}
+              varient={"DataScienceFellowship"}
               showCurriculum={showCurriculum}
               setShowCurriculum={setShowCurriculum}
               onFormToggle={handleModuleFormToggle}
             />
-            {/* <button
-                data-aos="zoom-out-up"
-                data-aos-delay="0"
-                data-aos-duration="800"
-                onClick={handleDownloadFile}
-                className="hidden border border-line-strong hover:bg-surface-sunken gap-2 -z-10 dark:hover:text-content hover:bg-surface-sunken dark:bg-transparent dark:text-white text-content px-4  py-3 md:flex items-center font-bold w-fit justify-center rounded-md text-base transition-all duration-300"
-              >
-                Download Detailed Curriculum
-                <FaCloudDownloadAlt size={25} />
-              </button> */}
             {closeForm && (
               <div className="fixed  top-0 left-0 w-full h-full  flex items-center justify-center bg-black/50 md:data-aos=zoom-out-up md:data-aos-delay=0 md:data-aos-duration=800">
                 <Forms
@@ -451,103 +299,61 @@ const DataScienceFellowship = ({ darkMode, setDarkMode, location }) => {
             )}
           </section>
 
-          {/* <section
-            data-aos="fade-up"
-            data-aos-delay="0"
-            data-aos-duration="800"
-            className={`${sectionStylings?.section} container mx-auto overflow-hidden`}
-          >
-            <div
-              data-aos="fade-up"
-              data-aos-delay="0"
-              data-aos-duration="800"
-              className="w-full h-full flex flex-col justify-center items-center gap-10"
-            >
-              <TextAnimation texts={DataScienceAnimationText} />
-              <div
-                data-aos="fade-up"
-                data-aos-delay="0"
-                data-aos-duration="800"
-                className="w-full h-full flex flex-col justify-center items-center gap-5"
-              >
-                <h6
-                  data-aos="fade-up"
-                  data-aos-delay="0"
-                  data-aos-duration="800"
-                  className={`text-2xl md:text-3xl text-content font-semibold text-center`}
-                >
-                  Data Science Most Promising Career
-                </h6>
-                <p
-                  data-aos="fade-up"
-                  data-aos-delay="0"
-                  data-aos-duration="800"
-                  className={`text-content-secondary sm:text-center w-full md:w-[80%] text-justify text-base md:text-xl `}
-                >
-                  The demand for Data Scientists is increasing day by day. Data
-                  Science is ranked highly on Glassdoor’s “Top 25 highest-paying
-                  entry-level jobs.” As industries adopt AI and machine
-                  learning, most product or service-based companies require Data
-                  Scientists, leading to a steady rise in demand and average
-                  salaries each year.
+          <section className="relative w-full py-12 md:py-16 bg-surface text-content">
+            <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+              <div className="text-center md:text-left mb-8 md:mb-10">
+                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-content mb-4">
+                  Data Science Internship Program for Students, Freshers and
+                  Undergraduates
+                </h2>
+                <p className="text-base sm:text-lg leading-relaxed text-content-secondary max-w-3xl">
+                  You don&apos;t have to wait for a degree to start.
+                  Undergraduates can begin while still in college, and recent
+                  graduates can use the program to turn a degree into a
+                  verifiable portfolio.
                 </p>
               </div>
-            </div>
 
-            <div
-              data-aos="fade-up"
-              data-aos-delay="0"
-              data-aos-duration="800"
-              className="w-full h-full grid grid-cols-2 gap-5 mt-10"
-            >
-              <div
-                data-aos="fade-up"
-                data-aos-delay="0"
-                data-aos-duration="800"
-                className={`w-full h-48 shadow-customSoft shadow-slate-500 dark:bg-[#fff] p-4 flex justify-center items-center flex-col rounded-md`}
-              >
-                <p
-                  data-aos="fade-up"
-                  data-aos-delay="0"
-                  data-aos-duration="800"
-                  className="text-content text-center  text-sm md:text-base mb-3"
-                >
-                  Average Hike at Kre8ly
-                </p>
-                <p
-                  data-aos="fade-up"
-                  data-aos-delay="0"
-                  data-aos-duration="800"
-                  className="text-[#EAB308] text-2xl md:text-5xl font-bold"
-                >
-                  40%
-                </p>
+              {/* Feature Cards Grid */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-6">
+                {criteria.map((item, idx) => {
+                  const Icon = item.icon;
+                  return (
+                    <div
+                      key={idx}
+                      className="group flex items-start gap-4 rounded-xl border border-line bg-surface p-5 shadow-xs transition-all duration-300 hover:border-brand/40 hover:shadow-md"
+                    >
+                      <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-brand-subtle text-brand transition-transform duration-300 group-hover:scale-105">
+                        <Icon className="h-5 w-5" />
+                      </div>
+                      <div>
+                        <h3 className="font-semibold text-content text-base mb-1">
+                          {item.title}
+                        </h3>
+                        <p className="text-sm leading-relaxed text-content-secondary">
+                          {item.text}
+                        </p>
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
-              <div
-                data-aos="fade-up"
-                data-aos-delay="0"
-                data-aos-duration="800"
-                className="w-full shadow-customSoft shadow-slate-500 h-48 dark:bg-[#fff] p-4 flex justify-center items-center flex-col rounded-md"
-              >
-                <p
-                  data-aos="fade-up"
-                  data-aos-delay="0"
-                  data-aos-duration="800"
-                  className="text-content text-center text-sm md:text-base mb-3"
-                >
-                  Average Salary of Past learners
+
+              {/* Bottom CTA note */}
+              <div className="mt-8 pt-6 border-t border-line/60 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <p className="text-sm text-content-secondary text-center sm:text-left">
+                  100% online cohort with live mentoring and real-world dataset
+                  projects.
                 </p>
-                <p
-                  data-aos="fade-up"
-                  data-aos-delay="0"
-                  data-aos-duration="800"
-                  className="text-[#3292FF] text-2xl md:text-5xl font-bold"
+                <a
+                  href="https://pages.razorpay.com/umweb2026"
+                  className="inline-flex items-center justify-center rounded-lg bg-brand px-5 py-2.5 text-sm font-semibold text-white shadow-xs transition-colors hover:bg-brand/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
                 >
-                  6 to 8 Lakhs
-                </p>
+                  Apply for Fellowship
+                </a>
               </div>
             </div>
-          </section> */}
+          </section>
 
           <section
             data-aos="fade-up"
@@ -557,35 +363,12 @@ const DataScienceFellowship = ({ darkMode, setDarkMode, location }) => {
               moduleFormOpen ? "mt-24" : ""
             }`}
           >
-            {/* <h3
-                data-aos="zoom-in-down"
-                data-aos-delay="0"
-                data-aos-duration="800"
-                className="text-lg md:text-3xl font-semibold text-content text-center"
-              >
-                Meet Our Industry Experts
-              </h3>
-              <p
-                data-aos="zoom-in-up"
-                data-aos-delay="0"
-                data-aos-duration="800"
-                className="text-sm hidden md:block text-content-secondary w-full "
-                style={{
-                  lineHeight: "2.5",
-                }}
-              >
-                Learn Web Development, Data Science, Digital Marketing, Machine
-                Learning, and UI/UX Design from experts. Master skills and{" "}
-                <br /> accelerate your career!
-              </p> */}
-
             <h2 className="text-3xl lg:text-4xl font-semibold text-content mb-4">
               Meet Our Industry Experts
             </h2>
             <p className="text-lg text-content-secondary max-w-2xl mx-auto">
-              Learn Web Development, Data Science, Digital Marketing, Machine
-              Learning, and UI/UX Design from experts. Master skills and <br />{" "}
-              accelerate your career!
+              Learn from mentors who work with data and machine learning and can
+              show you how the work is done in practice.
             </p>
             <div
               data-aos="fade-up"
@@ -593,7 +376,6 @@ const DataScienceFellowship = ({ darkMode, setDarkMode, location }) => {
               data-aos-duration="800"
               className="w-full h-full flex flex-col items-center justify-center text-center gap-10 py-5"
             >
-              {/* <Carousel profileData={CarouselInfo} /> */}
               <div
                 data-aos="zoom-in"
                 data-aos-delay="0"
@@ -602,34 +384,11 @@ const DataScienceFellowship = ({ darkMode, setDarkMode, location }) => {
               >
                 <IndustryExperts
                   CarouselInfo={CarouselInfo}
-                  varient={"data-science"}
+                  varient={"DataScienceFellowship"}
                 />
               </div>
             </div>
           </section>
-
-          {/* <section
-            className={`${sectionStylings?.section} container mx-auto relative`}
-          > */}
-          {/* <img
-              src={Ellipse}
-              alt=""
-              className="absolute hidden dark:block -top-10 w-[250px] md:w-[450px] -left-[35%] md:-left-[15%] select-none blur-md z-0"
-            /> */}
-
-          {/* <div className="w-full h-full relative z-10 ">
-              <h6
-                data-aos="fade-up"
-                data-aos-delay="0"
-                data-aos-duration="800"
-                className={`${sectionStylings?.title} `}
-              >
-                Perks of internship at Kre8ly
-              </h6>
-            </div>
-
-            <PerksOfInternship />
-          </section> */}
 
           <section
             data-aos="fade-up"
@@ -637,70 +396,20 @@ const DataScienceFellowship = ({ darkMode, setDarkMode, location }) => {
             data-aos-duration="800"
             className="w-full h-full flex flex-col items-center justify-center text-center gap-10 py-5 pt-24 pb-16 px-6"
           >
-            <PlacementSupport
-              PlacementSupportInfo={PlacementSupportInfo}
-              location={location}
-              varient={"DataScience"}
-            />
+            <Reveal direction="up">
+              <PlacementSupport
+                PlacementSupportInfo={PlacementSupportInfo}
+                location={location}
+                varient={"DataScienceFellowship"}
+              />
+            </Reveal>
+            <Reveal direction="up">
+              <PlacementSupportSwiper
+                PlacementSupportInfo={PlacementSupportInfo}
+                darkMode={darkMode}
+              />
+            </Reveal>
           </section>
-
-          {/* <section
-            data-aos="fade-up"
-            data-aos-delay="0"
-            data-aos-duration="800"
-            className={`${sectionStylings?.section} container mx-auto`}
-          >
-            <div className="w-full h-full  ">
-              <h6
-                data-aos="fade-up"
-                data-aos-delay="0"
-                data-aos-duration="800"
-                className={`${sectionStylings?.title}`}
-              >
-                Why Join Best Data Science Fellowship <br /> in {location} at
-                Kre8ly
-              </h6>
-            </div>
-            <FellowshipExtraSwiper
-              Extra={ExtraFellowship}
-              SwiperColor={swiperColor}
-            /> */}
-          {/* <motion.div
-              variants={containerVariants}
-              className="grid grid-cols-1 md:grid-cols-2  w-full mx-auto shadow-lg gap-x-10 gap-y-20 mt-5">
-              {ExtraFellowship?.map((highlight, index) => (
-                <div
-                  key={index}
-                  className="flex flex-col items-center gap-4 h-full bg-gradient-to-br from-brand to-brand-active rounded-lg p-6 relative hover:scale-105 transition-all duration-300 cursor-pointer"
-                >
-                  <div
-                    style={{
-                      height: highlight.height,
-                      width: highlight.width,
-                    }}
-                    className="rounded-full p-2 absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex items-center justify-center"
-                  >
-                    <img
-                      src={highlight.icon}
-                      alt={highlight.title}
-                      className="object-contain w-full h-full hover:scale-105 transition-all duration-300 cursor-pointer"
-                    />
-                  </div>
-
-                  <motion.h4
-                    variants={headingVariants}
-                    className="text-primary text-base md:text-lg font-semibold leading-relaxed text-center mt-8">
-                    {highlight.title}
-                  </motion.h4>
-                  <motion.p
-                    variants={paragraphVariants}
-                    className="text-secondary text-sm leading-relaxed text-center w-full md:w-[80%]">
-                    {highlight.subtitle}
-                  </motion.p>
-                </div>
-              ))}
-            </motion.div> */}
-          {/* </section> */}
 
           <section
             data-aos="fade-up"
@@ -711,39 +420,11 @@ const DataScienceFellowship = ({ darkMode, setDarkMode, location }) => {
             <BookYourSeat
               Images={MainImage}
               altforImage={"Data Analyst Fellowship "}
-              titles={DataScienceAnimationText}
-              subtitles1={DataScienceSubtitles1}
-              subtitles2={DataScienceSubtitles2}
-              subHeadings={DataScienceSubHeadings}
               CourseName={CourseName}
               darkMode={darkMode}
+              varient={"DataScienceFellowship"}
             />
           </section>
-
-          {/* <section
-            data-aos="fade-up"
-            data-aos-delay="0"
-            data-aos-duration="800"
-            className={`${sectionStylings?.section} container mx-auto`}
-          >
-            <div
-              data-aos="fade-up"
-              data-aos-delay="0"
-              data-aos-duration="800"
-              className="flex flex-col gap-4 justify-center items-center"
-            >
-              <h6
-                data-aos="fade-up"
-                data-aos-delay="0"
-                data-aos-duration="800"
-                className={`${sectionStylings?.title}`}
-              >
-                {" "}
-                150+ Success Stories
-              </h6>
-            </div>
-            <HallofFameCardTwo hallofFameInfo={NewHallOfFrameInfos} />
-          </section> */}
 
           <section>
             <div
@@ -753,31 +434,9 @@ const DataScienceFellowship = ({ darkMode, setDarkMode, location }) => {
               className="text-lg md:text-3xl font-semibold text-content leading-tight relative z-20"
             ></div>
             <div className="w-full h-full pt-14">
-              <PerksOfInternship />
+              <PerksOfInternship varient={"DataScienceFellowship"} />
             </div>
           </section>
-
-          {/* <section
-            data-aos="fade-up"
-            data-aos-delay="0"
-            data-aos-duration="800"
-            className={`${sectionStylings?.section} container mx-auto overflow-hidden`}
-          >
-            <h5
-              data-aos="fade-up"
-              data-aos-delay="0"
-              data-aos-duration="800"
-              className={`${sectionStylings?.title}`}
-              style={{
-                lineHeight: "1.5em",
-              }}
-            >
-              Projects You&apos;ll Build in Our <br />
-              Data Science Fellowship
-            </h5> */}
-          {/* <ProjectSection Project={DataScienceProjects} /> */}
-          {/* <FellowshipProjects Project={DataScienceProjects} />
-          </section> */}
 
           <section>
             <div
@@ -786,92 +445,13 @@ const DataScienceFellowship = ({ darkMode, setDarkMode, location }) => {
               data-aos-duration="800"
               className="w-full bg-surface-sunken md:mt-10 py-5 pt-24 pb-16 px-6"
             >
-              {/* <h3
-                  data-aos="zoom-in"
-                  data-aos-delay="0"
-                  data-aos-duration="800"
-                  className="text-lg md:text-3xl font-bold text-content text-center"
-                >
-                  Why Join Best Web Development Course in at Kre8ly
-                </h3> */}
               <ExtraSwiper
                 Extra={Extra}
-                // SwiperColor={SwiperColor}
                 CourseName={"Data Science Fellowship"}
+                varient={"DataScienceFellowship"}
               />
             </div>
           </section>
-
-          {/* <section
-            data-aos="fade-up"
-            data-aos-delay="0"
-            data-aos-duration="800"
-            className={`${sectionStylings?.section} container mx-auto overflow-hidden`}>
-            <div
-              data-aos="fade-up"
-              data-aos-delay="0"
-              data-aos-duration="800"
-              className="flex flex-col lg:flex-row items-center justify-between w-full gap-y-10">
-              <div
-                data-aos="fade-up"
-                data-aos-delay="0"
-                data-aos-duration="800"
-                className="w-full lg:w-[40%]">
-                <figure className="w-full  mx-auto">
-                  <img
-                    src={Certificates}
-                    alt="Data Science Fellowship Fellowship Certificate- Kre8ly"
-                    className="w-full h-auto object-contain rounded-lg shadow-lg"
-                  />
-                </figure>
-              </div>
-              <div
-                data-aos="fade-up"
-                data-aos-delay="0"
-                data-aos-duration="800"
-                className="w-full lg:w-[55%]">
-                <div
-                  data-aos="fade-up"
-                  data-aos-delay="0"
-                  data-aos-duration="800"
-                >
-                  <h2
-                    className={`${sectionStylings?.title} !text-left text-base md:text-xl`}>
-                    Data Science Fellowship Certificate
-                  </h2>
-                  <p
-                    className="text-content-secondary mb-4 text-xs md:text-lg"
-                    style={{
-                      wordSpacing: "4px",
-                      lineHeight: "1.8em",
-                    }}
-                  >
-                    Data Science Fellowship Certificate: Gain immersive,
-                    skill-focused training to accelerate your career. Whether
-                    aiming for a tech firm, joining a creative agency, or
-                    freelancing, this certification equips you with the
-                    expertise needed for professional success in Data Science
-                  </p>
-                  <p
-                    className="text-xs md:text-lg text-content-secondary mx-auto md:mx-0 text-justify w-full md:w-[90%] mt-10"
-                    style={{
-                      wordSpacing: "4px",
-                      lineHeight: "1.8em",
-                    }}
-                  >
-                    We also offer Course in {location} and Best{" "}
-                    <Link
-                      to="/digital-marketing"
-                      className="underline text-content"
-                    >
-                      Digital Marketing
-                    </Link>{" "}
-                    Certification in {location}.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </section> */}
 
           <section
             data-aos="fade-up"
@@ -879,36 +459,11 @@ const DataScienceFellowship = ({ darkMode, setDarkMode, location }) => {
             data-aos-duration="800"
             className="w-full h-full flex flex-col items-center justify-center gap-10 py-5 pt-24 pb-16 px-6"
           >
-            {/* <h3
-                          data-aos="zoom-in"
-                          data-aos-delay="0"
-                          data-aos-duration="800"
-                          className="text-lg md:text-3xl font-bold text-content text-center"
-                        >
-                          Technologies & Tools You Will Learn
-                        </h3> */}
             <Technologies
-              varient={"data-science"}
+              varient={"DataScienceFellowship"}
               Technology={DataScienceTechstack}
             />
           </section>
-
-          {/* <section
-            className={`${sectionStylings?.section} container mx-auto relative `}
-          >
-            <h6
-              className={`${sectionStylings?.title} relative z-10`}>
-              Frequently Asked Questions
-            </h6> */}
-          {/* <img
-              src={Ellipse}
-              alt=""
-              className="absolute hidden dark:block top-5 w-[250px] md:w-[450px] -left-[35%] md:-left-[15%] select-none blur-md z-0"
-            /> */}
-          {/* <div className="w-full md:w-10/12 relative z-10">
-              <FaqForFellowship Faqs={DataScienceFaq} darkMode={darkMode} />
-            </div>
-          </section> */}
 
           <section
             data-aos="fade-up"
@@ -916,21 +471,13 @@ const DataScienceFellowship = ({ darkMode, setDarkMode, location }) => {
             data-aos-duration="800"
             className="w-full h-full flex flex-col items-center justify-center py-5 pt-24 pb-16 px-6 bg-surface-sunken"
           >
-            {/* <h3
-                data-aos="zoom-in"
-                data-aos-delay="0"
-                data-aos-duration="800"
-                className="text-sm md:text-3xl font-bold text-content text-center"
-              >
-                150+ Success Stories
-              </h3> */}
             <div className="text-center mb-4">
               <h2 className="text-3xl lg:text-4xl font-semibold text-content mb-4">
                 150+ Success Stories
               </h2>
               <p className="text-lg text-content-secondary max-w-2xl mx-auto">
-                Real experiences from learners who achieved their goals and
-                transformed careers with our guidance and support.
+                See where Kre8ly learners are working now. Browse by Developer,
+                Analyst or Others.
               </p>
             </div>
             <div className="w-full h-full flex flex-col items-center justify-center py-5">
@@ -947,6 +494,7 @@ const DataScienceFellowship = ({ darkMode, setDarkMode, location }) => {
               Project={DataScienceProjects}
               CourseName={"Data Science Fellowship"}
               location={location}
+              varient={"DataScienceFellowship"}
             />
           </section>
 
@@ -957,7 +505,6 @@ const DataScienceFellowship = ({ darkMode, setDarkMode, location }) => {
             className="w-full h-full flex flex-col items-center justify-center py-5 pt-24 pb-16 px-6"
           >
             <Certificate
-              // Project={WebDevProjectInfo}
               CourseName={"Data Science Fellowship"}
               location={location}
             />
@@ -973,14 +520,7 @@ const DataScienceFellowship = ({ darkMode, setDarkMode, location }) => {
             data-aos-duration="800"
             className="w-full h-full flex flex-col items-center justify-center py-5 pt-24 pb-16 px-6"
           >
-            {/* <img
-              src={Ellipse}
-              alt=""
-              className="absolute top-5 w-[250px] md:w-[450px] -left-[35%] md:-left-[15%] select-none blur-md z-0 hidden dark:block"
-            /> */}
-            {/* <div className="w-full md:w-10/12 relative z-10"> */}
             <Faqs Faqs={DataScienceFaq} darkMode={darkMode} />
-            {/* </div> */}
           </section>
         </main>
       </div>
