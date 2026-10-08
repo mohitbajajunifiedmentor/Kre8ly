@@ -30,7 +30,7 @@ const DataScienceEnroll = ({ darkMode, setDarkMode, location }) => {
           content="Discover Online Data Science Course Fees & Price at Kre8ly. Learn Python, ML, SQL & more with hands-on projects. Enroll now!"
         />
 
-        <link rel="canonical" href="https://www.unifiedmentor.com/data-science-enroll" />
+        <link rel="canonical" href="https://www.kre8ly.com/data-science-enroll" />
 
         {/* <!-- Open Graph / Facebook --> */}
         <meta

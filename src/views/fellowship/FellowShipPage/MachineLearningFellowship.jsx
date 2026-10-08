@@ -171,7 +171,7 @@ const MachineLearningFellowship = ({ darkMode, setDarkMode, location }) => {
 
         <link
           rel="canonical"
-          href="https://www.unifiedmentor.com/fellowship/machine-learning"
+          href="https://www.kre8ly.com/fellowship/machine-learning"
         />
 
         <meta name="robots" content="index, follow" />

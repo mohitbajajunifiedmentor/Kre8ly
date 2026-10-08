@@ -242,7 +242,7 @@ const HireFromUs = ({ darkMode, setDarkMode }) => {
           content="hire interns, hire freshers, job-ready talent, tech interns, data science interns, digital marketing interns"
         />
         <meta name="robots" content="index, follow" />
-        <link rel="canonical" href="https://www.unifiedmentor.com/hire-from-us" />
+        <link rel="canonical" href="https://www.kre8ly.com/hire-from-us" />
       </Helmet>
 
       <main className="w-full bg-canvas text-content min-h-screen">

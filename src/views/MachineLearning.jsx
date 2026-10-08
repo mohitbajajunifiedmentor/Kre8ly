@@ -135,7 +135,7 @@ const MachineLearning = ({ darkMode, setDarkMode, location }) => {
         {/* Canonical Link */}
         <link
           rel="canonical"
-          href="https://www.unifiedmentor.com/machine-learning"
+          href="https://www.kre8ly.com/machine-learning"
         />
         {/* Meta Robots */}
         <meta name="robots" content="index, follow" />

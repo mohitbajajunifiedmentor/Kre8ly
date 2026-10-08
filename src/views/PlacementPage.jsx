@@ -140,7 +140,7 @@ export default function PlacementPage({ darkMode, setDarkMode }) {
           content="Get placed at top companies like Amazon, TCS, Accenture, Natixis & more with Kre8ly’s placement cell."
         />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="canonical" href="https://www.unifiedmentor.com/placement" />
+        <link rel="canonical" href="https://www.kre8ly.com/placement" />
       </Helmet>
 
       <main className="w-full bg-canvas text-content">

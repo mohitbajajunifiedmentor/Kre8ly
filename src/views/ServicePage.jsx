@@ -66,7 +66,7 @@ const ServicePage = ({ darkMode, setDarkMode }) => {
       <Helmet>
         <title>Kre8ly | Full-Service Digital Solutions</title>
         <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-        <link rel="canonical" href="https://www.unifiedmentor.com/services" />
+        <link rel="canonical" href="https://www.kre8ly.com/services" />
         <meta
           name="keywords"
           content="web development services, software development, mobile app development, digital marketing services"

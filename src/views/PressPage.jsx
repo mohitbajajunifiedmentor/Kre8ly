@@ -43,7 +43,7 @@ const PressPage = ({ darkMode, setDarkMode }) => {
         />
         <meta name="author" content="Kre8ly" />
         <meta name="robots" content="index, follow" />
-        <link rel="canonical" href="https://www.unifiedmentor.com/press-releases" />
+        <link rel="canonical" href="https://www.kre8ly.com/press-releases" />
       </Helmet>
 
       <main className="w-full bg-canvas text-content min-h-screen">

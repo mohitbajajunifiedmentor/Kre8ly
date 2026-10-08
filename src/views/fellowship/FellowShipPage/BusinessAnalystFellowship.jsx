@@ -294,7 +294,7 @@ const BusinessAnalystFellowship = ({ darkMode, setDarkMode, location }) => {
 
         <link
           rel="canonical"
-          href="https://www.unifiedmentor.com/fellowship/business-analyst"
+          href="https://www.kre8ly.com/fellowship/business-analyst"
         />
 
         <meta name="robots" content="index, follow" />

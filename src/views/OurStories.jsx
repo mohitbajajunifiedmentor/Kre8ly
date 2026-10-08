@@ -114,7 +114,7 @@ export default function OurStories({ darkMode, setDarkMode }) {
           content="Discover inspiring success stories from Kre8ly students who have achieved remarkable career growth."
         />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="canonical" href="https://www.unifiedmentor.com/our-stories" />
+        <link rel="canonical" href="https://www.kre8ly.com/our-stories" />
       </Helmet>
 
       {/* Video Modal Player */}

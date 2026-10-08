@@ -161,7 +161,7 @@ const DigitalMarketingFellowship = ({ darkMode, setDarkMode, location }) => {
         />
         <link
           rel="canonical"
-          href="https://www.unifiedmentor.com/fellowship/digital-marketing"
+          href="https://www.kre8ly.com/fellowship/digital-marketing"
         />
         <meta name="robots" content="index, follow" />
       </Helmet>

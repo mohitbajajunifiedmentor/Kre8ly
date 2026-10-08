@@ -151,7 +151,7 @@ const DigitalMarketing = ({ darkMode, setDarkMode, location }) => {
         {/* Canonical Link */}
         <link
           rel="canonical"
-          href="https://www.unifiedmentor.com/digital-marketing"
+          href="https://www.kre8ly.com/digital-marketing"
         />
 
         {/* Meta Robots */}

@@ -150,7 +150,7 @@ const DataScience = ({ darkMode, setDarkMode, location }) => {
         {/* Canonical Link */}
         <link
           rel="canonical"
-          href="https://www.unifiedmentor.com/data-science"
+          href="https://www.kre8ly.com/data-science"
         />
 
         {/* Open Graph Meta Tags */}
@@ -165,11 +165,11 @@ const DataScience = ({ darkMode, setDarkMode, location }) => {
         />
         <meta
           property="og:url"
-          content="https://www.unifiedmentor.com/data-science"
+          content="https://www.kre8ly.com/data-science"
         />
         <meta
           property="og:image"
-          content="https://www.unifiedmentor.com/assets/logo-BQ_x2lfY.png"
+          content="https://www.kre8ly.com/assets/logo-BQ_x2lfY.png"
         />
 
         <script type="application/ld+json">
@@ -179,8 +179,8 @@ const DataScience = ({ darkMode, setDarkMode, location }) => {
       "@type": "EducationalOrganization",
       "name": "Kre8ly",
       "alternateName": "Kre8ly Private Limited",
-      "url": "https://www.unifiedmentor.com/data-science",
-      "logo": "https://www.unifiedmentor.com/assets/logo-BQ_x2lfY.png",
+      "url": "https://www.kre8ly.com/data-science",
+      "logo": "https://www.kre8ly.com/assets/logo-BQ_x2lfY.png",
       "sameAs": [
         "https://www.facebook.com/Unifiedmentor",
         "https://www.instagram.com/_unifiedmentor/",

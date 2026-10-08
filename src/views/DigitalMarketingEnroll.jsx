@@ -25,7 +25,7 @@ const DigitalMarketingEnroll = ({ darkMode, setDarkMode, location }) => {
           content={`online digital marketing course fees, digital marketing course pricing, digital marketing course cost, digital marketing course fees in ${location},`}
         />
 
-        <link rel="canonical" href="https://www.unifiedmentor.com/digital-marketing-enroll" />
+        <link rel="canonical" href="https://www.kre8ly.com/digital-marketing-enroll" />
 
         <meta
           name="description"

@@ -19,4 +19,4 @@ export const CERTIFICATE_API_BASE_URL =
   process.env.NEXT_PUBLIC_CERTIFICATE_API_URL ||
   "https://certificate-backend-peach.vercel.app/api/";
 
-export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://unifiedmentor.com";
+export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://www.kre8ly.com";

@@ -27,7 +27,6 @@ export default function HomeHeroSection() {
         <div className="absolute right-[-8rem] top-1/2 h-[28rem] w-[28rem] -translate-y-1/2 rounded-full bg-brand/10 blur-3xl" />
       </div>
 
-      {/* Sirf top padding trim ki gayi hai: pt-1 sm:pt-2 md:pt-3 lg:pt-3 */}
       <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-14 px-4 pt-2 pb-10 sm:px-6 sm:pt-3 sm:pb-12 md:pt-4 md:pb-14 lg:grid-cols-[1.1fr_0.9fr] lg:gap-20 lg:px-8 lg:pt-3 lg:pb-14">
         {/* ---------------- Left Column ---------------- */}
         <div className="text-center lg:text-left">
@@ -39,12 +38,11 @@ export default function HomeHeroSection() {
             Transform Your Career Today
           </span>
 
-          <h1 className="mt-6 text-[2.1rem] font-extrabold leading-[1.05] tracking-[-0.03em] sm:text-5xl xl:text-[3.6rem]">
-            Bridge the gap between
-            <br className="hidden sm:block" /> college &amp; your career
+          <h1 className="mt-6 text-[2.1rem] font-extrabold leading-[1.1] tracking-[-0.03em] sm:text-5xl xl:text-[3.4rem]">
+            Online Certification Courses in India That Lead to a Real Job
           </h1>
 
-          {/* Bridge SVG */}
+          {/* Bridge Accent Line */}
           <svg
             aria-hidden="true"
             viewBox="0 0 480 44"
@@ -63,9 +61,7 @@ export default function HomeHeroSection() {
           </svg>
 
           <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-content-secondary lg:mx-0 lg:text-lg">
-            Live classes with working professionals, real projects, and placement support. Kre8ly&apos;s online
-            certification courses are made for students and freshers in Lucknow, Indore, Patna, Coimbatore,
-            and every other town where good training is hard to find.
+            Live classes with working professionals, real projects and placement support. Kre8ly courses are made for students and freshers in Delhi, Mumbai, Hyderabad, Kolkata etc, and every other town where good training is hard to find.
           </p>
 
           <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row lg:justify-start">
@@ -80,7 +76,7 @@ export default function HomeHeroSection() {
               />
             </Link>
             <Link
-              href="/fellowships"
+              href="/internships"
               className="inline-flex h-12 items-center justify-center rounded-full border border-line-strong px-7 text-sm font-semibold text-content transition-colors duration-200 hover:bg-surface-sunken focus-visible:outline-none focus-visible:shadow-focus md:text-base"
             >
               Apply for Internship
@@ -123,7 +119,11 @@ export default function HomeHeroSection() {
               </li>
 
               {PROGRAMS.map(({ href, name, meta, Icon }, i) => (
-                <li key={href} className="k-stop relative pl-12" style={{ "--i": `${i + 1}` }}>
+                <li
+                  key={href}
+                  className="k-stop relative pl-12"
+                  style={{ "--i": `${i + 1}` }}
+                >
                   <span
                     aria-hidden="true"
                     className="absolute left-[17px] top-1/2 h-2.5 w-2.5 -translate-y-1/2 rounded-full bg-brand"
@@ -156,7 +156,10 @@ export default function HomeHeroSection() {
                 </li>
               ))}
 
-              <li className="k-stop relative pl-12" style={{ "--i": `${PROGRAMS.length + 1}` }}>
+              <li
+                className="k-stop relative pl-12"
+                style={{ "--i": `${PROGRAMS.length + 1}` }}
+              >
                 <span
                   aria-hidden="true"
                   className="absolute left-[15px] top-1/2 h-3.5 w-3.5 -translate-y-1/2 rounded-full border-2 border-brand bg-brand"

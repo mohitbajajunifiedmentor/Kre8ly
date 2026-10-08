@@ -6,11 +6,11 @@ export const metadata = {
   keywords: ["hire interns", "hire freshers", "job-ready talent", "tech interns", "data science interns", "digital marketing interns"],
   authors: [{ name: "Kre8ly" }],
   robots: { index: true, follow: true },
-  alternates: { canonical: "https://www.unifiedmentor.com/hire-from-us" },
+  alternates: { canonical: "https://www.kre8ly.com/hire-from-us" },
   openGraph: {
     title: "Hire Job-Ready Tech Talent | Kre8ly",
     description: "Connect with industry-trained, job-ready tech professionals from Kre8ly. Hire skilled candidates for data science, AI, and software roles today.",
-    url: "https://www.unifiedmentor.com/hire-from-us",
+    url: "https://www.kre8ly.com/hire-from-us",
     siteName: "Kre8ly",
     type: "website",
     locale: "en_IN",

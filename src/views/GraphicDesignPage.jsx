@@ -130,7 +130,7 @@ const GraphicDesignPage = ({ darkMode, setDarkMode, location }) => {
         {/* Canonical Link */}
         <link
           rel="canonical"
-          href="https://www.unifiedmentor.com/graphic-design"
+          href="https://www.kre8ly.com/graphic-design"
         />
 
         {/* Meta Robots */}

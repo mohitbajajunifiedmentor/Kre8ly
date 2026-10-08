@@ -192,7 +192,7 @@ const DataScienceFellowship = ({ darkMode, setDarkMode, location }) => {
 
         <link
           rel="canonical"
-          href="https://www.unifiedmentor.com/fellowship/data-science"
+          href="https://www.kre8ly.com/fellowship/data-science"
         />
         <meta name="robots" content="index, follow" />
       </Helmet>

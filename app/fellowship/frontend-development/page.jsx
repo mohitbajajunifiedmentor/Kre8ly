@@ -6,11 +6,11 @@ export const metadata = {
   keywords: ["frontend development course", "frontend developer fellowship", "learn frontend development", "frontend developer certification", "job ready frontend course", "frontend mentorship program"],
   authors: [{ name: "Kre8ly" }],
   robots: { index: true, follow: true },
-  alternates: { canonical: "https://www.unifiedmentor.com/fellowship/frontend-development" },
+  alternates: { canonical: "https://www.kre8ly.com/fellowship/frontend-development" },
   openGraph: {
     title: "Frontend Development Program with Certification | Kre8ly",
     description: "Join our Frontend Development Fellowship to master HTML, CSS, JavaScript & React. Hands-on projects & mentorship. Start your journey today!",
-    url: "https://www.unifiedmentor.com/fellowship/frontend-development",
+    url: "https://www.kre8ly.com/fellowship/frontend-development",
     siteName: "Kre8ly",
     type: "website",
     locale: "en_IN",

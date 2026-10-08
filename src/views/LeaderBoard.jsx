@@ -115,7 +115,7 @@ const LeaderBoard = ({ darkMode, setDarkMode }) => {
         />
         <link
           rel="canonical"
-          href="https://www.unifiedmentor.com/leaderboard"
+          href="https://www.kre8ly.com/leaderboard"
         />
       </Helmet>
 

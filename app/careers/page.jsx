@@ -6,11 +6,11 @@ export const metadata = {
   keywords: ["Kre8ly", "careers", "job opportunities", "online education", "join our team"],
   authors: [{ name: "Kre8ly" }],
   robots: { index: true, follow: true },
-  alternates: { canonical: "https://www.unifiedmentor.com/careers" },
+  alternates: { canonical: "https://www.kre8ly.com/careers" },
   openGraph: {
     title: "Kre8ly | Careers",
     description: "Join Kre8ly's team and contribute to transforming online education. Discover job opportunities and become a part of our mission to innovate and excel in online learning.",
-    url: "https://www.unifiedmentor.com/careers",
+    url: "https://www.kre8ly.com/careers",
     siteName: "Kre8ly",
     type: "website",
     locale: "en_IN",

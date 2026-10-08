@@ -187,7 +187,7 @@ const Career = ({ darkMode, setDarkMode }) => {
           content="Kre8ly, careers, job opportunities, online education, join our team"
         />
 
-        <link rel="canonical" href="https://www.unifiedmentor.com/careers" />
+        <link rel="canonical" href="https://www.kre8ly.com/careers" />
 
         <meta
           name="description"

@@ -8,11 +8,11 @@ import { FiArrowRight, FiCheckCircle } from "react-icons/fi";
 const POINTS = [
   {
     title: "Live Learning with Industry Experts",
-    body: "You learn from people who work in tech companies today, and you can put your question to them during the session instead of waiting for a forum reply.",
+    body: "Your teachers work in tech companies today. When you're stuck, you ask them during the session instead of waiting days for a forum reply.",
   },
   {
     title: "Real-World Projects",
-    body: "You build applications with unclear requirements and real deadlines, the way work actually looks. By the end, your portfolio has projects you can explain line by line.",
+    body: "You build applications with vague requirements and real deadlines, the way work actually looks. By the end, your portfolio has projects you can explain line by line.",
   },
   {
     title: "Job Placements and Career Support",
@@ -33,12 +33,11 @@ export default function WhyChooseSection() {
           <Eyebrow>Why Kre8ly</Eyebrow>
 
           <h2 className="mt-4 text-3xl sm:text-4xl lg:text-[2.6rem] font-black tracking-tight leading-[1.12] text-content">
-            Why Choose Kre8ly for Career Transformation Programs
+            Why Choose Kre8ly for Career Transformation Programs?
           </h2>
 
           <p className="mt-4 text-sm sm:text-base leading-relaxed text-content-secondary">
-            A career transformation program only works if it changes what you
-            can do, not just what your CV says. Here is how we approach that.
+            Career transformation programs only work if they change what you can do, not just what your CV says. Here's how we approach it.
           </p>
 
           <Link

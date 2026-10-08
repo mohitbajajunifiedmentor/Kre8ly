@@ -172,7 +172,7 @@ const FrontendDeveloperFellowship = ({ darkMode, setDarkMode, location }) => {
 
         <link
           rel="canonical"
-          href="https://www.unifiedmentor.com/fellowship/frontend-development"
+          href="https://www.kre8ly.com/fellowship/frontend-development"
         />
 
         <meta name="robots" content="index, follow" />

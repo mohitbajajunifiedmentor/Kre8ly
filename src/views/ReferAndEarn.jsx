@@ -111,7 +111,7 @@ const ReferAndEarn = ({ darkMode, setDarkMode }) => {
         <meta name="robots" content="index, follow" />
         <link
           rel="canonical"
-          href="https://www.unifiedmentor.com/refer-and-earn"
+          href="https://www.kre8ly.com/refer-and-earn"
         />
         <meta
           name="description"

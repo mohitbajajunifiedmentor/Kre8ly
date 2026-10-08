@@ -137,7 +137,7 @@ export default function BlogHome({ darkMode, setDarkMode }) {
         <title>
           Kre8ly Blog | Insights on Data Science, Tech, Marketing & Career
         </title>
-        <link rel="canonical" href="https://www.unifiedmentor.com/our-blogs" />
+        <link rel="canonical" href="https://www.kre8ly.com/our-blogs" />
         <meta name="robots" content="index, follow" />
         <meta
           name="description"

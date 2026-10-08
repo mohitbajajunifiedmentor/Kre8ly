@@ -6,11 +6,11 @@ export const metadata = {
   keywords: ["full stack web development course fees", "full stack developer course cost", "web development course fees", "full stack course pricing", "full stack course fees in ${location}", "affordable full stack web development course"],
   authors: [{ name: "Kre8ly" }],
   robots: { index: true, follow: true },
-  alternates: { canonical: "https://www.unifiedmentor.com/web-development-enroll" },
+  alternates: { canonical: "https://www.kre8ly.com/web-development-enroll" },
   openGraph: {
     title: "Kre8ly | Web Development Course Pricing",
     description: "Discover the pricing for Kre8ly's Web Development Course. Find flexible and affordable options to start your journey to becoming a skilled web developer with our online course and certification.",
-    url: "https://www.unifiedmentor.com/web-development-enroll",
+    url: "https://www.kre8ly.com/web-development-enroll",
     siteName: "Kre8ly",
     type: "website",
     locale: "en_IN",

@@ -176,7 +176,7 @@ const UIUXFellowship = ({ darkMode, setDarkMode, location }) => {
 
         <link
           rel="canonical"
-          href="https://www.unifiedmentor.com/fellowship/ui-ux-designer"
+          href="https://www.kre8ly.com/fellowship/ui-ux-designer"
         />
 
         <meta name="robots" content="index, follow" />

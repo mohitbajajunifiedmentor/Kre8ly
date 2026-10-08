@@ -30,7 +30,7 @@ const WebDevelopmentEnroll = ({ darkMode, setDarkMode, location }) => {
 
         <link
           rel="canonical"
-          href="https://www.unifiedmentor.com/web-development-enroll"
+          href="https://www.kre8ly.com/web-development-enroll"
         />
 
         {/* <!-- Open Graph / Facebook --> */}

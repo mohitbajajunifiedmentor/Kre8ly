@@ -119,7 +119,7 @@ export default function MouPage({ darkMode, setDarkMode }) {
           content="MOU, Kre8ly, industry collaboration, career growth, educational partnerships, college tie ups"
         />
         <meta name="robots" content="index, follow" />
-        <link rel="canonical" href="https://www.unifiedmentor.com/mou" />
+        <link rel="canonical" href="https://www.kre8ly.com/mou" />
       </Helmet>
 
       <main className="w-full bg-canvas text-content min-h-screen">

@@ -157,7 +157,7 @@ const DataAnalystFellowship = ({ darkMode, setDarkMode, location }) => {
         />
         <link
           rel="canonical"
-          href="https://www.unifiedmentor.com/fellowship/data-analyst"
+          href="https://www.kre8ly.com/fellowship/data-analyst"
         />
 
         <meta name="robots" content="index, follow" />

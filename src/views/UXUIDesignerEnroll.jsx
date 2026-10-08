@@ -25,7 +25,7 @@ const UXUIDesignerEnroll = ({ darkMode, setDarkMode, location }) => {
           content={`ui ux design course fees, ui ux course fees in ${location}, ui ux design course price, ui ux course cost, ui ux design course fee structure, ui ux course price comparison, ui ux design course fee list, cost of ui ux course in ${location}, ui ux course fees 2025, best ui ux course pricing`}
         />
 
-        <link rel="canonical" href="https://www.unifiedmentor.com/ui-ux-designer-enroll" />
+        <link rel="canonical" href="https://www.kre8ly.com/ui-ux-designer-enroll" />
 
 
         <meta name="author" content="Kre8ly | UI/UX Designer Enroll" />

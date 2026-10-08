@@ -6,11 +6,11 @@ export const metadata = {
   keywords: ["online digital marketing course fees", "digital marketing course pricing", "digital marketing course cost", "digital marketing course fees in ${location}"],
   authors: [{ name: "Kre8ly" }],
   robots: { index: true, follow: true },
-  alternates: { canonical: "https://www.unifiedmentor.com/digital-marketing-enroll" },
+  alternates: { canonical: "https://www.kre8ly.com/digital-marketing-enroll" },
   openGraph: {
     title: "Best Digital Marketing Certification in ${location} with Placement",
     description: "Join our top-rated Digital Marketing Certification in ${location}, featuring practical assignments and placement assistance to boost your career in digital marketing.",
-    url: "https://www.unifiedmentor.com/digital-marketing-enroll",
+    url: "https://www.kre8ly.com/digital-marketing-enroll",
     siteName: "Kre8ly",
     type: "website",
     locale: "en_IN",

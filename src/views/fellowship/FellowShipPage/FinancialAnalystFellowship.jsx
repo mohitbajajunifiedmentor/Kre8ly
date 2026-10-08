@@ -295,7 +295,7 @@ const FinancialAnalystFellowship = ({ darkMode, setDarkMode, location }) => {
         />
         <link
           rel="canonical"
-          href="https://www.unifiedmentor.com/fellowship/financial-analyst"
+          href="https://www.kre8ly.com/fellowship/financial-analyst"
         />
 
         <meta name="robots" content="index, follow" />

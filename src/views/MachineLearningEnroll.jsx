@@ -26,7 +26,7 @@ const MachineLearningEnroll = ({ darkMode, setDarkMode, location }) => {
           content="machine learning course fees, machine learning course price, ML course fees, machine learning online course cost, AI course fees"
         />
 
-        <link rel="canonical" href="https://www.unifiedmentor.com/machine-learning-enroll" />
+        <link rel="canonical" href="https://www.kre8ly.com/machine-learning-enroll" />
 
 
         <meta

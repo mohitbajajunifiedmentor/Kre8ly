@@ -3,44 +3,98 @@
 import { Link } from "@/lib/router-compat";
 import { motion } from "framer-motion";
 import { Section, SectionHeader } from "@/component/ui/Section";
-import { FiArrowUpRight } from "react-icons/fi";
+import { FiArrowUpRight, FiArrowRight } from "react-icons/fi";
+import {
+  LuCode,
+  LuBarChart3,
+  LuMegaphone,
+  LuBrainCircuit,
+  LuPenTool,
+} from "react-icons/lu";
 
 const ITEMS = [
   {
     title: "Fellowship",
-    blurb: "Work on real tasks while a mentor reviews your output. The Kre8ly fellowship ends with a project you can talk about in interviews.",
+    blurb:
+      "Work on real tasks while a mentor reviews your output. The Kre8ly fellowship ends with a project you can talk about in interviews.",
     meta: "10 Specialized Tracks",
     href: "/fellowships",
   },
   {
     title: "Courses",
-    blurb: "Six career tracks, from full-stack development to graphic design, taught live with recordings if you miss a class.",
+    blurb:
+      "Six career tracks, from full-stack development to graphic design. Everything is taught live, and you get the recording if you miss a class.",
     meta: "6 Core Programs",
     href: "/courses",
   },
   {
     title: "ATS",
-    blurb: "See how your resume reads to the applicant tracking systems many companies use before a person ever opens it.",
+    blurb:
+      "See how your resume reads to the applicant tracking systems many companies use before a person ever opens it.",
     meta: "Free Utility",
     href: "https://jobs.unifiedmentor.com/ats",
   },
   {
     title: "Resume Builder",
-    blurb: "Build a clean, recruiter-friendly resume from ready templates and get mentor feedback before you apply.",
+    blurb:
+      "Build a clean, recruiter-friendly resume from ready templates and get mentor feedback before you apply.",
     meta: "Guided Tool",
     href: "https://jobs.unifiedmentor.com/student/dashboard",
   },
   {
     title: "Job Portal",
-    blurb: "ABrowse openings from our hiring partners in one place instead of checking five different sites.",
+    blurb:
+      "Browse openings from our hiring partners in one place instead of checking five different sites.",
     meta: "100+ Hiring Partners",
     href: "/jobs",
   },
   {
     title: "Know Your CTC",
-    blurb: "Not sure what salary to ask for? Run your resume through our AI-powered checker. It reads your skills, experience and projects, then shows the salary range that roles like yours usually offer. You can go into interviews and offer discussions with a realistic number instead of a guess. It's an estimate to guide you, and a quick way to see which skills could raise it.",
+    blurb:
+      "Not sure what salary to ask for? Run your resume through our AI-powered checker. It reads your skills, experience and projects, then shows the salary range that roles like yours usually offer. You can go into interviews and offer discussions with a realistic number instead of a guess. It's an estimate to guide you, and a quick way to see which skills could raise it.",
     meta: "Salary Calculator",
     href: "https://kyc.unifiedmentor.com/",
+  },
+];
+
+const COURSE_TRACKS = [
+  {
+    title: "Web Development",
+    desc: "Frontend, Backend & DB",
+    meta: "Full Stack • 6 Months",
+    href: "/web-development",
+    Icon: LuCode,
+    badge: "Popular",
+  },
+  {
+    title: "Data Science",
+    desc: "Python, Stats & Analytics",
+    meta: "Hands-on • 6 Months",
+    href: "/data-science",
+    Icon: LuBarChart3,
+    badge: "High Demand",
+  },
+  {
+    title: "Digital Marketing",
+    desc: "SEO, Ads & Content Growth",
+    meta: "Performance • 3 Months",
+    href: "/digital-marketing",
+    Icon: LuMegaphone,
+  },
+  {
+    title: "Machine Learning",
+    desc: "AI Models & Neural Networks",
+    meta: "Advanced • 6 Months",
+    href: "/machine-learning",
+    Icon: LuBrainCircuit,
+  },
+  {
+    title: "UI/UX Design",
+    desc: "Figma, Wireframes & UX Audit",
+    meta: "Design • 4 Months",
+    href: "/ui-ux-designer",
+    Icon: LuPenTool, // ✅ Added missing icon
+    badge: "Beginner Friendly",
   },
 ];
 
@@ -50,7 +104,7 @@ export default function WhatWeHaveSection() {
       <SectionHeader
         eyebrow="What We Offer"
         title="Job-Oriented Online Courses, Fellowships, and Career Tools in One Place"
-        lead="Most people in smaller cities don't lack talent. What they lack is a clear route from a degree to a first job. Our job-oriented online courses are built around the skills companies actually test for, and the tools below help you get through the interview door."
+        lead="Most people in smaller cities don't lack talent. What they lack is a clear route from a degree to a first job. Our job-oriented online courses teach the skills companies actually test for, and the tools below help you get through the interview door."
         align="left"
       />
 
@@ -100,18 +154,79 @@ export default function WhatWeHaveSection() {
           );
         })}
       </ul>
+
+      {/* Explore Our Courses - Modern Bento Card Style */}
+      <div className="mt-16 sm:mt-20">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
+          <div>
+            <h3 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-content">
+              Explore Our Courses
+            </h3>
+            <p className="mt-1 text-sm sm:text-base text-content-secondary">
+              Pick a track and see the syllabus, schedule and fees.
+            </p>
+          </div>
+          <Link
+            to="/courses"
+            className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand hover:underline"
+          >
+            <span>Browse all 10+ tracks</span>
+            <FiArrowRight className="h-4 w-4" />
+          </Link>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {COURSE_TRACKS.map((track, i) => {
+            const Icon = track.Icon;
+            return (
+              <motion.div
+                key={track.title}
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.05, duration: 0.35 }}
+              >
+                <Link
+                  to={track.href}
+                  className="group relative flex flex-col justify-between h-full p-5 rounded-2xl border border-line bg-surface hover:bg-surface-sunken hover:border-brand/40 hover:shadow-md transition-all duration-200"
+                >
+                  <div>
+                    <div className="flex items-center justify-between mb-4">
+                      <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-brand-subtle text-brand group-hover:bg-brand group-hover:text-brand-fg transition-colors duration-200">
+                        {Icon && <Icon className="h-5 w-5" />}
+                      </span>
+                      {track.badge && (
+                        <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-surface-sunken border border-line text-content-secondary">
+                          {track.badge}
+                        </span>
+                      )}
+                    </div>
+
+                    <h4 className="text-base font-bold text-content group-hover:text-brand transition-colors">
+                      {track.title}
+                    </h4>
+                    <p className="mt-1 text-xs text-content-muted">
+                      {track.desc}
+                    </p>
+                  </div>
+
+                  <div className="mt-5 pt-3.5 border-t border-line/60 flex items-center justify-between">
+                    <span className="text-xs font-medium text-content-muted">
+                      {track.meta}
+                    </span>
+                    <span className="inline-flex items-center gap-1 text-xs font-semibold text-brand group-hover:translate-x-1 transition-transform">
+                      View Course <FiArrowRight className="h-3.5 w-3.5" />
+                    </span>
+                  </div>
+                </Link>
+              </motion.div>
+            );
+          })}
+        </div>
+      </div>
     </Section>
   );
 }
-
-
-
-
-
-
-
-
-
 
 // "use client";
 

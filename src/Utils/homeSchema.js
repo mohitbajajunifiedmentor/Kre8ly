@@ -10,8 +10,8 @@ const professionalService = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
   name: "Kre8ly",
-  image: "https://www.unifiedmentor.com/assets/logo-gCk1l8fB.png",
-  url: "https://www.unifiedmentor.com/",
+  image: "https://www.kre8ly.com/assets/logo-gCk1l8fB.png",
+  url: "https://www.kre8ly.com/",
   telephone: "062838 00330",
   address: {
     "@type": "PostalAddress",

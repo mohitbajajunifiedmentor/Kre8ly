@@ -58,19 +58,19 @@ export default function Home({ darkMode, setDarkMode }) {
   return (
     <>
       <Helmet>
-        <title>Online Certification Courses in India for Jobs | Kre8ly</title>
+        <title>Online Certification Courses in India for Jobs | Kre8ly </title>
         <meta
           name="description"
-          content="Job-oriented online certification courses and tech fellowships with live mentors, real projects and placement support. Built for learners across India."
+          content="Job-oriented online courses and tech fellowship programs with live mentors, real projects and placement support. Built for freshers and professionals across India."
         />
-        <link rel="canonical" href="https://www.unifiedmentor.com/" />
+        <link rel="canonical" href="https://www.kre8ly.com/" />
         <meta name="robots" content="index, follow" />
         <meta property="og:type" content="business.business" />
         <meta
           property="og:title"
           content="Kre8ly: Online Certification Courses & Live Training"
         />
-        <meta property="og:url" content="https://unifiedmentor.com/" />
+        <meta property="og:url" content="https://www.kre8ly.com/" />
         {HOME_SCHEMA.map((schema, i) => (
           <script key={i} type="application/ld+json">
             {JSON.stringify(schema)}
@@ -101,7 +101,7 @@ export default function Home({ darkMode, setDarkMode }) {
         <Section tone="canvas" space="lg">
           <SectionHeader
             eyebrow="What you get"
-            title="What You'll Gain from Our Practical Skill Development Courses"
+            title="What You'll Gain from Our Practical Skill Development Courses?"
             lead="You leave with a certificate, but the bigger gain is a few finished projects, more confidence in interviews and someone to ask when you get stuck."
           />
 
@@ -215,7 +215,7 @@ export default function Home({ darkMode, setDarkMode }) {
                   </h3>
 
                   <p className="mt-4 text-base leading-relaxed text-content-secondary">
-                    If you already have a job in Nagpur, Surat or Bhubaneswar, you probably can't log in for a full day of classes. Recorded sessions and flexible online learning let you study after work and move into a new role at your own speed.
+                    If you already have a job in Delhi, Mumbai, Hyderabad or in any tier 1 and tier 2 cities, you probably can't log in for a full day of classes. Our courses for working professionals use recorded sessions and flexible online learning, so you can study after work and move into a new role at your own pace.
                   </p>
                 </div>
 

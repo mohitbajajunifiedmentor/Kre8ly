@@ -160,7 +160,7 @@ const ContactUs = ({ darkMode, setDarkMode }) => {
           name="description"
           content="Reach out to Kre8ly counselors. Get fast assistance regarding courses, internships, and placement assistance."
         />
-        <link rel="canonical" href="https://www.unifiedmentor.com/contact-us" />
+        <link rel="canonical" href="https://www.kre8ly.com/contact-us" />
       </Helmet>
 
       <main className="w-full bg-canvas text-content min-h-screen selection:bg-brand selection:text-white">

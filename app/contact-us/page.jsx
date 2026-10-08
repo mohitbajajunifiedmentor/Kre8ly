@@ -6,11 +6,11 @@ export const metadata = {
   keywords: ["Kre8ly", "contact us", "customer support", "online education", "get in touch"],
   authors: [{ name: "Kre8ly" }],
   robots: { index: true, follow: true },
-  alternates: { canonical: "https://www.unifiedmentor.com/contact-us" },
+  alternates: { canonical: "https://www.kre8ly.com/contact-us" },
   openGraph: {
     title: "Kre8ly | Contact Us",
     description: "Reach out to Kre8ly through our contact page. Find all the necessary details to get in touch with our team for support, inquiries, or feedback about our online education platform.",
-    url: "https://www.unifiedmentor.com/contact-us",
+    url: "https://www.kre8ly.com/contact-us",
     siteName: "Kre8ly",
     type: "website",
     locale: "en_IN",

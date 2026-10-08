@@ -217,7 +217,7 @@ const LiveDataAnalyst = ({ darkMode, setDarkMode, location }) => {
         {/* Canonical Link */}
         <link
           rel="canonical"
-          href="https://www.unifiedmentor.com/web-development"
+          href="https://www.kre8ly.com/web-development"
         />
 
         {/* Meta Robots */}

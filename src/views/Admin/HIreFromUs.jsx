@@ -371,7 +371,7 @@ const HireFromUs = ({ darkMode, setDarkMode }) => {
         <meta name="robots" content="index, follow" />
         <link
           rel="canonical"
-          href="https://www.unifiedmentor.com/hire-from-us"
+          href="https://www.kre8ly.com/hire-from-us"
         />
       </Helmet>
       <div

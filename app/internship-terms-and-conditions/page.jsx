@@ -6,11 +6,11 @@ export const metadata = {
   keywords: ["internship terms", "internship conditions", "Kre8ly internship", "internship agreement", "internship policies"],
   authors: [{ name: "Kre8ly" }],
   robots: { index: true, follow: true },
-  alternates: { canonical: "https://www.unifiedmentor.com/internship-terms-and-conditions" },
+  alternates: { canonical: "https://www.kre8ly.com/internship-terms-and-conditions" },
   openGraph: {
     title: "Kre8ly | Internship Terms & Conditions",
     description: "Explore the terms and conditions for internships at Kre8ly. Learn about our policies, eligibility, and guidelines to ensure a successful internship experience.",
-    url: "https://www.unifiedmentor.com/internship-terms-and-conditions",
+    url: "https://www.kre8ly.com/internship-terms-and-conditions",
     siteName: "Kre8ly",
     type: "website",
     locale: "en_IN",

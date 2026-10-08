@@ -139,7 +139,7 @@ const UIDesign = ({ darkMode, setDarkMode, location }) => {
         <meta name="author" content="Kre8ly | UI/UX Design" />
         <link
           rel="canonical"
-          href="https://www.unifiedmentor.com/ui-ux-designer"
+          href="https://www.kre8ly.com/ui-ux-designer"
         />
       </Helmet>
       
